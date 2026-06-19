@@ -2,55 +2,47 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>ZenithTask - منصة الإنجاز الذكي</title>
     <style>
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
+        :root { --primary: #6366f1; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f8fafc; padding: 20px; }
+        .app-container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        input, button { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        button { background: var(--primary); color: white; border: none; cursor: pointer; font-weight: bold; }
+        ul { list-style: none; padding: 0; }
+        li { background: #f1f5f9; padding: 10px; margin: 5px 0; border-radius: 5px; display: flex; justify-content: space-between; }
     </style>
 </head>
-<body class="bg-gray-950 text-white min-h-screen">
+<body>
 
-    <div class="flex">
-        <!-- القائمة الجانبية -->
-        <aside class="w-64 bg-gray-900 h-screen p-4 space-y-2 border-l border-gray-800">
-            <h1 class="text-xl font-bold mb-6 text-center">ZenithTools</h1>
-            <button onclick="switchTab('json-tool')" class="w-full text-right p-3 hover:bg-gray-800 rounded">JSON Formatter</button>
-            <button onclick="switchTab('password-tool')" class="w-full text-right p-3 hover:bg-gray-800 rounded">Password Generator</button>
-            <button onclick="switchTab('base64-tool')" class="w-full text-right p-3 hover:bg-gray-800 rounded">Base64 Encoder</button>
-            <button onclick="switchTab('text-tool')" class="w-full text-right p-3 hover:bg-gray-800 rounded">Text Converter</button>
-            <button onclick="switchTab('qr-tool')" class="w-full text-right p-3 hover:bg-gray-800 rounded">QR Generator</button>
-        </aside>
+<div class="app-container">
+    <h2>ZenithTask - إنجازك يبدأ هنا</h2>
+    <input type="text" id="taskInput" placeholder="ما هي مهمتك القادمة؟">
+    <button onclick="addTask()">إضافة المهمة</button>
+    <ul id="taskList"></ul>
+</div>
 
-        <!-- منطقة الأدوات -->
-        <main class="flex-1 p-8">
-            <div id="json-tool" class="tab-content active"><h2 class="text-2xl font-bold mb-4">JSON Formatter</h2><p>مساحة عمل JSON...</p></div>
-            <div id="password-tool" class="tab-content"><h2 class="text-2xl font-bold mb-4">Password Generator</h2><p>مساحة عمل توليد كلمات المرور...</p></div>
-            <div id="base64-tool" class="tab-content"><h2 class="text-2xl font-bold mb-4">Base64 Encoder</h2><p>مساحة عمل تشفير Base64...</p></div>
-            <div id="text-tool" class="tab-content"><h2 class="text-2xl font-bold mb-4">Text Converter</h2><p>مساحة عمل تحويل النصوص...</p></div>
-            
-            <!-- أداة الـ QR -->
-            <div id="qr-tool" class="tab-content">
-                <h2 class="text-2xl font-bold mb-4">QR Generator</h2>
-                <input type="text" id="qr-input" class="w-full p-3 bg-gray-800 rounded mb-2" placeholder="أدخل النص هنا...">
-                <button onclick="generateQR()" class="bg-indigo-600 px-6 py-2 rounded">إنشاء QR</button>
-                <div id="qr-result" class="mt-4"></div>
-            </div>
-        </main>
-    </div>
+<script>
+    function addTask() {
+        const input = document.getElementById('taskInput');
+        const list = document.getElementById('taskList');
+        if (!input.value) return;
 
-    <script>
-        function switchTab(id) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-        }
-        function generateQR() {
-            const text = document.getElementById('qr-input').value;
-            if(text) {
-                document.getElementById('qr-result').innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(text)}">`;
-            }
-        }
-    </script>
+        const li = document.createElement('li');
+        li.innerHTML = `${input.value} <button onclick="this.parentElement.remove()" style="width:auto; padding:2px 10px; background:red;">X</button>`;
+        list.appendChild(li);
+        saveTasks();
+        input.value = '';
+    }
+
+    function saveTasks() {
+        localStorage.setItem('tasks', document.getElementById('taskList').innerHTML);
+    }
+
+    // استرجاع المهام عند تحميل الصفحة
+    window.onload = () => {
+        document.getElementById('taskList').innerHTML = localStorage.getItem('tasks') || '';
+    };
+</script>
 </body>
 </html>
