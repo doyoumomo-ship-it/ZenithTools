@@ -2,52 +2,16 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZenithTools - أدواتك في مكان واحد</title>
+    <title>ZenithTools - منصة الأدوات المتكاملة</title>
     <style>
-        :root { --primary: #7c4dff; --bg: #0f172a; --card: #1e293b; --text: #f8fafc; }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); display: flex; flex-direction: column; align-items: center; padding: 20px; margin: 0; }
-        .container { width: 100%; max-width: 500px; }
-        .card { background: var(--card); padding: 20px; border-radius: 16px; margin-bottom: 20px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3); }
-        input, button { width: 100%; padding: 12px; margin: 8px 0; border-radius: 8px; border: none; font-size: 16px; }
-        input { background: #334155; color: white; }
-        button { background: var(--primary); color: white; cursor: pointer; font-weight: bold; transition: 0.3s; }
-        button:hover { opacity: 0.9; transform: translateY(-2px); }
-        #output { font-size: 1.2rem; margin-top: 10px; word-break: break-all; color: #a5b4fc; }
+        body { font-family: sans-serif; background: #0f172a; color: white; margin: 0; padding: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; max-width: 1200px; margin: auto; }
+        .card { background: #1e293b; padding: 20px; border-radius: 12px; text-align: center; cursor: pointer; transition: 0.3s; }
+        .card:hover { background: #334155; transform: translateY(-5px); }
+        h1 { text-align: center; color: #38bdf8; }
     </style>
 </head>
 <body>
-
-    <div class="container">
-        <h1>ZenithTools</h1>
+    <h1>ZenithTools - 15 أداة ذكية</h1>
+    <div class="grid">
         
-        <!-- الأداة 1: مولد كلمات مرور آمن -->
-        <div class="card">
-            <h3>🔐 مولد كلمات السر</h3>
-            <button onclick="genPass()">إنشاء كلمة مرور</button>
-            <div id="passOut"></div>
-        </div>
-
-        <!-- الأداة 2: صانع QR Code للروابط -->
-        <div class="card">
-            <h3>📱 صانع QR Code</h3>
-            <input type="text" id="qrText" placeholder="ضع الرابط هنا...">
-            <button onclick="genQR()">تحويل للباركود</button>
-            <div id="qrOut" style="margin-top: 15px;"></div>
-        </div>
-    </div>
-
-    <script>
-        function genPass() {
-            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
-            let p = "";
-            for(let i=0; i<16; i++) p += chars.charAt(Math.floor(Math.random() * chars.length));
-            document.getElementById('passOut').innerHTML = `<p id="output">${p}</p>`;
-        }
-        function genQR() {
-            const txt = document.getElementById('qrText').value;
-            if(txt) document.getElementById('qrOut').innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(txt)}">`;
-        }
-    </script>
-</body>
-</html>
