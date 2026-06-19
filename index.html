@@ -1,42 +1,17 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZenithTools | المنصة الاحترافية</title>
-    <style>
-        :root { --bg: #0b0e14; --card: #161b22; --accent: #58a6ff; --text: #c9d1d9; }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 40px 20px; margin: 0; }
-        .container { max-width: 1000px; margin: auto; }
-        h1 { text-align: center; color: var(--accent); margin-bottom: 50px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .tool-card { background: var(--card); padding: 25px; border-radius: 16px; border: 1px solid #30363d; transition: 0.4s; }
-        .tool-card:hover { transform: translateY(-8px); border-color: var(--accent); }
-        input { width: 100%; padding: 12px; background: #0d1117; border: 1px solid #30363d; color: white; border-radius: 8px; margin: 10px 0; box-sizing: border-box; }
-        button { width: 100%; padding: 12px; background: var(--accent); border: none; border-radius: 8px; font-weight: bold; cursor: pointer; color: #0b0e14; }
-        .result { margin-top: 15px; color: var(--accent); font-weight: bold; word-break: break-all; }
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <h1>ZenithTools - أدوات احترافية</h1>
-    <div class="grid" id="toolGrid">
-        <div class="tool-card">
-            <h3>1. مولد كلمة السر</h3>
-            <input type="number" id="len" placeholder="طول كلمة السر (مثلاً 12)">
-            <button onclick="genPass()">توليد</button>
-            <div class="result" id="res0"></div>
-        </div>
-    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<div class="tool-card">
+    <h3>📄 محول النصوص إلى PDF</h3>
+    <textarea id="pdfText" placeholder="اكتب نصك هنا..." style="width:100%; height:100px; background:#0d1117; color:#fff; border:1px solid #30363d; border-radius:8px;"></textarea>
+    <button onclick="downloadPDF()">تحميل كـ PDF</button>
 </div>
-
 <script>
-    function genPass() {
-        let len = document.getElementById('len').value || 10;
-        let p = Math.random().toString(36).substring(2, 2 + parseInt(len));
-        document.getElementById('res0').innerText = "النتيجة: " + p;
+    function downloadPDF() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        const text = document.getElementById('pdfText').value;
+        
+        doc.setFont("helvetica");
+        doc.text(text, 10, 10);
+        doc.save("ZenithTools_Document.pdf");
     }
 </script>
-</body>
-</html>
