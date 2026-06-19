@@ -1,27 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>.tab-content { display: none; } .tab-content.active { display: block; }</style>
+    <style>
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
 </head>
-<body class="bg-gray-950 text-white p-6">
-    <div class="flex gap-8">
-        <aside class="w-64 space-y-2">
-            <button onclick="switchTab('json-tool')" class="w-full text-left p-3 bg-gray-900 rounded">JSON Formatter</button>
-            <button onclick="switchTab('qr-tool')" class="w-full text-left p-3 bg-gray-900 rounded">QR Generator</button>
+<body class="bg-gray-950 text-white min-h-screen">
+
+    <div class="flex">
+        <!-- القائمة الجانبية -->
+        <aside class="w-64 bg-gray-900 h-screen p-4 space-y-2 border-l border-gray-800">
+            <h1 class="text-xl font-bold mb-6 text-center">ZenithTools</h1>
+            <button onclick="switchTab('json-tool')" class="w-full text-right p-3 hover:bg-gray-800 rounded">JSON Formatter</button>
+            <button onclick="switchTab('password-tool')" class="w-full text-right p-3 hover:bg-gray-800 rounded">Password Generator</button>
+            <button onclick="switchTab('base64-tool')" class="w-full text-right p-3 hover:bg-gray-800 rounded">Base64 Encoder</button>
+            <button onclick="switchTab('text-tool')" class="w-full text-right p-3 hover:bg-gray-800 rounded">Text Converter</button>
+            <button onclick="switchTab('qr-tool')" class="w-full text-right p-3 hover:bg-gray-800 rounded">QR Generator</button>
         </aside>
 
-        <main class="flex-1">
-            <div id="json-tool" class="tab-content active">
-                <h2 class="text-xl font-bold">JSON Formatter</h2>
-                </div>
+        <!-- منطقة الأدوات -->
+        <main class="flex-1 p-8">
+            <div id="json-tool" class="tab-content active"><h2 class="text-2xl font-bold">JSON Formatter</h2><p>محتوى الأداة 1</p></div>
+            <div id="password-tool" class="tab-content"><h2 class="text-2xl font-bold">Password Generator</h2><p>محتوى الأداة 2</p></div>
+            <div id="base64-tool" class="tab-content"><h2 class="text-2xl font-bold">Base64 Encoder</h2><p>محتوى الأداة 3</p></div>
+            <div id="text-tool" class="tab-content"><h2 class="text-2xl font-bold">Text Converter</h2><p>محتوى الأداة 4</p></div>
             
+            <!-- أداة الـ QR -->
             <div id="qr-tool" class="tab-content">
-                <h2 class="text-xl font-bold mb-4">QR Code Generator</h2>
-                <input type="text" id="qr-input" class="w-full p-2 bg-gray-800 rounded mb-2" placeholder="Enter text...">
-                <button onclick="generateQR()" class="bg-indigo-600 px-4 py-2 rounded">Generate QR</button>
+                <h2 class="text-2xl font-bold mb-4">QR Generator</h2>
+                <input type="text" id="qr-input" class="w-full p-3 bg-gray-800 rounded mb-2" placeholder="أدخل النص هنا...">
+                <button onclick="generateQR()" class="bg-indigo-600 px-6 py-2 rounded">إنشاء QR</button>
                 <div id="qr-result" class="mt-4"></div>
             </div>
         </main>
@@ -35,7 +47,7 @@
         function generateQR() {
             const text = document.getElementById('qr-input').value;
             if(text) {
-                document.getElementById('qr-result').innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(text)}">`;
+                document.getElementById('qr-result').innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(text)}">`;
             }
         }
     </script>
