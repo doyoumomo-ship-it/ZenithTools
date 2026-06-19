@@ -2,32 +2,41 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>ZenithTools - مولد كلمات المرور</title>
+    <title>ZenithTools - أدواتك الذكية</title>
     <style>
-        body { font-family: sans-serif; text-align: center; padding: 50px; background-color: #f4f4f9; }
-        .container { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: inline-block; }
-        button { background: #6200ea; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px; margin-top: 15px; }
-        #password { font-size: 24px; margin: 20px 0; color: #333; font-weight: bold; word-break: break-all; }
+        body { font-family: sans-serif; text-align: center; background: #f0f2f5; padding: 20px; }
+        .card { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin: 10px auto; max-width: 400px; }
+        input, button { width: 100%; padding: 10px; margin: 10px 0; border-radius: 8px; border: 1px solid #ccc; box-sizing: border-box; }
+        button { background: #007bff; color: white; cursor: pointer; border: none; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>مولد كلمات المرور</h1>
-    <div id="password">اضغط لإنشاء كلمة سر</div>
-    <button onclick="generatePassword()">إنشاء كلمة مرور جديدة</button>
-</div>
+    <h1>ZenithTools</h1>
 
-<script>
-    function generatePassword() {
-        const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
-        let password = "";
-        for (let i = 0; i < 12; i++) {
-            password += charset.charAt(Math.floor(Math.random() * charset.length));
+    <!-- أداة توليد QR Code -->
+    <div class="card">
+        <h3>صانع QR Code</h3>
+        <input type="text" id="qrText" placeholder="اكتب الرابط هنا...">
+        <button onclick="generateQR()">اصنع الكود</button>
+        <div id="qrResult"></div>
+    </div>
+
+    <!-- أداة توليد كلمة مرور -->
+    <div class="card">
+        <h3>كلمة مرور قوية</h3>
+        <button onclick="genPass()">توليد كلمة سر</button>
+        <h2 id="passResult">---</h2>
+    </div>
+
+    <script>
+        function genPass() {
+            document.getElementById('passResult').innerText = Math.random().toString(36).slice(-10);
         }
-        document.getElementById("password").innerText = password;
-    }
-</script>
-
+        function generateQR() {
+            let text = document.getElementById('qrText').value;
+            if(text) document.getElementById('qrResult').innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${text}">`;
+        }
+    </script>
 </body>
 </html>
