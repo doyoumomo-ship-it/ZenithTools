@@ -46,3 +46,55 @@
     </script>
 </body>
 </html>
+    <script>
+        const tools = [
+            { name: "توليد كلمة سر", action: () => alert('كلمة السر هي: ' + Math.random().toString(36).slice(-8)) },
+            { name: "حاسبة النسبة", action: () => { 
+                let n = prompt('أدخل الرقم لحساب 20% منه:'); 
+                if(n) alert('النتيجة هي: ' + (n * 0.2)); 
+            }},
+            { name: "عداد الحروف", action: () => { 
+                let t = prompt('أدخل النص:'); 
+                if(t !== null) alert('عدد الحروف هو: ' + t.length); 
+            }},
+            { name: "تحويل لـ CAPITAL", action: () => { 
+                let t = prompt('أدخل النص للتحويل:'); 
+                if(t) alert(t.toUpperCase()); 
+            }},
+            { name: "عكس النص", action: () => { 
+                let t = prompt('أدخل النص لعكسه:'); 
+                if(t) alert(t.split('').reverse().join('')); 
+            }},
+            { name: "أرقام حظ", action: () => alert('رقم حظك: ' + Math.floor(Math.random() * 100)) },
+            { name: "كيلو لـ باوند", action: () => { 
+                let k = prompt('أدخل الكيلو:'); 
+                if(k) alert(k * 2.204 + ' باوند'); 
+            }},
+            { name: "حساب أيام العمر", action: () => { 
+                let y = prompt('عمرك بالسنوات:'); 
+                if(y) alert('عشت تقريباً: ' + (y * 365) + ' يوماً'); 
+            }},
+            { name: "اختصار رابط", action: () => alert('الرابط المختصر: zenith.ly/short') },
+            { name: "توليد لون", action: () => { 
+                let c = '#' + Math.floor(Math.random()*16777215).toString(16); 
+                alert('كود اللون: ' + c); 
+            }}
+        ];
+
+        const container = document.getElementById('toolBox');
+        tools.forEach(tool => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `<h3>${tool.name}</h3>`;
+            
+            const btn = document.createElement('button');
+            btn.innerText = 'تشغيل';
+            // نستخدم هنا دالة وسيطة لضمان التنفيذ
+            btn.addEventListener('click', () => {
+                tool.action();
+            });
+            
+            card.appendChild(btn);
+            container.appendChild(card);
+        });
+    </script>
