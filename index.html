@@ -1,31 +1,30 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>ZenithTools</title>
+    <style>
+        body { background: #0b0e14; color: white; font-family: sans-serif; padding: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .card { background: #161b22; padding: 15px; border-radius: 12px; border: 1px solid #30363d; text-align: center; }
+        button { background: #58a6ff; border: none; padding: 10px; border-radius: 5px; color: white; cursor: pointer; width: 100%; margin-top: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>ZenithTools 🚀</h1>
+    <div class="grid" id="toolBox"></div>
+
     <script>
         const tools = [
             { name: "توليد كلمة سر", action: () => alert('كلمة السر: ' + Math.random().toString(36).slice(-8)) },
-            { name: "حاسبة النسبة", action: () => { let n = prompt('أدخل الرقم:'); if(n) alert(n * 0.2) } },
-            { name: "عداد الحروف", action: () => { let t = prompt('أدخل النص:'); if(t) alert(t.length) } },
+            { name: "حاسبة النسبة", action: () => { let n = prompt('أدخل الرقم لحساب 20% منه:'); if(n) alert('النتيجة: ' + (n * 0.2)) } },
+            { name: "عداد الحروف", action: () => { let t = prompt('أدخل النص:'); if(t !== null) alert('عدد الحروف: ' + t.length) } },
             { name: "تحويل لـ CAPITAL", action: () => { let t = prompt('أدخل النص:'); if(t) alert(t.toUpperCase()) } },
             { name: "عكس النص", action: () => { let t = prompt('أدخل النص:'); if(t) alert(t.split('').reverse().join('')) } },
             { name: "أرقام حظ", action: () => alert('رقم حظك: ' + Math.floor(Math.random() * 100)) },
-            { name: "كيلو لـ باوند", action: () => { let k = prompt('أدخل الكيلو:'); if(k) alert(k * 2.2) } },
-            { name: "حساب أيام العمر", action: () => { let y = prompt('عمرك بالسنوات:'); if(y) alert(y * 365) } },
-            { name: "اختصار رابط", action: () => alert('zenith.ly/short') },
-            { name: "توليد لون", action: () => alert('#' + Math.floor(Math.random()*16777215).toString(16)) }
-        ];
+            { name: "كيلو لـ باوند", action: () => { let k = prompt('أدخل الكيلو:'); if(k) alert(k * 2.204 + ' باوند') } },
+            { name: "حساب أيام العمر", action: () => { let y = prompt('عمرك بالسنوات:'); if(y) alert('عشت تقريباً: ' + (y * 365) + ' يوماً') } },
+            { name: "اختصار رابط", action: () => alert('الرابط المختصر: zenith.ly/short') },
+            { name: "توليد لون", action: () => { let c = '#'
 
-        const container = document.getElementById('toolBox');
-        tools.forEach(tool => {
-            const card = document.createElement('div');
-            card.className = 'card';
-            card.innerHTML = `<h3>${tool.name}</h3>`;
-            
-            const btn = document.createElement('button');
-            btn.innerText = 'تشغيل';
-            // الطريقة المباشرة والأكثر توافقاً
-            btn.onclick = function() {
-                tool.action();
-            };
-            
-            card.appendChild(btn);
-            container.appendChild(card);
-        });
-    </script>
