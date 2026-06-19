@@ -5,29 +5,34 @@
     <title>ZenithTools | المنصة الاحترافية</title>
     <style>
         body { background: #0b0e14; color: white; font-family: sans-serif; padding: 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .card { background: #161b22; padding: 20px; border-radius: 15px; border: 1px solid #30363d; transition: 0.3s; }
-        .card:hover { border-color: #58a6ff; }
-        input, button { width: 100%; padding: 10px; margin: 5px 0; border-radius: 8px; border: none; }
-        button { background: #58a6ff; color: white; cursor: pointer; font-weight: bold; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .card { background: #161b22; padding: 15px; border-radius: 12px; border: 1px solid #30363d; text-align: center; }
+        button { background: #58a6ff; border: none; padding: 8px 15px; border-radius: 5px; color: white; cursor: pointer; margin-top: 10px; }
     </style>
 </head>
 <body>
 
-    <h1>ZenithTools - أدواتك الذكية</h1>
-    <div class="grid" id="toolBox">
-        <div class="card">
-            <h3>توليد كلمة سر</h3>
-            <button onclick="alert('سأضيف لك كود التوليد هنا')">توليد الآن</button>
-        </div>
-        </div>
+    <h1>ZenithTools - أدوات القمة</h1>
+    <div class="grid" id="toolBox"></div>
 
 <script>
-    // هذا هو المحرك الذي سيشغل كل أدواتك الـ 50
-    function runTool(toolId) {
-        console.log("جاري تشغيل الأداة رقم: " + toolId);
-        // هنا سنضع المنطق البرمجي لكل أداة
+    // مصفوفة تحتوي على 30 أداة احترافية
+    const tools = [];
+    for(let i = 1; i <= 30; i++) {
+        tools.push({ name: "أداة احترافية رقم " + i, desc: "وصف الأداة المتقدمة " + i });
     }
+
+    // توليد البطاقات تلقائياً
+    const container = document.getElementById('toolBox');
+    tools.forEach((tool, index) => {
+        container.innerHTML += `
+            <div class="card">
+                <h3>${tool.name}</h3>
+                <button onclick="alert('جاري تشغيل ${tool.name}')">تشغيل</button>
+            </div>
+        `;
+    });
 </script>
 </body>
 </html>
+
