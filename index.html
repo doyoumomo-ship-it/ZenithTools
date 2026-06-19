@@ -33,3 +33,15 @@
     </script>
 </body>
 </html>
+        const tools = [
+            { name: "توليد كلمة سر", action: "alert('كلمة السر: ' + Math.random().toString(36).slice(-8))" },
+            { name: "حاسبة النسبة", action: "let n = prompt('أدخل الرقم'); alert('20% من الرقم هو: ' + (n * 0.2))" },
+            { name: "عداد الحروف", action: "let t = prompt('أدخل النص'); alert('عدد الحروف: ' + t.length)" },
+            { name: "تحويل لـ CAPITAL", action: "let t = prompt('أدخل النص'); alert(t.toUpperCase())" },
+            { name: "عكس النص", action: "let t = prompt('أدخل النص'); alert(t.split('').reverse().join(''))" },
+            { name: "أرقام حظ", action: "alert('رقم حظك: ' + Math.floor(Math.random() * 100))" },
+            { name: "كيلو لـ باوند", action: "let k = prompt('أدخل الكيلو'); alert(k * 2.2 + ' باوند')" },
+            { name: "حساب أيام العمر", action: "let y = prompt('عمرك بالسنوات'); alert('عشت: ' + (y * 365) + ' يوماً')" },
+            { name: "اختصار رابط", action: "alert('zenith.ly/xyz')" },
+            { name: "توليد لون", action: "let c = '#' + Math.floor(Math.random()*16777215).toString(16); alert('اللون: ' + c)" }
+        ];
