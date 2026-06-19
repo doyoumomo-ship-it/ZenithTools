@@ -1,39 +1,37 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZenithCore - منصة الإدارة الذكية</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-900 text-white min-h-screen flex flex-col items-center justify-center">
+// ZenithCore - System Engine (Node.js/Express)
+const express = require('express');
+const { Configuration, OpenAIApi } = require('openai');
+const supabase = require('@supabase/supabase-js');
 
-    <div class="max-w-2xl w-full p-8 bg-gray-800 rounded-2xl shadow-2xl border border-gray-700">
-        <h1 class="text-4xl font-bold mb-6 text-indigo-400">ZenithCore</h1>
-        <p class="mb-8 text-gray-400">أنت الآن في نواة النظام. هذا هو الهيكل الذي سيتحول لاحقاً إلى منصة أعمال متكاملة.</p>
-        
-        <div id="app" class="space-y-4">
-            <input type="text" id="actionInput" placeholder="أدخل بيانات المعالجة..." class="w-full p-4 bg-gray-700 rounded-lg border border-gray-600 focus:outline-none focus:border-indigo-500">
-            <button onclick="processData()" class="w-full bg-indigo-600 hover:bg-indigo-700 p-4 rounded-lg font-bold transition">بدء المعالجة الذكية</button>
-        </div>
+const app = express();
+app.use(express.json());
 
-        <div id="output" class="mt-8 p-4 bg-gray-900 rounded-lg hidden border border-indigo-900">
-            <!-- هنا ستظهر نتائج التحليل أو المعالجة -->
-        </div>
-    </div>
+// 1. الربط مع قاعدة البيانات (Supabase)
+const db = supabase.createClient(process.env.DB_URL, process.env.DB_KEY);
 
-    <script>
-        function processData() {
-            const input = document.getElementById('actionInput').value;
-            const output = document.getElementById('output');
-            
-            if(!input) return alert("يرجى إدخال البيانات");
+// 2. محرك المعالجة بالذكاء الاصطناعي (OpenAI Integration)
+const ai = new OpenAIApi(new Configuration({ apiKey: process.env.OPENAI_KEY }));
 
-            output.classList.remove('hidden');
-            output.innerHTML = `<p class="text-green-400">تمت معالجة: "${input}" بنجاح عبر بروتوكول Zenith.</p>`;
-            
-            // هذا المكان هو حيث ستقوم لاحقاً بربط API الخاص بـ OpenAI أو Supabase
-        }
-    </script>
-</body>
-</html>
+// 3. المسار الرئيسي (API Endpoint)
+app.post('/api/process-business-logic', async (req, res) => {
+    try {
+        const { userData } = req.body;
+
+        // تحليل البيانات باستخدام الذكاء الاصطناعي
+        const analysis = await ai.createCompletion({
+            model: "gpt-4",
+            prompt: `Analyze this business data and provide financial insights: ${userData}`,
+        });
+
+        // حفظ النتيجة في قاعدة البيانات
+        const { data, error } = await db.from('reports').insert({ 
+            result: analysis.data.choices[0].text 
+        });
+
+        res.json({ status: 'Success', result: analysis.data.choices[0].text });
+    } catch (error) {
+        res.status(500).json({ error: 'System Failure' });
+    }
+});
+
+app.listen(3000, () => console.log('ZenithCore System Online'));
