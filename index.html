@@ -2,37 +2,44 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>ZenithTools | المنصة الاحترافية</title>
+    <title>ZenithTools</title>
     <style>
         body { background: #0b0e14; color: white; font-family: sans-serif; padding: 20px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
         .card { background: #161b22; padding: 15px; border-radius: 12px; border: 1px solid #30363d; text-align: center; }
-        button { background: #58a6ff; border: none; padding: 8px 15px; border-radius: 5px; color: white; cursor: pointer; margin-top: 10px; }
+        button { background: #58a6ff; border: none; padding: 8px 15px; border-radius: 5px; color: white; cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <h1>ZenithTools - أدوات القمة</h1>
+    <h1>ZenithTools</h1>
     <div class="grid" id="toolBox"></div>
 
 <script>
-    // مصفوفة تحتوي على 30 أداة احترافية
-    const tools = [];
-    for(let i = 1; i <= 30; i++) {
-        tools.push({ name: "أداة احترافية رقم " + i, desc: "وصف الأداة المتقدمة " + i });
+    // 1. تعريف وظائف الأدوات أولاً
+    function runTool1() {
+        alert("أهلاً بك في أداة توليد كلمة السر! (قيد التطوير)");
+    }
+    function runTool2() {
+        alert("أداة PDF تعمل الآن!");
     }
 
-    // توليد البطاقات تلقائياً
+    // 2. قائمة الأدوات
+    const tools = [
+        { name: "توليد كلمة سر", action: "runTool1()" },
+        { name: "محول PDF", action: "runTool2()" }
+    ];
+
+    // 3. عرض الأدوات
     const container = document.getElementById('toolBox');
-    tools.forEach((tool, index) => {
+    tools.forEach(tool => {
         container.innerHTML += `
             <div class="card">
                 <h3>${tool.name}</h3>
-                <button onclick="alert('جاري تشغيل ${tool.name}')">تشغيل</button>
+                <button onclick="${tool.action}">تشغيل</button>
             </div>
         `;
     });
 </script>
 </body>
 </html>
-
