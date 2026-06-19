@@ -43,53 +43,11 @@
                 <i class="fa-solid fa-arrow-rotate-left w-5 text-center"></i> <span>Base64 Encoder</span>
             </button>
             <button onclick="switchTab('text-tool')" id="btn-text-tool" class="tab-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-gray-900 text-gray-400 hover:text-gray-200 transition-all text-left">
-                <i class="fa-solid fa-font w-5 text-center"></i> <span>Text Case Converter</span> <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZenithTools - Premium</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>.tab-content { display: none; } .tab-content.active { display: block; }</style>
-</head>
-<body class="bg-gray-950 text-gray-100 font-sans min-h-screen">
-    <div class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-4 gap-8">
-        <aside class="md:col-span-1 space-y-2">
-            <button onclick="switchTab('json-tool')" class="tab-btn w-full px-4 py-3 bg-indigo-600 rounded-xl text-left"><i class="fa-solid fa-code mr-2"></i> JSON Formatter</button>
-            <button onclick="switchTab('password-tool')" class="tab-btn w-full px-4 py-3 hover:bg-gray-900 rounded-xl text-left"><i class="fa-solid fa-key mr-2"></i> Password</button>
-            <button onclick="switchTab('base64-tool')" class="tab-btn w-full px-4 py-3 hover:bg-gray-900 rounded-xl text-left"><i class="fa-solid fa-rotate-left mr-2"></i> Base64</button>
-            <button onclick="switchTab('text-tool')" class="tab-btn w-full px-4 py-3 hover:bg-gray-900 rounded-xl text-left"><i class="fa-solid fa-font mr-2"></i> Text Case</button>
-            <button onclick="switchTab('qr-tool')" class="tab-btn w-full px-4 py-3 hover:bg-gray-900 rounded-xl text-left"><i class="fa-solid fa-qrcode mr-2"></i> QR Generator</button>
-        </aside>
-        <main class="md:col-span-3 bg-gray-900 p-6 rounded-2xl border border-gray-800">
-            <div id="json-tool" class="tab-content active"><h2>JSON Formatter</h2></div>
-            <div id="password-tool" class="tab-content"><h2>Password Generator</h2></div>
-            <div id="base64-tool" class="tab-content"><h2>Base64 Tool</h2></div>
-            <div id="text-tool" class="tab-content"><h2>Text Converter</h2></div>
-            <div id="qr-tool" class="tab-content">
-                <h2 class="text-xl font-bold mb-4">QR Code Generator</h2>
-                <input type="text" id="qr-input" class="w-full bg-gray-950 p-4 rounded-xl border border-gray-700" placeholder="Enter link...">
-                <button onclick="generateQR()" class="mt-4 px-6 py-2 bg-indigo-600 rounded-xl">Generate QR</button>
-                <div id="qr-result" class="mt-4"></div>
-            </div>
-        </main>
-    </div>
-    <script>
-        function switchTab(id) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-        }
-        function generateQR() {
-            const text = document.getElementById('qr-input').value;
-            if(!text) return;
-            document.getElementById('qr-result').innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(text)}">`;
-        }
-    </script>
-</body>
-</html>
+                <i class="fa-solid fa-font w-5 text-center"></i> <span>Text Case Converter</span>
+            </button> <button onclick="switchTab('qr-tool')" class="tab-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-gray-900 text-gray-400 hover:text-gray-200 transition-all text-left">
+    <i class="fa-solid fa-qrcode w-5 text-center"></i> <span>QR Code Generator</span>
+</button>
 
-            </button>
         </aside>
 
         <!-- Main Content Area / Tools Container -->
