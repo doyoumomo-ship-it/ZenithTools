@@ -16,24 +16,17 @@
     <div class="grid" id="toolBox"></div>
 
 <script>
-    // 1. تعريف وظائف الأدوات أولاً
-    function runTool1() {
-        alert("أهلاً بك في أداة توليد كلمة السر! (قيد التطوير)");
-    }
-    function runTool2() {
-        alert("أداة PDF تعمل الآن!");
-    }
+    // 1. الوظائف (Functions)
+    function runTool1() { alert("تم تشغيل أداة توليد كلمة السر!"); }
+    function runTool2() { alert("تم تشغيل أداة تحويل PDF!"); }
 
-    // 2. قائمة الأدوات    const tools = [
+    // 2. قائمة الأدوات (مصفوفة صحيحة)
+    const tools = [
         { name: "توليد كلمة سر", action: "runTool1()" },
-        { name: "محول PDF", action: "runTool2()" }
+        { name: "تحويل PDF", action: "runTool2()" }
     ];
 
-        { name: "توليد كلمة سر", action: "runTool1()" },
-        { name: "محول PDF", action: "runTool2()" }
-    ];
-
-    // 3. عرض الأدوات
+    // 3. المحرك
     const container = document.getElementById('toolBox');
     tools.forEach(tool => {
         container.innerHTML += `
