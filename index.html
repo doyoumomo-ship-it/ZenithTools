@@ -3,37 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EchoMind - حول أفكارك إلى فن</title>
+  <title>لحظة - حول لحظاتك إلى سينما</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
-    
     body { font-family: 'Cairo', sans-serif; }
     .hero {
-      background: linear-gradient(135deg, #312e81 0%, #4f46e5 50%, #7c3aed 100%);
-      background-size: 400% 400%;
-      animation: gradient 15s ease infinite;
+      background: linear-gradient(135deg, #1e1233 0%, #312e81 100%);
     }
-    @keyframes gradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    .glass { 
+    .glass {
       background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(16px);
+      backdrop-filter: blur(20px);
       border: 1px solid rgba(255,255,255,0.1);
-    }
-    .card-hover:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
     }
   </style>
 </head>
-<body class="bg-gray-950 text-white overflow-x-hidden">
+<body class="bg-gray-950 text-white">
 
   <!-- Navbar -->
   <nav class="fixed top-0 w-full z-50 glass">
     <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-      <h1 class="text-3xl font
+      <h1 class="text-4xl font-black tracking-tighter">لحظة</h1>
+      <div class="flex gap-8">
+        <a href="#" class="hover:text-purple-400 transition">كيف يعمل</a>
+        <a href="#" class="hover:text-purple-400 transition">أمثلة</a>
+        <a href="#" class="hover:text-purple-400 transition">الأسعار</a>
+      </div>
+      <button class="bg-white text-black px-8 py-3 rounded-2xl font-bold hover:bg-purple-500 hover:text-white transition">
+        ابدأ مجاناً
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero min-h-screen flex items-center pt-20">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <div class="mb-6 inline-flex items-center gap-3 bg-white/10 px-6 py-3 rounded-full">
+        <i class="fas fa-bolt text-yellow-400"></i>
+        <span class="font-medium">مدعوم بالذكاء الاصطناعي المتطور</span>
+      </div>
+
+      <h1 class="text-6xl md:text-7xl font-black leading-tight mb-8">
+        لحظتك تستاهل<br>تكون <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">سينمائية</span>
+      </h1>
+
+      <p class="text-2xl text-gray-300 max-w-2xl mx-auto mb-12">
+        ارفع صورة أو فيديو أو اكتب وصف.. ونحولها لفيديو قصير احترافي في ثواني
+      </p>
+
+      <div class="max-w-xl mx-auto">
+        <div class="glass rounded-3xl p-2">
+          <input id="input" 
+                 type="text" 
+                 placeholder="وصف لحظتك... (مثال: أول مرة ابني يمشي في الحديقة)" 
+                 class="w-full bg-transparent px-8 py-7 text-lg focus:outline-none rounded-3xl">
+        </div>
+
+        <button onclick="generateDemo
