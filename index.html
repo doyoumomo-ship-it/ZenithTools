@@ -2,47 +2,38 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>ZenithTask - منصة الإنجاز الذكي</title>
-    <style>
-        :root { --primary: #6366f1; }
-        body { font-family: 'Segoe UI', sans-serif; background: #f8fafc; padding: 20px; }
-        .app-container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-        input, button { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
-        button { background: var(--primary); color: white; border: none; cursor: pointer; font-weight: bold; }
-        ul { list-style: none; padding: 0; }
-        li { background: #f1f5f9; padding: 10px; margin: 5px 0; border-radius: 5px; display: flex; justify-content: space-between; }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZenithCore - منصة الإدارة الذكية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-900 text-white min-h-screen flex flex-col items-center justify-center">
 
-<div class="app-container">
-    <h2>ZenithTask - إنجازك يبدأ هنا</h2>
-    <input type="text" id="taskInput" placeholder="ما هي مهمتك القادمة؟">
-    <button onclick="addTask()">إضافة المهمة</button>
-    <ul id="taskList"></ul>
-</div>
+    <div class="max-w-2xl w-full p-8 bg-gray-800 rounded-2xl shadow-2xl border border-gray-700">
+        <h1 class="text-4xl font-bold mb-6 text-indigo-400">ZenithCore</h1>
+        <p class="mb-8 text-gray-400">أنت الآن في نواة النظام. هذا هو الهيكل الذي سيتحول لاحقاً إلى منصة أعمال متكاملة.</p>
+        
+        <div id="app" class="space-y-4">
+            <input type="text" id="actionInput" placeholder="أدخل بيانات المعالجة..." class="w-full p-4 bg-gray-700 rounded-lg border border-gray-600 focus:outline-none focus:border-indigo-500">
+            <button onclick="processData()" class="w-full bg-indigo-600 hover:bg-indigo-700 p-4 rounded-lg font-bold transition">بدء المعالجة الذكية</button>
+        </div>
 
-<script>
-    function addTask() {
-        const input = document.getElementById('taskInput');
-        const list = document.getElementById('taskList');
-        if (!input.value) return;
+        <div id="output" class="mt-8 p-4 bg-gray-900 rounded-lg hidden border border-indigo-900">
+            <!-- هنا ستظهر نتائج التحليل أو المعالجة -->
+        </div>
+    </div>
 
-        const li = document.createElement('li');
-        li.innerHTML = `${input.value} <button onclick="this.parentElement.remove()" style="width:auto; padding:2px 10px; background:red;">X</button>`;
-        list.appendChild(li);
-        saveTasks();
-        input.value = '';
-    }
+    <script>
+        function processData() {
+            const input = document.getElementById('actionInput').value;
+            const output = document.getElementById('output');
+            
+            if(!input) return alert("يرجى إدخال البيانات");
 
-    function saveTasks() {
-        localStorage.setItem('tasks', document.getElementById('taskList').innerHTML);
-    }
-
-    // استرجاع المهام عند تحميل الصفحة
-    window.onload = () => {
-        document.getElementById('taskList').innerHTML = localStorage.getItem('tasks') || '';
-    };
-</script>
+            output.classList.remove('hidden');
+            output.innerHTML = `<p class="text-green-400">تمت معالجة: "${input}" بنجاح عبر بروتوكول Zenith.</p>`;
+            
+            // هذا المكان هو حيث ستقوم لاحقاً بربط API الخاص بـ OpenAI أو Supabase
+        }
+    </script>
 </body>
 </html>
