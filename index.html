@@ -1,46 +1,21 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <title>ZenithTools - أدوات احترافية</title>
-    <style>
-        body { font-family: sans-serif; background: #0f172a; color: white; padding: 20px; text-align: center; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1000px; margin: auto; }
-        .card { background: #1e293b; padding: 20px; border-radius: 15px; }
-        input, button { width: 100%; padding: 10px; margin: 5px 0; border-radius: 5px; border: none; }
-        button { background: #38bdf8; cursor: pointer; font-weight: bold; }
-    </style>
-</head>
-<body>
-    <h1>ZenithTools</h1>
-    <div class="grid">
-        <div class="card">
-            <h3>🔐 مولد كلمة سر</h3>
-            <button onclick="document.getElementById('pOut').innerText = Math.random().toString(36).slice(-10)">توليد</button>
-            <p id="pOut" style="font-size: 20px; color: #38bdf8;"></p>
-        </div>
+<div class="card">
+    <h3>🤖 محلل المشاعر (AI)</h3>
+    <textarea id="textAI" placeholder="اكتب جملة بالإنجليزية لأحللها..."></textarea>
+    <button onclick="analyzeSentiment()">تحليل النص</button>
+    <p id="aiResult" style="font-size: 1.2rem; color: #38bdf8;"></p>
+</div>
 
-        <div class="card">
-            <h3>📅 حاسبة عمرك بالأيام</h3>
-            <input type="date" id="bday">
-            <button onclick="calcAge()">احسب</button>
-            <p id="aOut"></p>
-        </div>
+<script>
+    function analyzeSentiment() {
+        const text = document.getElementById('textAI').value.toLowerCase();
+        const positiveWords = ['good', 'great', 'happy', 'love', 'excellent', 'amazing'];
+        const negativeWords = ['bad', 'sad', 'hate', 'terrible', 'worst', 'awful'];
+        
+        let score = 0;
+        positiveWords.forEach(word => { if(text.includes(word)) score++; });
+        negativeWords.forEach(word => { if(text.includes(word)) score--; });
 
-        <div class="card">
-            <h3>📝 عداد حروف النص</h3>
-            <input type="text" id="txt" placeholder="اكتب شيئاً...">
-            <button onclick="document.getElementById('cOut').innerText = 'عدد الحروف: ' + document.getElementById('txt').value.length">عدّ</button>
-            <p id="cOut"></p>
-        </div>
-    </div>
-
-    <script>
-        function calcAge() {
-            let b = new Date(document.getElementById('bday').value);
-            let d = (new Date() - b) / (1000 * 60 * 60 * 24);
-            document.getElementById('aOut').innerText = "عشت " + Math.floor(d) + " يوماً";
-        }
-    </script>
-</body>
-</html>
+        let result = score > 0 ? "إيجابي 😊" : score < 0 ? "سلبي 😞" : "محايد 😐";
+        document.getElementById('aiResult').innerText = "النتيجة: " + result;
+    }
+</script>
