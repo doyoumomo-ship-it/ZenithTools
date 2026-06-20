@@ -6,32 +6,28 @@
   <title>FlowForge - أدوات الفريلانسرز الذكية</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
   
   <style>
     body { font-family: system-ui, sans-serif; }
-    .tool-card { transition: all 0.4s ease; }
-    .tool-card:hover { transform: translateY(-12px); }
-    .copy-btn { transition: all 0.2s; }
+    .tool-card:hover { transform: translateY(-8px); }
   </style>
 </head>
 <body class="bg-slate-950 text-slate-200 min-h-screen">
 
-  <nav class="bg-slate-900 border-b border-slate-700 py-5 sticky top-0 z-50">
+  <nav class="bg-slate-900 border-b border-slate-700 py-6 sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
       <div class="flex items-center gap-4">
         <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl flex items-center justify-center text-3xl font-bold">FF</div>
         <h1 class="text-4xl font-bold">FlowForge</h1>
       </div>
-      <div class="text-xl font-medium">أدوات الفريلانسرز الذكية</div>
+      <div class="text-xl">أدوات الفريلانسرز الذكية</div>
     </div>
   </nav>
 
-  <div class="max-w-7xl mx-auto px-6 py-12">
-
+  <div class="max-w-7xl mx-auto px-6 py-16">
     <div class="text-center mb-16">
       <h1 class="text-5xl font-bold mb-4">أدوات الفريلانسرز الذكية</h1>
-      <p class="text-xl text-slate-400">كل ما تحتاجه لبناء مشروعك الحر بنجاح</p>
+      <p class="text-xl text-slate-400">كل ما تحتاجه لبناء وإدارة مشروعك الحر</p>
     </div>
 
     <div class="grid lg:grid-cols-2 gap-8">
@@ -42,7 +38,7 @@
         <textarea id="propInput" rows="4" class="w-full bg-slate-900 rounded-2xl p-6" placeholder="وصف المشروع..."></textarea>
         <button onclick="generateProposal()" class="mt-6 w-full bg-blue-600 py-5 rounded-2xl font-bold">توليد العرض</button>
         <div id="propOutput" class="mt-6 bg-slate-900 p-6 rounded-2xl min-h-[160px]"></div>
-        <button onclick="copyText('propOutput')" class="copy-btn mt-3 text-blue-400 hover:text-blue-300 text-sm"><i class="fa-solid fa-copy"></i> نسخ</button>
+        <button onclick="copyToClipboard('propOutput')" class="mt-3 text-blue-400 hover:text-blue-300"><i class="fa-solid fa-copy"></i> نسخ</button>
       </div>
 
       <!-- Content Repurpose -->
@@ -56,68 +52,53 @@
       <!-- Bio -->
       <div class="tool-card bg-slate-800 rounded-3xl p-8">
         <h2 class="text-2xl font-bold mb-6">مولد Bio احترافي</h2>
-        <input id="bioInput" type="text" class="w-full bg-slate-900 rounded-2xl p-6" placeholder="مجالك (مثال: مطور ويب)">
+        <input id="bioInput" type="text" class="w-full bg-slate-900 rounded-2xl p-6" placeholder="مجالك (مثال: مصمم UI/UX)">
         <button onclick="generateBio()" class="mt-6 w-full bg-pink-600 py-5 rounded-2xl font-bold">توليد Bio</button>
         <div id="bioOutput" class="mt-6 bg-slate-900 p-6 rounded-2xl"></div>
-        <button onclick="copyText('bioOutput')" class="copy-btn mt-3 text-blue-400 hover:text-blue-300 text-sm"><i class="fa-solid fa-copy"></i> نسخ</button>
+        <button onclick="copyToClipboard('bioOutput')" class="mt-3 text-blue-400 hover:text-blue-300"><i class="fa-solid fa-copy"></i> نسخ</button>
       </div>
 
-      <!-- Contract + Invoice -->
+      <!-- Contract & Invoice -->
       <div class="tool-card bg-slate-800 rounded-3xl p-8">
-        <h2 class="text-2xl font-bold mb-6">مولد عقود وفواتير</h2>
-        <input id="contractInput" class="w-full bg-slate-900 rounded-2xl p-6 mb-4" placeholder="اسم العميل أو اسم المشروع">
-        <button onclick="generateContract()" class="w-full bg-emerald-600 py-5 rounded-2xl font-bold mb-4">توليد عقد بسيط</button>
-        <button onclick="generateInvoice()" class="w-full bg-teal-600 py-5 rounded-2xl font-bold">توليد فاتورة</button>
+        <h2 class="text-2xl font-bold mb-6">عقود وفواتير</h2>
+        <button onclick="generateContract()" class="w-full bg-emerald-600 py-5 rounded-2xl font-bold mb-4">مولد عقد بسيط</button>
+        <button onclick="generateInvoice()" class="w-full bg-teal-600 py-5 rounded-2xl font-bold">مولد فاتورة</button>
       </div>
 
     </div>
-
-    <!-- Pricing Teaser -->
-    <div class="mt-20 bg-gradient-to-r from-slate-800 to-slate-900 rounded-3xl p-12 text-center">
-      <h2 class="text-3xl font-bold mb-4">خطط الاشتراك القادمة</h2>
-      <p class="text-slate-400 mb-8">Free • Pro ($12/شهر) • Business</p>
-      <button class="bg-white text-black px-10 py-4 rounded-2xl font-bold text-lg hover:bg-slate-200">احصل على Pro</button>
-    </div>
-
   </div>
 
-  <footer class="bg-black py-12 text-center text-slate-500">
-    <p class="text-2xl font-bold text-white mb-2">FlowForge</p>
-    <p>© 2026 — مشروع مفتوح المصدر لمساعدة الفريلانسرز العرب</p>
-  </footer>
-
   <script>
-    function copyText(id) {
+    function copyToClipboard(id) {
       const text = document.getElementById(id).innerText;
       navigator.clipboard.writeText(text);
-      alert("✅ تم النسخ!");
+      alert("✅ تم النسخ بنجاح!");
     }
 
     function generateProposal() {
-      const input = document.getElementById("propInput").value || "مشروع جديد";
-      document.getElementById("propOutput").innerHTML = `عرض سعر احترافي لـ <strong>${input}</strong><br><br>المدة: 10-21 يوم<br>السعر: 900 - 2800 دولار<br><br>هل توافق على البدء؟`;
+      const input = document.getElementById("propInput").value || "مشروع";
+      document.getElementById("propOutput").innerHTML = `عرض سعر لـ <strong>${input}</strong><br><br>المدة: 10-21 يوم<br>السعر: 900 - 2800 دولار<br><br>هل نتابع؟`;
     }
 
     function repurposeContent() {
-      const text = document.getElementById("contentInput").value || "محتوى ممتاز";
+      const text = document.getElementById("contentInput").value || "محتوى";
       document.getElementById("contentOutput").innerHTML = `
         <div class="bg-slate-900 p-4 rounded-2xl">🔥 ${text.substring(0,70)}... #فريلانس</div>
-        <div class="bg-slate-900 p-4 rounded-2xl">💡 نصيحة: ${text.substring(0,55)}</div>
+        <div class="bg-slate-900 p-4 rounded-2xl">💡 ${text.substring(0,60)}</div>
       `;
     }
 
     function generateBio() {
       const field = document.getElementById("bioInput").value || "مستقل";
-      document.getElementById("bioOutput").innerHTML = `متخصص ${field} محترف. أقدم حلول رقمية عالية الجودة بسرعة واحترافية. متاح للمشاريع الجديدة.`;
+      document.getElementById("bioOutput").innerHTML = `متخصص ${field} محترف. أساعد العملاء على بناء حضور رقمي قوي وتحقيق أهدافهم.`;
     }
 
     function generateContract() {
-      const name = document.getElementById("contractInput").value || "العميل";
-      alert(`عقد بسيط جاهز!\n\nتم إنشاء عقد بينك وبين ${name}\n\n(يمكنك نسخه وتعديله حسب الحاجة)`);
+      alert("📝 عقد بسيط تم إنشاؤه!\n\nيمكنك نسخه وتعديله.");
     }
 
     function generateInvoice() {
-      alert("فاتورة احترافية جاهزة!\n\nيمكنك استخدامها مباشرة مع العميل.");
+      alert("🧾 فاتورة احترافية جاهزة!\n\nأرسلها للعميل مباشرة.");
     }
   </script>
 </body>
