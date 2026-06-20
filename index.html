@@ -3,191 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>قلبي - مساعدك الإسلامي الذكي</title>
+  <title>FlowForge - أدوات الفريلانسرز الذكية</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
-    body { font-family: 'Cairo', sans-serif; }
-    .hero { background: linear-gradient(135deg, #1e1233 0%, #312e81 100%); }
-    .glass { background: rgba(255,255,255,0.08); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); }
-    .upload-area { transition: all 0.3s ease; }
-    .upload-area.dragover { background: rgba(16, 185, 129, 0.25); border-color: #10b981; scale: 1.02; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; }
+    .tool-card {
+      transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+    }
+    .tool-card:hover {
+      transform: translateY(-15px) scale(1.03);
+      box-shadow: 0 30px 60px -15px rgb(59 130 246 / 0.3);
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #3b82f6, #a855f7, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-active { border-bottom: 3px solid #3b82f6; }
   </style>
 </head>
-<body class="bg-gray-950 text-white">
+<body class="bg-slate-950 text-slate-200">
 
   <!-- Navbar -->
-  <nav class="fixed top-0 w-full z-50 glass border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-      <h1 class="text-4xl font-black text-emerald-400">قلبي</h1>
-      <button onclick="startNow()" class="bg-emerald-600 hover:bg-emerald-500 px-8 py-4 rounded-2xl font-bold transition-all active:scale-95">ابدأ مجاناً</button>
+  <nav class="sticky top-0 bg-slate-900/95 backdrop-blur-lg border-b border-slate-700 z-50">
+    <div class="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-3xl flex items-center justify-center text-3xl font-black shadow-lg">FF</div>
+        <h1 class="text-4xl font-bold">Flow<span class="gradient-text">Forge</span></h1>
+      </div>
+      <div class="flex items-center gap-8 text-lg">
+        <a href="#tools" class="hover:text-blue-400 transition nav-active">الأدوات</a>
+        <a href="#pricing" class="hover:text-blue-400 transition">الأسعار</a>
+        <button onclick="toggleTheme()" class="text-2xl hover:text-yellow-400 transition"><i class="fa-solid fa-moon"></i></button>
+        <button class="bg-white text-black px-7 py-3 rounded-2xl font-bold hover:bg-slate-200 transition">ابدأ مجاناً</button>
+      </div>
     </div>
   </nav>
 
-  <!-- Hero -->
-  <section class="hero flex items-center pt-20 min-h-screen">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <h1 class="text-5xl md:text-7xl font-black leading-tight mb-8">
-        قلبك..<br>له <span class="text-emerald-400">مساعد ذكي</span>
-      </h1>
-      <p class="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto mb-12">
-        اكتب • تحدث • ارفع صورة..<br>ونرد عليك بنصيحة إسلامية + دعاء + خطة عملية
-      </p>
-
-      <div class="max-w-2xl mx-auto">
-        <div class="glass rounded-3xl p-6">
-          <textarea id="textInput" rows="3" 
-                    placeholder="اكتب شعورك أو سؤالك هنا..." 
-                    class="w-full bg-transparent focus:outline-none text-lg resize-none placeholder-gray-400"></textarea>
-
-          <!-- رفع الصورة -->
-          <div id="uploadArea" class="upload-area border-2 border-dashed border-white/30 rounded-2xl p-8 mt-4 cursor-pointer text-center">
-            <i class="fas fa-cloud-upload-alt text-4xl text-emerald-400 mb-3"></i>
-            <p class="text-sm text-gray-300">ارفع صورة للحظة أو موقف (اختياري)</p>
-            <input type="file" id="imageInput" accept="image/*" class="hidden">
-          </div>
-
-          <!-- زر الصوت -->
-          <button onclick="toggleVoice()" id="voiceBtn"
-                  class="mt-4 w-full bg-white/10 hover:bg-white/20 py-4 rounded-2xl flex items-center justify-center gap-3 transition-all">
-            <i class="fas fa-microphone text-xl" id="micIcon"></i>
-            <span id="voiceText">تحدث الآن (صوت)</span>
-          </button>
-
-          <button onclick="getAdvice()" 
-                  class="mt-6 w-full bg-gradient-to-r from-emerald-500 to-teal-500 py-7 rounded-3xl text-2xl font-bold flex items-center justify-center gap-4 active:scale-95 transition-all">
-            <i class="fas fa-heart"></i>
-            اسأل قلبي الآن
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Result -->
-  <div id="result" class="hidden max-w-4xl mx-auto px-6 py-20">
-    <div id="demoContent" class="space-y-8"></div>
-  </div>
-
-  <script>
-    // رفع الصورة
-    const uploadArea = document.getElementById('uploadArea');
-    const imageInput = document.getElementById('imageInput');
-
-    uploadArea.addEventListener('click', () => imageInput.click());
-
-    imageInput.addEventListener('change', (e) => {
-      if (e.target.files.length > 0) {
-        uploadArea.innerHTML = `
-          <p class="text-emerald-400 flex items-center justify-center gap-2">
-            <i class="fas fa-check-circle"></i> تم رفع: ${e.target.files[0].name}
-          </p>`;
-      }
-    });
-
-    // Drag & Drop
-    uploadArea.addEventListener('dragover', (e) => { e.preventDefault(); uploadArea.classList.add('dragover'); });
-    uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('dragover'));
-    uploadArea.addEventListener('drop', (e) => {
-      e.preventDefault();
-      uploadArea.classList.remove('dragover');
-      if (e.dataTransfer.files.length > 0) {
-        uploadArea.innerHTML = `<p class="text-emerald-400">✅ تم رفع الصورة</p>`;
-      }
-    });
-
-    // الإدخال الصوتي
-    let recognition = null;
-    let isRecording = false;
-
-    function toggleVoice() {
-      if (!('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)) {
-        alert("متصفحك لا يدعم خاصية الصوت");
-        return;
-      }
-
-      if (!recognition) {
-        recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-        recognition.lang = 'ar-SA';
-        recognition.continuous = false;
-
-        recognition.onresult = (event) => {
-          document.getElementById('textInput').value = event.results[0][0].transcript;
-        };
-
-        recognition.onend = () => {
-          isRecording = false;
-          document.getElementById('voiceText').textContent = 'تحدث الآن (صوت)';
-          document.getElementById('micIcon').classList.remove('text-red-500');
-        };
-      }
-
-      if (!isRecording) {
-        recognition.start();
-        isRecording = true;
-        document.getElementById('voiceText').textContent = 'جاري الاستماع...';
-        document.getElementById('micIcon').classList.add('text-red-500');
-      }
-    }
-
-    // توليد الرد
-    function getAdvice() {
-      const input = document.getElementById('textInput').value.trim();
-      if (!input) {
-        alert("⚠️ اكتب شيئاً أو تحدث أو ارفع صورة");
-        return;
-      }
-
-      const result = document.getElementById('result');
-      const content = document.getElementById('demoContent');
-
-      content.innerHTML = `
-        <div class="text-center py-20">
-          <div class="animate-spin w-20 h-20 border-4 border-emerald-500 border-t-transparent rounded-full mx-auto mb-6"></div>
-          <p class="text-2xl">قلبي يفكر فيك بعمق ❤️</p>
-        </div>
-      `;
-
-      result.classList.remove('hidden');
-      result.scrollIntoView({ behavior: "smooth" });
-
-      setTimeout(() => {
-        content.innerHTML = `
-          <div class="bg-gradient-to-br from-emerald-900 to-teal-900 rounded-3xl p-10">
-            <h2 class="text-3xl font-bold mb-6">رد قلبي عليك</h2>
-            <p class="text-lg mb-8">"${input}"</p>
-            <div class="border-t border-white/20 pt-8 space-y-6">
-              <div>
-                <p class="text-emerald-300 font-medium">النصيحة:</p>
-                <p class="mt-2">تذكر حديث الرسول ﷺ: "أعوذ بالله من الهم والحزن".</p>
-              </div>
-              <div class="bg-white/10 p-6 rounded-2xl">
-                <p class="text-emerald-300 font-medium">دعاء مخصص:</p>
-                <p class="italic text-xl mt-3">"اللهم أبدلني بدلاً خيراً، وأسألك السكينة والرضا يا رب العالمين"</p>
-              </div>
-            </div>
-          </div>
-          <div class="text-center mt-8">
-            <button onclick="alert('تم الحفظ بنجاح (في النسخة الكاملة)')" 
-                    class="bg-white text-black px-12 py-5 rounded-2xl font-bold">حفظ الرد</button>
-          </div>
-        `;
-      }, 1600);
-    }
-
-    function startNow() {
-      document.getElementById('textInput').focus();
-    }
-
-    // إرسال بالضغط على Enter
-    document.getElementById('textInput').addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        getAdvice();
-      }
-    });
-  </script>
-</body>
-</html>
+  <!--
