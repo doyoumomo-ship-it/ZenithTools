@@ -1,105 +1,342 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FlowForge - أدوات الفريلانسرز الذكية</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  
-  <style>
-    body { font-family: system-ui, sans-serif; }
-    .tool-card:hover { transform: translateY(-8px); }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>ZenithTools - أدوات احترافية لنجاحك</title>
+    <!-- Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(145deg, #f8faff 0%, #eef2f9 100%);
+            color: #1a1a2e;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6C63FF, #3f3d9e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo i {
+            -webkit-text-fill-color: #6C63FF;
+            margin-left: 10px;
+        }
+
+        .nav-links a {
+            color: #1a1a2e;
+            text-decoration: none;
+            margin: 0 18px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #6C63FF;
+        }
+
+        .btn-primary {
+            background: #6C63FF;
+            color: #fff !important;
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #554ddf;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(108, 99, 255, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 0 80px;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-text h1 span {
+            background: linear-gradient(135deg, #6C63FF, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 20px;
+            color: #555;
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .hero-stats div {
+            text-align: center;
+        }
+
+        .hero-stats h3 {
+            font-size: 32px;
+            color: #6C63FF;
+        }
+
+        .hero-stats span {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .hero-image {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+            font-size: 140px;
+            color: #6C63FF;
+            opacity: 0.8;
+        }
+
+        /* Features */
+        .features {
+            padding: 70px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: #777;
+            margin-bottom: 50px;
+            font-size: 18px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: #fff;
+            padding: 35px 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s;
+            text-align: center;
+            border: 1px solid rgba(108, 99, 255, 0.08);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(108, 99, 255, 0.15);
+            border-color: #6C63FF;
+        }
+
+        .card i {
+            font-size: 50px;
+            color: #6C63FF;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 15px;
+        }
+
+        /* CTA */
+        .cta {
+            background: linear-gradient(135deg, #6C63FF, #3f3d9e);
+            padding: 60px 40px;
+            border-radius: 30px;
+            text-align: center;
+            color: #fff;
+            margin: 40px 0 70px;
+        }
+
+        .cta h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .cta .btn-primary {
+            background: #fff;
+            color: #6C63FF !important;
+            font-size: 18px;
+            padding: 14px 45px;
+        }
+
+        .cta .btn-primary:hover {
+            background: #f0f0ff;
+            transform: scale(1.03);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #999;
+            border-top: 1px solid #e0e4ec;
+        }
+
+        footer i {
+            color: #ff6b6b;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 32px;
+            }
+            .hero-stats {
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+            .nav-links a {
+                margin: 0 10px;
+                font-size: 14px;
+            }
+            .cta h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
 </head>
-<body class="bg-slate-950 text-slate-200 min-h-screen">
+<body>
 
-  <nav class="bg-slate-900 border-b border-slate-700 py-6 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-      <div class="flex items-center gap-4">
-        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl flex items-center justify-center text-3xl font-bold">FF</div>
-        <h1 class="text-4xl font-bold">FlowForge</h1>
-      </div>
-      <div class="text-xl">أدوات الفريلانسرز الذكية</div>
+    <div class="container">
+
+        <!-- Navbar -->
+        <nav>
+            <div class="logo"><i class="fas fa-rocket"></i>ZenithTools</div>
+            <div class="nav-links">
+                <a href="#">الرئيسية</a>
+                <a href="#">الميزات</a>
+                <a href="#">الأسعار</a>
+                <a href="#">مدونة</a>
+                <a href="#" class="btn-primary">ابدأ الآن</a>
+            </div>
+        </nav>
+
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-text">
+                <h1>أدوات رقمية <span>تُحدث الفارق</span> في عملك</h1>
+                <p>مجموعة متكاملة من الأدوات الاحترافية التي تساعدك على زيادة الإنتاجية، وتحسين الأداء، وتحقيق أرباح حقيقية.</p>
+                <a href="#" class="btn-primary" style="display:inline-block; font-size:18px; padding:14px 40px;">
+                    <i class="fas fa-play" style="margin-left:10px;"></i> ابدأ التجربة المجانية
+                </a>
+                <div class="hero-stats">
+                    <div><h3>12K+</h3><span>مستخدم نشط</span></div>
+                    <div><h3>98%</h3><span>رضا العملاء</span></div>
+                    <div><h3>4.9</h3><span>تقييم متوسط</span></div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <i class="fas fa-chart-line"></i>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="features">
+            <h2 class="section-title">لماذا تختار ZenithTools؟</h2>
+            <p class="section-sub">ميزات مصممة خصيصاً لتنمية أعمالك وزيادة أرباحك</p>
+            <div class="cards">
+                <div class="card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>سرعة فائقة</h3>
+                    <p>أدواتنا تعمل بسرعة الضوء لتوفير وقتك الثمين وزيادة إنتاجيتك.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>أمان متقدم</h3>
+                    <p>بياناتك محمية بأحدث تقنيات التشفير والمعايير الأمنية العالمية.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <h3>أرباح مضمونة</h3>
+                    <p>خطة عمل ذكية تضمن لك عائد استثمار ممتاز خلال أول 3 أشهر.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-headset"></i>
+                    <h3>دعم 24/7</h3>
+                    <p>فريق دعم بشري جاهز للإجابة عن استفساراتك في أي وقت.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta">
+            <h2>جاهز لبدء رحلة النجاح؟</h2>
+            <p>انضم إلى آلاف المستخدمين الذين حققوا أرباحاً مع ZenithTools</p>
+            <a href="#" class="btn-primary"><i class="fas fa-gem" style="margin-left:10px;"></i> اشترك الآن</a>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2026 ZenithTools. جميع الحقوق محفوظة. مصنوع بـ <i class="fas fa-heart"></i> من فريق النجاح</p>
+        </footer>
+
     </div>
-  </nav>
 
-  <div class="max-w-7xl mx-auto px-6 py-16">
-    <div class="text-center mb-16">
-      <h1 class="text-5xl font-bold mb-4">أدوات الفريلانسرز الذكية</h1>
-      <p class="text-xl text-slate-400">كل ما تحتاجه لبناء وإدارة مشروعك الحر</p>
-    </div>
-
-    <div class="grid lg:grid-cols-2 gap-8">
-
-      <!-- Proposal -->
-      <div class="tool-card bg-slate-800 rounded-3xl p-8">
-        <h2 class="text-2xl font-bold mb-6">مولد عروض أسعار</h2>
-        <textarea id="propInput" rows="4" class="w-full bg-slate-900 rounded-2xl p-6" placeholder="وصف المشروع..."></textarea>
-        <button onclick="generateProposal()" class="mt-6 w-full bg-blue-600 py-5 rounded-2xl font-bold">توليد العرض</button>
-        <div id="propOutput" class="mt-6 bg-slate-900 p-6 rounded-2xl min-h-[160px]"></div>
-        <button onclick="copyToClipboard('propOutput')" class="mt-3 text-blue-400 hover:text-blue-300"><i class="fa-solid fa-copy"></i> نسخ</button>
-      </div>
-
-      <!-- Content Repurpose -->
-      <div class="tool-card bg-slate-800 rounded-3xl p-8">
-        <h2 class="text-2xl font-bold mb-6">إعادة استخدام المحتوى</h2>
-        <textarea id="contentInput" rows="4" class="w-full bg-slate-900 rounded-2xl p-6" placeholder="الصق المحتوى..."></textarea>
-        <button onclick="repurposeContent()" class="mt-6 w-full bg-purple-600 py-5 rounded-2xl font-bold">تحويل إلى منشورات</button>
-        <div id="contentOutput" class="mt-6 space-y-3"></div>
-      </div>
-
-      <!-- Bio -->
-      <div class="tool-card bg-slate-800 rounded-3xl p-8">
-        <h2 class="text-2xl font-bold mb-6">مولد Bio احترافي</h2>
-        <input id="bioInput" type="text" class="w-full bg-slate-900 rounded-2xl p-6" placeholder="مجالك (مثال: مصمم UI/UX)">
-        <button onclick="generateBio()" class="mt-6 w-full bg-pink-600 py-5 rounded-2xl font-bold">توليد Bio</button>
-        <div id="bioOutput" class="mt-6 bg-slate-900 p-6 rounded-2xl"></div>
-        <button onclick="copyToClipboard('bioOutput')" class="mt-3 text-blue-400 hover:text-blue-300"><i class="fa-solid fa-copy"></i> نسخ</button>
-      </div>
-
-      <!-- Contract & Invoice -->
-      <div class="tool-card bg-slate-800 rounded-3xl p-8">
-        <h2 class="text-2xl font-bold mb-6">عقود وفواتير</h2>
-        <button onclick="generateContract()" class="w-full bg-emerald-600 py-5 rounded-2xl font-bold mb-4">مولد عقد بسيط</button>
-        <button onclick="generateInvoice()" class="w-full bg-teal-600 py-5 rounded-2xl font-bold">مولد فاتورة</button>
-      </div>
-
-    </div>
-  </div>
-
-  <script>
-    function copyToClipboard(id) {
-      const text = document.getElementById(id).innerText;
-      navigator.clipboard.writeText(text);
-      alert("✅ تم النسخ بنجاح!");
-    }
-
-    function generateProposal() {
-      const input = document.getElementById("propInput").value || "مشروع";
-      document.getElementById("propOutput").innerHTML = `عرض سعر لـ <strong>${input}</strong><br><br>المدة: 10-21 يوم<br>السعر: 900 - 2800 دولار<br><br>هل نتابع؟`;
-    }
-
-    function repurposeContent() {
-      const text = document.getElementById("contentInput").value || "محتوى";
-      document.getElementById("contentOutput").innerHTML = `
-        <div class="bg-slate-900 p-4 rounded-2xl">🔥 ${text.substring(0,70)}... #فريلانس</div>
-        <div class="bg-slate-900 p-4 rounded-2xl">💡 ${text.substring(0,60)}</div>
-      `;
-    }
-
-    function generateBio() {
-      const field = document.getElementById("bioInput").value || "مستقل";
-      document.getElementById("bioOutput").innerHTML = `متخصص ${field} محترف. أساعد العملاء على بناء حضور رقمي قوي وتحقيق أهدافهم.`;
-    }
-
-    function generateContract() {
-      alert("📝 عقد بسيط تم إنشاؤه!\n\nيمكنك نسخه وتعديله.");
-    }
-
-    function generateInvoice() {
-      alert("🧾 فاتورة احترافية جاهزة!\n\nأرسلها للعميل مباشرة.");
-    }
-  </script>
 </body>
 </html>
