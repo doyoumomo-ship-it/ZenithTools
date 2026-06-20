@@ -3,340 +3,1103 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>ZenithTools - أدوات احترافية لنجاحك</title>
-    <!-- Font Awesome للأيقونات -->
+    <title>ZenithTools - أدوات احترافية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f8faff; color: #1a1a2e; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(145deg, #f8faff 0%, #eef2f9 100%);
-            color: #1a1a2e;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Navbar */
-        nav {
+        /* الهيدر */
+        header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 25px 0;
+            padding: 25px 0 15px;
             flex-wrap: wrap;
+            border-bottom: 2px solid #eef2f9;
         }
-
         .logo {
-            font-size: 28px;
-            font-weight: 800;
+            font-size: 30px;
+            font-weight: 900;
             background: linear-gradient(135deg, #6C63FF, #3f3d9e);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
-        .logo i {
-            -webkit-text-fill-color: #6C63FF;
-            margin-left: 10px;
-        }
-
-        .nav-links a {
+        .logo i { -webkit-text-fill-color: #6C63FF; margin-left: 10px; }
+        nav a {
             color: #1a1a2e;
             text-decoration: none;
             margin: 0 18px;
             font-weight: 500;
-            transition: color 0.3s;
+            font-size: 16px;
+            transition: 0.3s;
         }
+        nav a:hover { color: #6C63FF; }
 
-        .nav-links a:hover {
-            color: #6C63FF;
-        }
-
-        .btn-primary {
+        .btn {
             background: #6C63FF;
             color: #fff !important;
-            padding: 10px 28px;
+            padding: 12px 32px;
             border-radius: 50px;
             font-weight: 600;
-            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
             border: none;
             cursor: pointer;
+            transition: all 0.3s;
+            font-size: 15px;
         }
-
-        .btn-primary:hover {
+        .btn:hover {
             background: #554ddf;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(108, 99, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(108, 99, 255, 0.35);
+        }
+        .btn-white {
+            background: #fff;
+            color: #6C63FF !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        .btn-white:hover {
+            background: #f5f5ff;
+            box-shadow: 0 8px 25px rgba(108, 99, 255, 0.2);
         }
 
-        /* Hero Section */
+        /* القسم الرئيسي */
         .hero {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 60px 0 80px;
+            padding: 70px 0 50px;
             flex-wrap: wrap;
+            gap: 40px;
         }
-
-        .hero-text {
-            flex: 1;
-            min-width: 300px;
-        }
-
+        .hero-text { flex: 1; min-width: 300px; }
         .hero-text h1 {
             font-size: 48px;
-            font-weight: 800;
+            font-weight: 900;
             line-height: 1.2;
             margin-bottom: 20px;
         }
-
         .hero-text h1 span {
-            background: linear-gradient(135deg, #6C63FF, #f093fb);
+            background: linear-gradient(135deg, #6C63FF, #a855f7);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
         .hero-text p {
-            font-size: 20px;
+            font-size: 19px;
             color: #555;
             margin-bottom: 30px;
             max-width: 500px;
+            line-height: 1.8;
         }
-
-        .hero-stats {
-            display: flex;
-            gap: 40px;
-            margin-top: 30px;
-        }
-
-        .hero-stats div {
-            text-align: center;
-        }
-
-        .hero-stats h3 {
-            font-size: 32px;
-            color: #6C63FF;
-        }
-
-        .hero-stats span {
-            color: #777;
-            font-size: 14px;
-        }
-
         .hero-image {
             flex: 1;
-            min-width: 280px;
+            min-width: 200px;
             text-align: center;
-            font-size: 140px;
+            font-size: 130px;
             color: #6C63FF;
-            opacity: 0.8;
+            opacity: 0.9;
+            background: rgba(108, 99, 255, 0.06);
+            border-radius: 50%;
+            padding: 30px;
         }
 
-        /* Features */
-        .features {
-            padding: 70px 0;
+        /* الإحصائيات - تحسين الصف */
+        .stats {
+            display: flex;
+            gap: 50px;
+            margin-top: 35px;
+            flex-wrap: wrap;
+            background: #fff;
+            padding: 20px 35px;
+            border-radius: 60px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.05);
+            max-width: 450px;
+        }
+        .stats div { text-align: center; }
+        .stats div h3 {
+            font-size: 30px;
+            color: #6C63FF;
+            font-weight: 800;
+        }
+        .stats div span {
+            color: #888;
+            font-size: 14px;
+            display: block;
+            margin-top: 2px;
+        }
+        .stats .divider {
+            width: 2px;
+            background: #e0e4ec;
+            height: 40px;
+            align-self: center;
         }
 
+        /* الميزات */
+        .features { padding: 60px 0 30px; }
         .section-title {
             text-align: center;
             font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 15px;
+            font-weight: 800;
+            margin-bottom: 12px;
         }
-
-        .section-sub {
+        .section-desc {
             text-align: center;
             color: #777;
-            margin-bottom: 50px;
             font-size: 18px;
+            margin-bottom: 50px;
         }
 
         .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 30px;
         }
-
         .card {
             background: #fff;
             padding: 35px 25px;
             border-radius: 20px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-            transition: all 0.3s;
             text-align: center;
-            border: 1px solid rgba(108, 99, 255, 0.08);
+            box-shadow: 0 6px 30px rgba(0,0,0,0.04);
+            border: 1px solid #f0f2f8;
+            transition: 0.4s;
         }
-
         .card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(108, 99, 255, 0.15);
             border-color: #6C63FF;
+            box-shadow: 0 16px 50px rgba(108, 99, 255, 0.13);
         }
-
         .card i {
-            font-size: 50px;
+            font-size: 48px;
             color: #6C63FF;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
+            background: rgba(108, 99, 255, 0.08);
+            padding: 15px;
+            border-radius: 16px;
         }
-
         .card h3 {
-            font-size: 22px;
-            margin-bottom: 12px;
+            font-size: 21px;
+            margin-bottom: 10px;
+            font-weight: 700;
         }
-
-        .card p {
-            color: #666;
-            font-size: 15px;
-        }
+        .card p { color: #666; font-size: 15px; line-height: 1.7; }
 
         /* CTA */
-        .cta {
+        .cta-box {
             background: linear-gradient(135deg, #6C63FF, #3f3d9e);
-            padding: 60px 40px;
+            padding: 60px 35px;
             border-radius: 30px;
             text-align: center;
             color: #fff;
-            margin: 40px 0 70px;
+            margin: 40px 0 60px;
         }
-
-        .cta h2 {
+        .cta-box h2 {
             font-size: 38px;
-            margin-bottom: 15px;
+            font-weight: 800;
+            margin-bottom: 12px;
         }
-
-        .cta p {
+        .cta-box p {
             font-size: 18px;
-            opacity: 0.9;
+            opacity: 0.92;
             margin-bottom: 30px;
         }
-
-        .cta .btn-primary {
+        .cta-box .btn {
             background: #fff;
             color: #6C63FF !important;
+            padding: 16px 50px;
             font-size: 18px;
-            padding: 14px 45px;
         }
-
-        .cta .btn-primary:hover {
+        .cta-box .btn:hover {
             background: #f0f0ff;
-            transform: scale(1.03);
+            transform: scale(1.04);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.2);
         }
 
-        /* Footer */
+        /* تذييل */
         footer {
             text-align: center;
             padding: 30px 0;
-            color: #999;
-            border-top: 1px solid #e0e4ec;
+            color: #aaa;
+            border-top: 1px solid #eef2f9;
+            font-size: 15px;
         }
+        footer i { color: #e74c6f; margin: 0 4px; }
 
-        footer i {
-            color: #ff6b6b;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-text h1 {
-                font-size: 32px;
-            }
-            .hero-stats {
+        /* استجابة للجوال */
+        @media (max-width: 750px) {
+            .hero-text h1 { font-size: 32px; }
+            header { flex-direction: column; gap: 15px; }
+            nav a { margin: 0 10px; font-size: 14px; }
+            .stats {
+                padding: 15px 20px;
                 gap: 20px;
-                flex-wrap: wrap;
+                max-width: 100%;
+                border-radius: 30px;
             }
-            .nav-links a {
-                margin: 0 10px;
-                font-size: 14px;
-            }
-            .cta h2 {
-                font-size: 28px;
-            }
+            .stats .divider { display: none; }
+            .hero-image { font-size: 80px; padding: 20px; }
+            .cta-box h2 { font-size: 28px; }
+            .cta-box { padding: 40px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <!-- Navbar -->
+    <!-- الهيدر -->
+    <header>
+        <div class="logo"><i class="fas fa-rocket"></i>ZenithTools</div>
         <nav>
-            <div class="logo"><i class="fas fa-rocket"></i>ZenithTools</div>
-            <div class="nav-links">
-                <a href="#">الرئيسية</a>
-                <a href="#">الميزات</a>
-                <a href="#">الأسعار</a>
-                <a href="#">مدونة</a>
-                <a href="#" class="btn-primary">ابدأ الآن</a>
-            </div>
+            <a href="#">الرئيسية</a>
+            <a href="#">الميزات</a>
+            <a href="#">الأسعار</a>
+            <a href="#">مدونة</a>
+            <a href="#" class="btn">ابدأ</a>
         </nav>
+    </header>
 
-        <!-- Hero -->
-        <section class="hero">
-            <div class="hero-text">
-                <h1>أدوات رقمية <span>تُحدث الفارق</span> في عملك</h1>
-                <p>مجموعة متكاملة من الأدوات الاحترافية التي تساعدك على زيادة الإنتاجية، وتحسين الأداء، وتحقيق أرباح حقيقية.</p>
-                <a href="#" class="btn-primary" style="display:inline-block; font-size:18px; padding:14px 40px;">
-                    <i class="fas fa-play" style="margin-left:10px;"></i> ابدأ التجربة المجانية
-                </a>
-                <div class="hero-stats">
-                    <div><h3>12K+</h3><span>مستخدم نشط</span></div>
-                    <div><h3>98%</h3><span>رضا العملاء</span></div>
-                    <div><h3>4.9</h3><span>تقييم متوسط</span></div>
+    <!-- القسم الرئيسي -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>أدوات رقمية <span>تُحدث الفارق</span> في عملك</h1>
+            <p>مجموعة متكاملة من الأدوات الاحترافية التي تساعدك على زيادة الإنتاجية، وتحسين الأداء، وتحقيق أرباح حقيقية.</p>
+            <a href="#" class="btn" style="padding:15px 45px; font-size:17px;">
+                <i class="fas fa-play" style="margin-left:12px;"></i> ابدأ التجربة المجانية
+            </a>
+
+            <!-- الإحصائيات بشكل منظم -->
+            <div class="stats">
+                <div>
+                    <h3>12K+</h3>
+                    <span>مستخدم نشط</span>
+                </div>
+                <div class="divider"></div>
+                <div>
+                    <h3>98%</h3>
+                    <span>رضا العملاء</span>
+                </div>
+                <div class="divider"></div>
+                <div>
+                    <h3>4.9</h3>
+                    <span>تقييم متوسط</span>
                 </div>
             </div>
-            <div class="hero-image">
-                <i class="fas fa-chart-line"></i>
+        </div>
+        <div class="hero-image">
+            <i class="fas fa-chart-line"></i>
+        </div>
+    </section>
+
+    <!-- الميزات -->
+    <section class="features">
+        <h2 class="section-title">✨ لماذا تختار ZenithTools؟</h2>
+        <p class="section-desc">ميزات مصممة خصيصاً لتنمية أعمالك وزيادة أرباحك</p>
+        <div class="cards">
+            <div class="card">
+                <i class="fas fa-bolt"></i>
+                <h3>سرعة فائقة</h3>
+                <p>أدواتنا تعمل بسرعة الضوء لتوفير وقتك الثمين وزيادة إنتاجيتك.</p>
             </div>
-        </section>
-
-        <!-- Features -->
-        <section class="features">
-            <h2 class="section-title">لماذا تختار ZenithTools؟</h2>
-            <p class="section-sub">ميزات مصممة خصيصاً لتنمية أعمالك وزيادة أرباحك</p>
-            <div class="cards">
-                <div class="card">
-                    <i class="fas fa-bolt"></i>
-                    <h3>سرعة فائقة</h3>
-                    <p>أدواتنا تعمل بسرعة الضوء لتوفير وقتك الثمين وزيادة إنتاجيتك.</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-shield-alt"></i>
-                    <h3>أمان متقدم</h3>
-                    <p>بياناتك محمية بأحدث تقنيات التشفير والمعايير الأمنية العالمية.</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-hand-holding-usd"></i>
-                    <h3>أرباح مضمونة</h3>
-                    <p>خطة عمل ذكية تضمن لك عائد استثمار ممتاز خلال أول 3 أشهر.</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-headset"></i>
-                    <h3>دعم 24/7</h3>
-                    <p>فريق دعم بشري جاهز للإجابة عن استفساراتك في أي وقت.</p>
-                </div>
+            <div class="card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>أمان متقدم</h3>
+                <p>بياناتك محمية بأحدث تقنيات التشفير والمعايير الأمنية العالمية.</p>
             </div>
-        </section>
+            <div class="card">
+                <i class="fas fa-hand-holding-usd"></i>
+                <h3>أرباح مضمونة</h3>
+                <p>خطة عمل ذكية تضمن لك عائد استثمار ممتاز خلال أول 3 أشهر.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-headset"></i>
+                <h3>دعم 24/7</h3>
+                <p>فريق دعم بشري جاهز للإجابة عن استفساراتك في أي وقت.</p>
+            </div>
+        </div>
+    </section>
 
-        <!-- CTA -->
-        <section class="cta">
-            <h2>جاهز لبدء رحلة النجاح؟</h2>
-            <p>انضم إلى آلاف المستخدمين الذين حققوا أرباحاً مع ZenithTools</p>
-            <a href="#" class="btn-primary"><i class="fas fa-gem" style="margin-left:10px;"></i> اشترك الآن</a>
-        </section>
+    <!-- CTA -->
+    <section class="cta-box">
+        <h2>🚀 جاهز لبدء رحلة النجاح؟</h2>
+        <p>انضم إلى آلاف المستخدمين الذين حققوا أرباحاً مع ZenithTools</p>
+        <a href="#" class="btn">
+            <i class="fas fa-gem" style="margin-left:12px;"></i> اشترك الآن
+        </a>
+    </section>
 
-        <!-- Footer -->
-        <footer>
-            <p>© 2026 ZenithTools. جميع الحقوق محفوظة. مصنوع بـ <i class="fas fa-heart"></i> من فريق النجاح</p>
-        </footer>
+    <!-- تذييل -->
+    <footer>
+        <p>© 2026 ZenithTools. جميع الحقوق محفوظة. مصنوع بـ <i class="fas fa-heart"></i> من فريق النجاح</p>
+    </footer>
 
-    </div>
+</div>
 
 </body>
-</html>
+</html>ZenithTools/
+├── index.html          (الصفحة الرئيسية)
+├── login.html          (تسجيل الدخول)
+├── signup.html         (إنشاء حساب)
+├── dashboard.html      (لوحة التحكم)
+└── style.css           (الملف المشترك للتصميم)/* style.css - التصميم المشترك لجميع الصفحات */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f8faff;
+    color: #1a1a2e;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* الهيدر */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 0 15px;
+    flex-wrap: wrap;
+    border-bottom: 2px solid #eef2f9;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #6C63FF, #3f3d9e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+}
+
+.logo i {
+    -webkit-text-fill-color: #6C63FF;
+    margin-left: 10px;
+}
+
+nav a {
+    color: #1a1a2e;
+    text-decoration: none;
+    margin: 0 18px;
+    font-weight: 500;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #6C63FF;
+}
+
+.btn {
+    background: #6C63FF;
+    color: #fff !important;
+    padding: 12px 32px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 15px;
+}
+
+.btn:hover {
+    background: #554ddf;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(108, 99, 255, 0.35);
+}
+
+.btn-outline {
+    background: transparent;
+    color: #6C63FF !important;
+    border: 2px solid #6C63FF;
+}
+
+.btn-outline:hover {
+    background: #6C63FF;
+    color: #fff !important;
+}
+
+.btn-danger {
+    background: #e74c6f;
+}
+
+.btn-danger:hover {
+    background: #c0392b;
+}
+
+/* نماذج تسجيل الدخول */
+.auth-container {
+    max-width: 480px;
+    margin: 60px auto;
+    background: #fff;
+    padding: 50px 40px;
+    border-radius: 24px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.07);
+    border: 1px solid #f0f2f8;
+}
+
+.auth-container h2 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.auth-container .subtitle {
+    text-align: center;
+    color: #888;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #333;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid #e8ecf4;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: 0.3s;
+    background: #fafbff;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #6C63FF;
+    box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.1);
+}
+
+.form-group .hint {
+    font-size: 12px;
+    color: #999;
+    margin-top: 4px;
+}
+
+.auth-container .btn {
+    width: 100%;
+    padding: 16px;
+    font-size: 17px;
+    margin-top: 10px;
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 25px;
+    color: #777;
+}
+
+.auth-footer a {
+    color: #6C63FF;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* رسائل التنبيه */
+.alert {
+    padding: 14px 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* لوحة التحكم */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-avatar {
+    width: 50px;
+    height: 50px;
+    background: #6C63FF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 22px;
+}
+
+.user-name {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.user-plan {
+    font-size: 14px;
+    color: #888;
+}
+
+.plan-badge {
+    display: inline-block;
+    padding: 4px 16px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.plan-free {
+    background: #e8ecf4;
+    color: #555;
+}
+
+.plan-premium {
+    background: #6C63FF;
+    color: #fff;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.dash-card {
+    background: #fff;
+    padding: 30px 25px;
+    border-radius: 18px;
+    border: 1px solid #f0f2f8;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.dash-card h3 {
+    font-size: 15px;
+    color: #888;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dash-card .number {
+    font-size: 38px;
+    font-weight: 800;
+    color: #1a1a2e;
+    margin: 8px 0;
+}
+
+.dash-card .label {
+    color: #888;
+    font-size: 14px;
+}
+
+.dash-card .icon {
+    font-size: 32px;
+    color: #6C63FF;
+    opacity: 0.2;
+    float: left;
+}
+
+/* التذييل */
+footer {
+    text-align: center;
+    padding: 30px 0;
+    color: #aaa;
+    border-top: 1px solid #eef2f9;
+    font-size: 15px;
+    margin-top: auto;
+}
+
+footer i {
+    color: #e74c6f;
+    margin: 0 4px;
+}
+
+/* استجابة */
+@media (max-width: 750px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    nav a {
+        margin: 0 10px;
+        font-size: 14px;
+    }
+    .auth-container {
+        padding: 30px 20px;
+        margin: 30px 15px;
+    }
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>تسجيل الدخول - ZenithTools</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- هيدر بسيط -->
+        <header>
+            <a href="index.html" class="logo"><i class="fas fa-rocket"></i>ZenithTools</a>
+            <nav>
+                <a href="index.html">الرئيسية</a>
+                <a href="login.html" class="btn btn-outline">تسجيل الدخول</a>
+                <a href="signup.html" class="btn">إنشاء حساب</a>
+            </nav>
+        </header>
+
+        <!-- نموذج تسجيل الدخول -->
+        <div class="auth-container">
+            <h2>🔐 مرحباً بعودتك</h2>
+            <p class="subtitle">سجل الدخول للوصول إلى أدواتك</p>
+
+            <!-- رسالة تنبيه (تظهر في حالة الخطأ) -->
+            <div id="loginAlert" class="alert alert-error" style="display:none;">
+                <i class="fas fa-exclamation-circle"></i> <span id="alertMessage">خطأ في البريد الإلكتروني أو كلمة المرور</span>
+            </div>
+
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" id="loginEmail" placeholder="example@email.com" required />
+                </div>
+
+                <div class="form-group">
+                    <label>كلمة المرور</label>
+                    <input type="password" id="loginPassword" placeholder="••••••••" required minlength="6" />
+                    <div class="hint">كلمة المرور يجب أن تكون 6 أحرف على الأقل</div>
+                </div>
+
+                <button type="submit" class="btn">تسجيل الدخول <i class="fas fa-arrow-left" style="margin-right:10px;"></i></button>
+            </form>
+
+            <div class="auth-footer">
+                ليس لديك حساب؟ <a href="signup.html">إنشاء حساب جديد</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2026 ZenithTools. جميع الحقوق محفوظة</p>
+        </footer>
+    </div>
+
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const alertDiv = document.getElementById('loginAlert');
+            const alertMessage = document.getElementById('alertMessage');
+
+            // محاكاة التحقق من المستخدمين المخزنين في localStorage
+            const users = JSON.parse(localStorage.getItem('zenithUsers')) || [];
+
+            const user = users.find(u => u.email === email && u.password === password);
+
+            if (user) {
+                // تسجيل الدخول ناجح - حفظ جلسة المستخدم
+                localStorage.setItem('zenithCurrentUser', JSON.stringify(user));
+
+                // رسالة نجاح
+                alertDiv.className = 'alert alert-success';
+                alertMessage.textContent = '✅ تم تسجيل الدخول بنجاح! جاري التحويل...';
+                alertDiv.style.display = 'block';
+
+                // التحويل إلى لوحة التحكم بعد ثانية
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 1000);
+            } else {
+                // فشل تسجيل الدخول
+                alertDiv.className = 'alert alert-error';
+                alertMessage.textContent = '❌ البريد الإلكتروني أو كلمة المرور غير صحيحة. حاول مرة أخرى.';
+                alertDiv.style.display = 'block';
+            }
+        }
+    </script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>إنشاء حساب - ZenithTools</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <a href="index.html" class="logo"><i class="fas fa-rocket"></i>ZenithTools</a>
+            <nav>
+                <a href="index.html">الرئيسية</a>
+                <a href="login.html" class="btn btn-outline">تسجيل الدخول</a>
+                <a href="signup.html" class="btn">إنشاء حساب</a>
+            </nav>
+        </header>
+
+        <div class="auth-container">
+            <h2>🚀 ابدأ رحلتك الآن</h2>
+            <p class="subtitle">أنشئ حساباً مجانياً وابدأ في تحقيق أرباحك</p>
+
+            <div id="signupAlert" class="alert alert-error" style="display:none;">
+                <i class="fas fa-exclamation-circle"></i> <span id="signupMessage">حدث خطأ، حاول مرة أخرى</span>
+            </div>
+
+            <form id="signupForm" onsubmit="handleSignup(event)">
+                <div class="form-group">
+                    <label>الاسم الكامل</label>
+                    <input type="text" id="signupName" placeholder="أحمد محمد" required />
+                </div>
+
+                <div class="form-group">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" id="signupEmail" placeholder="example@email.com" required />
+                </div>
+
+                <div class="form-group">
+                    <label>كلمة المرور</label>
+                    <input type="password" id="signupPassword" placeholder="••••••••" required minlength="6" />
+                    <div class="hint">كلمة المرور يجب أن تكون 6 أحرف على الأقل</div>
+                </div>
+
+                <div class="form-group">
+                    <label>اختر خطتك</label>
+                    <select id="signupPlan">
+                        <option value="free">مجانية - 0$</option>
+                        <option value="premium">مميزة - 29$ / شهرياً</option>
+                        <option value="pro">احترافية - 99$ / شهرياً</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn">إنشاء حساب <i class="fas fa-user-plus" style="margin-right:10px;"></i></button>
+            </form>
+
+            <div class="auth-footer">
+                لديك حساب بالفعل؟ <a href="login.html">تسجيل الدخول</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2026 ZenithTools. جميع الحقوق محفوظة</p>
+        </footer>
+    </div>
+
+    <script>
+        function handleSignup(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const plan = document.getElementById('signupPlan').value;
+            const alertDiv = document.getElementById('signupAlert');
+            const alertMessage = document.getElementById('signupMessage');
+
+            // التحقق من صحة البريد الإلكتروني
+            if (!email.includes('@') || !email.includes('.')) {
+                alertDiv.className = 'alert alert-error';
+                alertMessage.textContent = '❌ يرجى إدخال بريد إلكتروني صحيح.';
+                alertDiv.style.display = 'block';
+                return;
+            }
+
+            // جلب المستخدمين المخزنين
+            let users = JSON.parse(localStorage.getItem('zenithUsers')) || [];
+
+            // التحقق من عدم وجود البريد مسبقاً
+            if (users.find(u => u.email === email)) {
+                alertDiv.className = 'alert alert-error';
+                alertMessage.textContent = '❌ هذا البريد الإلكتروني مسجل بالفعل. حاول تسجيل الدخول.';
+                alertDiv.style.display = 'block';
+                return;
+            }
+
+            // إنشاء مستخدم جديد
+            const newUser = {
+                id: Date.now(),
+                name: name,
+                email: email,
+                password: password,
+                plan: plan,
+                joinDate: new Date().toLocaleDateString('ar-EG'),
+                balance: 0
+            };
+
+            users.push(newUser);
+            localStorage.setItem('zenithUsers', JSON.stringify(users));
+
+            // حفظ المستخدم الحالي
+            localStorage.setItem('zenithCurrentUser', JSON.stringify(newUser));
+
+            // رسالة نجاح
+            alertDiv.className = 'alert alert-success';
+            alertMessage.textContent = '✅ تم إنشاء الحساب بنجاح! جاري التحويل...';
+            alertDiv.style.display = 'block';
+
+            // التحويل إلى لوحة التحكم
+            setTimeout(() => {
+                window.location.href = 'dashboard.html';
+            }, 1200);
+        }
+    </script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>لوحة التحكم - ZenithTools</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <a href="index.html" class="logo"><i class="fas fa-rocket"></i>ZenithTools</a>
+            <nav>
+                <a href="index.html">الرئيسية</a>
+                <a href="dashboard.html">لوحة التحكم</a>
+                <a href="#" onclick="logout()" class="btn btn-danger">تسجيل الخروج <i class="fas fa-sign-out-alt" style="margin-right:8px;"></i></a>
+            </nav>
+        </header>
+
+        <!-- رأس لوحة التحكم -->
+        <div class="dashboard-header">
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">A</div>
+                <div>
+                    <div class="user-name" id="userName">أحمد محمد</div>
+                    <div class="user-plan">
+                        <span class="plan-badge plan-free" id="userPlanBadge">مجاني</span>
+                        <span style="color:#888; margin-right:10px;" id="userEmail">ahmed@email.com</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <a href="#" class="btn" onclick="upgradePlan()" id="upgradeBtn">
+                    <i class="fas fa-crown" style="margin-left:10px;"></i> ترقية الاشتراك
+                </a>
+            </div>
+        </div>
+
+        <!-- بطاقات الإحصائيات -->
+        <div class="dashboard-grid">
+            <div class="dash-card">
+                <i class="fas fa-chart-line icon"></i>
+                <h3>إجمالي الأرباح</h3>
+                <div class="number" id="totalEarnings">$0</div>
+                <div class="label">منذ بداية الاشتراك</div>
+            </div>
+            <div class="dash-card">
+                <i class="fas fa-tasks icon"></i>
+                <h3>المشاريع المنفذة</h3>
+                <div class="number" id="totalProjects">0</div>
+                <div class="label">مشروع مكتمل</div>
+            </div>
+            <div class="dash-card">
+                <i class="fas fa-star icon"></i>
+                <h3>التقييم</h3>
+                <div class="number" id="userRating">4.9</div>
+                <div class="label">من 5 نجوم</div>
+            </div>
+            <div class="dash-card">
+                <i class="fas fa-clock icon"></i>
+                <h3>عضو منذ</h3>
+                <div class="number" id="memberSince" style="font-size:20px;">اليوم</div>
+                <div class="label">تاريخ الانضمام</div>
+            </div>
+        </div>
+
+        <!-- قائمة الميزات حسب الخطة -->
+        <div style="background:#fff; padding:30px; border-radius:18px; border:1px solid #f0f2f8; margin-bottom:40px;">
+            <h3 style="margin-bottom:15px;"><i class="fas fa-list-check" style="color:#6C63FF; margin-left:10px;"></i> ميزات خطتك الحالية</h3>
+            <ul id="planFeatures" style="list-style:none; line-height:2.2; color:#555;">
+                <li><i class="fas fa-check-circle" style="color:#6C63FF; margin-left:10px;"></i> 5 أدوات أساسية</li>
+                <li><i class="fas fa-check-circle" style="color:#6C63FF; margin-left:10px;"></i> دعم عبر البريد الإلكتروني</li>
+                <li><i class="fas fa-times-circle" style="color:#e74c6f; margin-left:10px;"></i> أدوات متقدمة (مقفلة)</li>
+                <li><i class="fas fa-times-circle" style="color:#e74c6f; margin-left:10px;"></i> تحليلات متقدمة (مقفلة)</li>
+            </ul>
+        </div>
+
+        <footer>
+            <p>© 2026 ZenithTools. جميع الحقوق محفوظة</p>
+        </footer>
+    </div>
+
+    <script>
+        // تحميل بيانات المستخدم
+        function loadDashboard() {
+            const userData = JSON.parse(localStorage.getItem('zenithCurrentUser'));
+
+            if (!userData) {
+                // إذا لم يكن هناك مستخدم مسجل الدخول، يُحول إلى صفحة تسجيل الدخول
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // تحديث الواجهة
+            document.getElementById('userName').textContent = userData.name;
+            document.getElementById('userEmail').textContent = userData.email;
+            document.getElementById('userAvatar').textContent = userData.name.charAt(0).toUpperCase();
+
+            // الخطة
+            const planMap = {
+                'free': { label: 'مجاني', badge: 'plan-free', features: [
+                    '5 أدوات أساسية',
+                    'دعم عبر البريد الإلكتروني',
+                    'حد أقصى 3 مشاريع'
+                ]},
+                'premium': { label: 'مميز', badge: 'plan-premium', features: [
+                    'جميع الأدوات الأساسية',
+                    '10 أدوات متقدمة',
+                    'دعم أولوية عبر الدردشة',
+                    'تحليلات أساسية'
+                ]},
+                'pro': { label: 'احترافي', badge: 'plan-premium', features: [
+                    'جميع الأدوات (50+)',
+                    'تحليلات متقدمة مع AI',
+                    'دعم 24/7 عبر الهاتف',
+                    'مشاريع غير محدودة',
+                    'استشارات شهرية مجانية'
+                ]}
+            };
+
+            const plan = planMap[userData.plan] || planMap['free'];
+            document.getElementById('userPlanBadge').textContent = plan.label;
+            document.getElementById('userPlanBadge').className = `plan-badge ${plan.badge}`;
+
+            // عرض الميزات
+            const featuresList = document.getElementById('planFeatures');
+            const allFeatures = [
+                '5 أدوات أساسية',
+                'دعم عبر البريد الإلكتروني',
+                'أدوات متقدمة',
+                'تحليلات متقدمة',
+                'مشاريع غير محدودة',
+                'دعم 24/7',
+                'استشارات شهرية'
+            ];
+
+            featuresList.innerHTML = allFeatures.map(f => {
+                const isIncluded = plan.features.includes(f);
+                const icon = isIncluded ? 'fa-check-circle' : 'fa-times-circle';
+                const color = isIncluded ? '#6C63FF' : '#e74c6f';
+                return `<li><i class="fas ${icon}" style="color:${color}; margin-left:10px;"></i> ${f} ${isIncluded ? '✅' : '🔒'}</li>`;
+            }).join('');
+
+            // تاريخ الانضمام
+            document.getElementById('memberSince').textContent = userData.joinDate || 'اليوم';
+
+            // إحصائيات وهمية (تتغير حسب الخطة)
+            const earnings = userData.plan === 'free' ? 0 : userData.plan === 'premium' ? 1250 : 5400;
+            const projects = userData.plan === 'free' ? 2 : userData.plan === 'premium' ? 18 : 47;
+
+            document.getElementById('totalEarnings').textContent = `$${earnings}`;
+            document.getElementById('totalProjects').textContent = projects;
+
+            // إخفاء زر الترقية إذا كان المستخدم في أعلى خطة
+            if (userData.plan === 'pro') {
+                document.getElementById('upgradeBtn').style.display = 'none';
+            }
+        }
+
+        // تسجيل الخروج
+        function logout() {
+            localStorage.removeItem('zenithCurrentUser');
+            window.location.href = 'login.html';
+        }
+
+        // الترقية إلى خطة أعلى
+        function upgradePlan() {
+            const userData = JSON.parse(localStorage.getItem('zenithCurrentUser'));
+            if (!userData) return;
+
+            const plans = ['free', 'premium', 'pro'];
+            const currentIndex = plans.indexOf(userData.plan);
+            if (currentIndex < plans.length - 1) {
+                const nextPlan = plans[currentIndex + 1];
+                const planNames = { 'free': 'المميزة', 'premium': 'الاحترافية' };
+                if (confirm(`هل تريد الترقية إلى الخطة ${planNames[nextPlan]}؟ (ستتم إعادة التوجيه لصفحة الدفع)`)) {
+                    // هنا يمكن إضافة بوابة دفع حقيقية (Stripe)
+                    alert(`✅ تم ترقية حسابك إلى الخطة ${planNames[nextPlan]} بنجاح! (محاكاة)`);
+                    userData.plan = nextPlan;
+                    localStorage.setItem('zenithCurrentUser', JSON.stringify(userData));
+
+                    // تحديث المستخدم في قائمة المستخدمين
+                    const users = JSON.parse(localStorage.getItem('zenithUsers')) || [];
+                    const index = users.findIndex(u => u.id === userData.id);
+                    if (index !== -1) {
+                        users[index].plan = nextPlan;
+                        localStorage.setItem('zenithUsers', JSON.stringify(users));
+                    }
+
+                    loadDashboard();
+                }
+            } else {
+                alert('🌟 أنت بالفعل في أعلى خطة احترافية!');
+            }
+        }
+
+        // تحميل البيانات عند فتح الصفحة
+        document.addEventListener('DOMContentLoaded', loadDashboard);
+    </script>
+
+</body>
+</html><a href="signup.html" class="btn">ابدأ الآن</a>
