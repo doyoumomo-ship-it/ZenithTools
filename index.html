@@ -6,40 +6,36 @@
   <title>FlowForge - أدوات الفريلانسرز الذكية</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
   <style>
-    body { font-family: 'Segoe UI', system-ui, sans-serif; }
-    .tool-card {
-      transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
-    }
-    .tool-card:hover {
-      transform: translateY(-15px) scale(1.03);
-      box-shadow: 0 30px 60px -15px rgb(59 130 246 / 0.3);
-    }
-    .gradient-text {
-      background: linear-gradient(90deg, #3b82f6, #a855f7, #ec4899);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .nav-active { border-bottom: 3px solid #3b82f6; }
+    body { font-family: system-ui, sans-serif; }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-200">
+<body class="bg-slate-950 text-slate-200 min-h-screen">
 
-  <!-- Navbar -->
-  <nav class="sticky top-0 bg-slate-900/95 backdrop-blur-lg border-b border-slate-700 z-50">
-    <div class="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
+  <nav class="bg-slate-900 border-b border-slate-700 py-5 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-8 flex justify-between items-center">
       <div class="flex items-center gap-3">
-        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-3xl flex items-center justify-center text-3xl font-black shadow-lg">FF</div>
-        <h1 class="text-4xl font-bold">Flow<span class="gradient-text">Forge</span></h1>
-      </div>
-      <div class="flex items-center gap-8 text-lg">
-        <a href="#tools" class="hover:text-blue-400 transition nav-active">الأدوات</a>
-        <a href="#pricing" class="hover:text-blue-400 transition">الأسعار</a>
-        <button onclick="toggleTheme()" class="text-2xl hover:text-yellow-400 transition"><i class="fa-solid fa-moon"></i></button>
-        <button class="bg-white text-black px-7 py-3 rounded-2xl font-bold hover:bg-slate-200 transition">ابدأ مجاناً</button>
+        <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center font-bold text-2xl">FF</div>
+        <h1 class="text-3xl font-bold">FlowForge</h1>
       </div>
     </div>
   </nav>
 
-  <!--
+  <div class="max-w-7xl mx-auto px-8 py-20 text-center">
+    <h1 class="text-6xl font-bold mb-6">أدوات الفريلانسرز الذكية</h1>
+    <p class="text-2xl text-slate-400 mb-12">جاري تحميل الأدوات...</p>
+    
+    <div class="grid md:grid-cols-2 gap-8 mt-16">
+      <div class="bg-slate-800 p-10 rounded-3xl">
+        <h2 class="text-2xl font-bold mb-4">مولد عروض أسعار</h2>
+        <p class="text-slate-400">قريباً...</p>
+      </div>
+      <div class="bg-slate-800 p-10 rounded-3xl">
+        <h2 class="text-2xl font-bold mb-4">مولد محتوى</h2>
+        <p class="text-slate-400">قريباً...</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
