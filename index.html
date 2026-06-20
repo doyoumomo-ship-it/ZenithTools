@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>ZenithTools - منصة الأدوات الرقمية</title>
+    <title>ZenithTools</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -13,15 +13,14 @@
         }
         body {
             font-family: 'Segoe UI', sans-serif;
-            background: #f0f2f8;
+            background: #f8faff;
             color: #1a1a2e;
         }
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px;
         }
-
         header {
             display: flex;
             justify-content: space-between;
@@ -29,10 +28,6 @@
             padding: 20px 0;
             flex-wrap: wrap;
             border-bottom: 2px solid #eef2f9;
-            background: #fff;
-            padding: 15px 25px;
-            border-radius: 16px;
-            margin-top: 10px;
         }
         .logo {
             font-size: 28px;
@@ -54,7 +49,6 @@
         nav a:hover {
             color: #6C63FF;
         }
-
         .btn {
             background: #6C63FF;
             color: #fff !important;
@@ -66,7 +60,6 @@
             display: inline-block;
             font-size: 14px;
             transition: 0.3s;
-            text-decoration: none;
         }
         .btn:hover {
             background: #554ddf;
@@ -93,14 +86,6 @@
         .btn-success:hover {
             background: #229954;
         }
-        .btn-warning {
-            background: #f39c12;
-            color: #fff !important;
-        }
-        .btn-warning:hover {
-            background: #e67e22;
-        }
-
         .page {
             display: none;
         }
@@ -118,8 +103,6 @@
                 transform: translateY(0);
             }
         }
-
-        /* الصفحة الرئيسية */
         .hero {
             display: flex;
             align-items: center;
@@ -155,7 +138,6 @@
             font-size: 100px;
             color: #6C63FF;
         }
-
         .stats {
             display: flex;
             gap: 30px;
@@ -179,7 +161,6 @@
             font-size: 13px;
             display: block;
         }
-
         .cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -211,7 +192,6 @@
             color: #666;
             font-size: 14px;
         }
-
         .cta-box {
             background: linear-gradient(135deg, #6C63FF, #3f3d9e);
             padding: 45px 25px;
@@ -239,8 +219,6 @@
             background: #f0f0ff;
             transform: scale(1.03);
         }
-
-        /* نماذج الدخول */
         .auth-box {
             max-width: 420px;
             margin: 40px auto;
@@ -301,7 +279,6 @@
             font-weight: 600;
             cursor: pointer;
         }
-
         .alert {
             padding: 10px 15px;
             border-radius: 10px;
@@ -322,8 +299,6 @@
             color: #721c24;
             border: 1px solid #f5c6cb;
         }
-
-        /* ===== لوحة التحكم ===== */
         .dash-header {
             display: flex;
             justify-content: space-between;
@@ -372,8 +347,6 @@
             background: #6C63FF;
             color: #fff;
         }
-
-        /* ===== أدوات حقيقية ===== */
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -415,6 +388,7 @@
             border-radius: 10px;
             margin-bottom: 10px;
             font-size: 14px;
+            font-family: inherit;
         }
         .tool-card .tool-input:focus {
             border-color: #6C63FF;
@@ -430,11 +404,6 @@
             border: 1px solid #eef2f9;
             min-height: 40px;
         }
-        .tool-card .btn {
-            font-size: 13px;
-            padding: 8px 20px;
-        }
-
         .dash-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -463,7 +432,6 @@
             color: #6C63FF;
             opacity: 0.2;
         }
-
         .features-box {
             background: #fff;
             padding: 25px;
@@ -479,7 +447,6 @@
         .features-box ul li i {
             margin-left: 10px;
         }
-
         footer {
             text-align: center;
             padding: 20px 0;
@@ -491,7 +458,6 @@
         footer i {
             color: #e74c6f;
         }
-
         @media (max-width: 700px) {
             header {
                 flex-direction: column;
@@ -536,7 +502,7 @@
                 <a onclick="showPage('home')">الرئيسية</a>
                 <a onclick="showPage('home')">الميزات</a>
                 <a id="loginBtn" class="btn btn-outline" onclick="showPage('login')">تسجيل الدخول</a>
-                <a id="signupBtn" class="btn" onclick="showPage('signup')">ابدأ</a>
+                <a id="signupBtn" class="btn" onclick="showPage('signup')">أبدأ</a>
                 <a id="dashBtn" class="btn" onclick="showPage('dashboard')" style="display:none;">لوحة التحكم</a>
                 <a id="logoutBtn" class="btn btn-danger" onclick="logout()" style="display:none;">خروج</a>
             </nav>
@@ -549,7 +515,7 @@
                     <h1>أدوات رقمية <span>تُحدث الفارق</span></h1>
                     <p>مجموعة متكاملة من الأدوات الاحترافية لزيادة الإنتاجية وتحقيق أرباح حقيقية.</p>
                     <a class="btn" style="padding:13px 38px; font-size:16px;" onclick="showPage('signup')">
-                        <i class="fas fa-play" style="margin-left:10px;"></i> ابدأ مجاناً
+                        <i class="fas fa-play" style="margin-left:10px;"></i> أبدأ مجاناً
                     </a>
                     <div class="stats">
                         <div><h3>12K+</h3><span>مستخدم</span></div>
@@ -648,9 +614,7 @@
             </div>
         </div>
 
-        <!-- ========================================================= -->
-        <!-- ===== لوحة التحكم مع أدوات حقيقية ===== -->
-        <!-- ========================================================= -->
+        <!-- لوحة التحكم -->
         <div id="page-dashboard" class="page">
 
             <div class="dash-header">
@@ -664,12 +628,9 @@
                         </div>
                     </div>
                 </div>
-                <div>
-                    <a class="btn btn-success" id="upgradeBtn" onclick="upgrade()"><i class="fas fa-crown" style="margin-left:8px;"></i> ترقية</a>
-                </div>
+                <a class="btn btn-success" id="upgradeBtn" onclick="upgrade()"><i class="fas fa-crown" style="margin-left:8px;"></i> ترقية</a>
             </div>
 
-            <!-- بطاقات إحصائيات -->
             <div class="dash-grid">
                 <div class="dash-card">
                     <i class="fas fa-chart-line"></i>
@@ -693,41 +654,41 @@
                 </div>
             </div>
 
-            <!-- ===== الأدوات الحقيقية ===== -->
+            <!-- الأدوات -->
             <h3 style="margin:25px 0 15px;"><i class="fas fa-tools" style="color:#6C63FF; margin-left:10px;"></i>أدواتك الذكية</h3>
             <div class="tools-grid">
 
-                <!-- أداة 1: تحليل النصوص -->
+                <!-- أداة 1 -->
                 <div class="tool-card">
                     <div class="tool-icon"><i class="fas fa-file-alt"></i></div>
                     <h3>📝 تحليل النصوص</h3>
-                    <p>احسب عدد الكلمات والحروف في النص الخاص بك</p>
+                    <p>احسب عدد الكلمات والحروف</p>
                     <textarea class="tool-input" id="textAnalyzer" rows="3" placeholder="اكتب نصك هنا..."></textarea>
                     <button class="btn btn-success" onclick="analyzeText()">تحليل</button>
                     <div class="tool-result" id="textResult">النتيجة ستظهر هنا</div>
                 </div>
 
-                <!-- أداة 2: تحويل العملات -->
+                <!-- أداة 2 -->
                 <div class="tool-card">
                     <div class="tool-icon"><i class="fas fa-dollar-sign"></i></div>
                     <h3>💱 تحويل العملات</h3>
-                    <p>حول بين الدولار والريال واليورو</p>
+                    <p>حول بين العملات المختلفة</p>
                     <input class="tool-input" id="currencyInput" type="number" placeholder="المبلغ" value="100" />
                     <select class="tool-input" id="currencyFrom">
-                        <option value="USD">دولار USD</option>
-                        <option value="SAR">ريال SAR</option>
-                        <option value="EUR">يورو EUR</option>
+                        <option value="USD">🇺🇸 دولار</option>
+                        <option value="SAR">🇸🇦 ريال</option>
+                        <option value="EUR">🇪🇺 يورو</option>
                     </select>
                     <select class="tool-input" id="currencyTo">
-                        <option value="SAR">ريال SAR</option>
-                        <option value="USD">دولار USD</option>
-                        <option value="EUR">يورو EUR</option>
+                        <option value="SAR">🇸🇦 ريال</option>
+                        <option value="USD">🇺🇸 دولار</option>
+                        <option value="EUR">🇪🇺 يورو</option>
                     </select>
                     <button class="btn btn-success" onclick="convertCurrency()">تحويل</button>
                     <div class="tool-result" id="currencyResult">النتيجة ستظهر هنا</div>
                 </div>
 
-                <!-- أداة 3: مؤقت العمل -->
+                <!-- أداة 3 -->
                 <div class="tool-card">
                     <div class="tool-icon"><i class="fas fa-clock"></i></div>
                     <h3>⏱️ مؤقت العمل</h3>
@@ -741,11 +702,11 @@
                     <div class="tool-result" id="timerResult">المؤقت جاهز</div>
                 </div>
 
-                <!-- أداة 4: مولد كلمات المرور -->
+                <!-- أداة 4 -->
                 <div class="tool-card">
                     <div class="tool-icon"><i class="fas fa-key"></i></div>
                     <h3>🔑 مولد كلمات المرور</h3>
-                    <p>أنشئ كلمة مرور قوية وآمنة</p>
+                    <p>أنشئ كلمة مرور قوية</p>
                     <div style="display:flex; gap:10px; margin-bottom:10px;">
                         <input class="tool-input" id="passwordLength" type="number" value="12" min="6" max="30" style="width:80px;" />
                         <label style="display:flex; align-items:center; gap:5px; font-size:14px;">
@@ -756,7 +717,7 @@
                     <div class="tool-result" id="passwordResult" style="direction:ltr; text-align:center;">اضغط لتوليد كلمة مرور</div>
                 </div>
 
-                <!-- أداة 5: حاسبة النسبة المئوية -->
+                <!-- أداة 5 -->
                 <div class="tool-card">
                     <div class="tool-icon"><i class="fas fa-percent"></i></div>
                     <h3>📊 حاسبة النسبة المئوية</h3>
@@ -767,7 +728,7 @@
                     <div class="tool-result" id="percentResult">النتيجة ستظهر هنا</div>
                 </div>
 
-                <!-- أداة 6: محول التاريخ -->
+                <!-- أداة 6 -->
                 <div class="tool-card">
                     <div class="tool-icon"><i class="fas fa-calendar-alt"></i></div>
                     <h3>📅 محول التاريخ</h3>
@@ -779,27 +740,21 @@
 
             </div>
 
-            <!-- ميزات الخطة -->
             <div class="features-box">
                 <h4 style="margin-bottom:10px;"><i class="fas fa-list-check" style="color:#6C63FF; margin-left:10px;"></i>ميزات خطتك</h4>
                 <ul id="featuresList"></ul>
             </div>
-
         </div>
 
-        <!-- التذييل -->
         <footer>
             <p>© 2026 ZenithTools. <i class="fas fa-heart"></i> فريق النجاح</p>
         </footer>
 
     </div>
 
-    <!-- ========================================================= -->
-    <!-- ===== جافا سكريبت ===== -->
-    <!-- ========================================================= -->
     <script>
         // ============================================
-        // إدارة المستخدمين
+        // دوال مساعدة
         // ============================================
         function getUsers() {
             try {
@@ -833,13 +788,18 @@
         // التنقل
         // ============================================
         function showPage(id) {
-            document.querySelectorAll('.page').forEach(function(p) {
-                p.classList.remove('active');
-            });
+            var pages = document.querySelectorAll('.page');
+            for (var i = 0; i < pages.length; i++) {
+                pages[i].classList.remove('active');
+            }
             var el = document.getElementById('page-' + id);
-            if (el) el.classList.add('active');
+            if (el) {
+                el.classList.add('active');
+            }
             updateNav();
-            if (id === 'dashboard') loadDashboard();
+            if (id === 'dashboard') {
+                loadDashboard();
+            }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -973,4 +933,13 @@
             if (!u) { showPage('login'); return; }
 
             document.getElementById('dashName').textContent = u.name;
-            document.getElementById('dashEmail').textContent
+            document.getElementById('dashEmail').textContent = u.email;
+            document.getElementById('avatar').textContent = u.name.charAt(0).toUpperCase();
+
+            var plans = {
+                free: { label: 'مجاني', badge: 'badge-free', features: ['5 أدوات أساسية', 'دعم بالبريد', 'حد 3 مشاريع'] },
+                premium: { label: 'مميز', badge: 'badge-premium', features: ['جميع الأدوات', '10 أدوات متقدمة',
+                        'دعم أولوية', 'تحليلات'
+                    ] },
+                pro: { label: 'احترافي', badge: 'badge-premium', features: ['50+ أداة', 'تحليلات AI', 'دعم 24/7',
+                        'م
