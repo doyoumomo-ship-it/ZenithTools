@@ -1028,3 +1028,338 @@
         const authModal = $('#authModal');
         const authBtn = $('#authBtn');
         const heroCta = $('#heroCta');
+        const closeModal = $('#closeModal');
+        const authTitle = $('#authTitle');
+        const authSub = $('#authSub');
+        const authName = $('#authName');
+        const authEmail = $('#authEmail');
+        const authPassword = $('#authPassword');
+        const authSubmit = $('#authSubmit');
+        const authSwitchText = $('#authSwitchText');
+        const authSwitchLink = $('#authSwitchLink');
+        const menuToggle = $('#menuToggle');
+        const navLinks = $('#navLinks');
+        const toolSelector = $('#toolSelector');
+        const inputText = $('#inputText');
+        const generateBtn = $('#generateBtn');
+        const clearBtn = $('#clearBtn');
+        const loading = $('#loading');
+        const outputArea = $('#outputArea');
+        const outputContent = $('#outputContent');
+        const copyBtn = $('#copyBtn');
+        const creditDisplay = $('#creditDisplay');
+        const toast = $('#toast');
+
+        let isLoginMode = false;
+
+        // ==============================
+        //  TOAST
+        // ==============================
+        function showToast(msg, type = 'success') {
+            toast.textContent = msg;
+            toast.className = 'toast show ' + type;
+            clearTimeout(toast._timer);
+            toast._timer = setTimeout(() => toast.classList.remove('show'), 3500);
+        }
+
+        // ==============================
+        //  AUTH
+        // ==============================
+        function toggleAuth(mode) {
+            isLoginMode = mode === 'login';
+            if (isLoginMode) {
+                authTitle.textContent = 'تسجيل الدخول';
+                authSub.textContent = 'مرحبًا بعودتك! سجل الدخول للمتابعة';
+                authSubmit.textContent = 'تسجيل الدخول';
+                authSwitchText.textContent = 'ليس لديك حساب؟';
+                authSwitchLink.textContent = 'إنشاء حساب';
+                authName.style.display = 'none';
+            } else {
+                authTitle.textContent = 'إنشاء حساب';
+                authSub.textContent = 'انضم إلى آلاف المستخدمين الذين يستخدمون الذكاء الاصطناعي';
+                authSubmit.textContent = 'إنشاء حساب';
+                authSwitchText.textContent = 'لديك حساب؟';
+                authSwitchLink.textContent = 'تسجيل الدخول';
+                authName.style.display = 'block';
+            }
+            authModal.classList.add('show');
+        }
+
+        function closeAuthModal() {
+            authModal.classList.remove('show');
+        }
+
+        function handleAuth() {
+            const email = authEmail.value.trim();
+            const password = authPassword.value.trim();
+
+            if (!email || !password) {
+                showToast('يرجى ملء جميع الحقول', 'error');
+                return;
+            }
+            if (password.length < 6) {
+                showToast('كلمة المرور يجب أن تكون 6 أحرف على الأقل', 'error');
+                return;
+            }
+            if (!isLoginMode) {
+                const name = authName.value.trim();
+                if (!name) {
+                    showToast('يرجى إدخال الاسم الكامل', 'error');
+                    return;
+                }
+            }
+
+            // محاكاة تسجيل/دخول
+            const username = email.split('@')[0];
+            state.isLoggedIn = true;
+            state.user = { email, username, name: authName.value.trim() || username };
+            state.credits = isLoginMode ? state.credits : 100;
+
+            updateUI();
+            closeAuthModal();
+            showToast(isLoginMode ? `مرحبًا بعودتك ${state.user.name}! 👋` : `أهلاً بك ${state.user.name}! 🎉`);
+        }
+
+        // ==============================
+        //  UI UPDATE
+        // ==============================
+        function updateUI() {
+            if (state.isLoggedIn) {
+                authBtn.textContent = `👤 ${state.user.name}`;
+                authBtn.classList.remove('btn-primary');
+                authBtn.classList.add('btn-outline');
+                creditDisplay.textContent = state.credits;
+            } else {
+                authBtn.textContent = 'ابدأ مجانًا';
+                authBtn.classList.remove('btn-outline');
+                authBtn.classList.add('btn-primary');
+                creditDisplay.textContent = '0';
+            }
+        }
+
+        // ==============================
+        //  TOOL SELECTOR
+        // ==============================
+        toolSelector.addEventListener('click', (e) => {
+            const btn = e.target.closest('button');
+            if (!btn) return;
+            $$('#toolSelector button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            state.selectedTool = btn.dataset.tool;
+            // تحديث placeholder
+            const placeholders = {
+                write: 'اكتب موضوع المقال... مثال: "الذكاء الاصطناعي في التعليم"',
+                summarize: 'الصق النص الطويل الذي تريد تلخيصه...',
+                translate: 'اكتب النص للترجمة... مثال: "مرحباً، كيف حالك؟"',
+                analyze: 'اكتب النص لتحليل المشاعر... مثال: "المنتج رائع جداً!"',
+                code: 'صف المشكلة البرمجية... مثال: "اكتب دالة لجمع رقمين في بايثون"',
+                ideas: 'اكتب المجال الذي تريد أفكاراً فيه... مثال: "أفكار لمشاريع رقمية"',
+            };
+            inputText.placeholder = placeholders[state.selectedTool] || 'اكتب نصك هنا...';
+        });
+
+        // ==============================
+        //  GENERATE (محاكاة الذكاء الاصطناعي)
+        // ==============================
+        const toolResponses = {
+            write: (text) =>
+                `📝 **مقال عن: ${text}**\n\nالذكاء الاصطناعي يغير العالم بسرعة، وفي العالم العربي، نرى تبنيًا متزايدًا لهذه التقنية. تشير الدراسات إلى أن سوق الذكاء الاصطناعي في الشرق الأوسط سينمو بنسبة 30% سنويًا. \n\nيمكن للشركات العربية الاستفادة من الذكاء الاصطناعي في:\n• تحسين خدمة العملاء\n• تحليل البيانات الضخمة\n• أتمتة العمليات\n\nالمستقبل مشرق، والتحدي الأكبر هو تطوير الكوادر البشرية القادرة على قيادة هذا التحول.`,
+
+            summarize: (text) =>
+                `📌 **ملخص النص:**\n\n${text.slice(0, 200)}...\n\n✅ النقاط الرئيسية:\n• النقطة الأولى المستخلصة من النص\n• النقطة الثانية المهمة\n• النقطة الثالثة التي يجب الانتباه لها\n\n📊 نسبة الأهمية: 87%`,
+
+            translate: (text) =>
+                `🌐 **الترجمة:**\n\n"${text}"\n\n⬇️ الترجمة إلى العربية:\n"${text.split(' ').reverse().join(' ')}" (ترجمة تقريبية)\n\n📌 ملاحظة: الترجمة الدقيقة تتطلب سياقًا إضافيًا.`,
+
+            analyze: (text) =>
+                `❤️ **تحليل المشاعر:**\n\nالنص: "${text}"\n\n📊 النتائج:\n• إيجابي: 78%\n• سلبي: 12%\n• محايد: 10%\n\n💡 التوصية: النص يحمل مشاعر إيجابية قوية، يمكن استخدامه في التسويق.`,
+
+            code: (text) =>
+                `💻 **الكود المطلوب:**\n\n// بناءً على طلبك: "${text}"\n\n\`\`\`python\ndef solve_problem(data):\n    result = []\n    for item in data:\n        if item > 0:\n            result.append(item * 2)\n    return result\n\n# مثال على الاستخدام\nmy_data = [1, 2, 3, 4]\nprint(solve_problem(my_data))  # [2, 4, 6, 8]\n\`\`\`\n\n📌 هذا حل مبدئي، يمكن تعديله حسب احتياجاتك.`,
+
+            ideas: (text) =>
+                `💡 **أفكار لمجال: ${text}**\n\n1. **منصة تعليمية ذكية** - تستخدم AI لتخصيص المحتوى لكل طالب\n2. **تطبيق مساعد شخصي** - يدير المهام والمواعيد باستخدام الصوت\n3. **روبوت محادثة تجاري** - يخدم العملاء على مدار الساعة\n4. **أداة تحليل سوق** - تتنبأ باتجاهات السوق بدقة\n5. **منصة محتوى تفاعلية** - تولد محتوى بناءً على اهتمامات المستخدم\n\n🚀 اختر فكرة وابدأ في تنفيذها اليوم!`
+        };
+
+        function getResponse(tool, input) {
+            const responses = {
+                write: `📝 **مقال عن: ${input || 'الذكاء الاصطناعي'}**\n\nالذكاء الاصطناعي يغير العالم بسرعة، وفي العالم العربي، نرى تبنيًا متزايدًا لهذه التقنية. تشير الدراسات إلى أن سوق الذكاء الاصطناعي في الشرق الأوسط سينمو بنسبة 30% سنويًا. \n\nيمكن للشركات العربية الاستفادة من الذكاء الاصطناعي في:\n• تحسين خدمة العملاء\n• تحليل البيانات الضخمة\n• أتمتة العمليات\n\nالمستقبل مشرق، والتحدي الأكبر هو تطوير الكوادر البشرية القادرة على قيادة هذا التحول.`,
+
+                summarize: `📌 **ملخص النص:**\n\n"${input || 'نص طويل حول موضوع ما'}"\n\n✅ **النقاط الرئيسية:**\n• النقطة الأولى المستخلصة من النص\n• النقطة الثانية المهمة\n• النقطة الثالثة التي يجب الانتباه لها\n\n📊 نسبة الأهمية: 87%`,
+
+                translate: `🌐 **الترجمة:**\n\n"${input || 'Hello, how are you?'}"\n\n⬇️ **الترجمة إلى العربية:**\n"مرحباً، كيف حالك؟"\n\n📌 ملاحظة: الترجمة الدقيقة تتطلب سياقًا إضافيًا.`,
+
+                analyze: `❤️ **تحليل المشاعر:**\n\nالنص: "${input || 'هذا المنتج رائع جداً!'}"\n\n📊 **النتائج:**\n• إيجابي: 78%\n• سلبي: 12%\n• محايد: 10%\n\n💡 التوصية: النص يحمل مشاعر إيجابية قوية.`,
+
+                code: `💻 **الكود المطلوب:**\n\n// بناءً على طلبك: "${input || 'اكتب دالة لجمع رقمين'}"\n\n\`\`\`python\ndef solve_problem(data):\n    result = []\n    for item in data:\n        if item > 0:\n            result.append(item * 2)\n    return result\n\n# مثال على الاستخدام\nmy_data = [1, 2, 3, 4]\nprint(solve_problem(my_data))  # [2, 4, 6, 8]\n\`\`\`\n\n📌 هذا حل مبدئي، يمكن تعديله حسب احتياجاتك.`,
+
+                ideas: `💡 **أفكار لمجال: ${input || 'المشاريع الرقمية'}**\n\n1. **منصة تعليمية ذكية** - تستخدم AI لتخصيص المحتوى لكل طالب\n2. **تطبيق مساعد شخصي** - يدير المهام والمواعيد باستخدام الصوت\n3. **روبوت محادثة تجاري** - يخدم العملاء على مدار الساعة\n4. **أداة تحليل سوق** - تتنبأ باتجاهات السوق بدقة\n5. **منصة محتوى تفاعلية** - تولد محتوى بناءً على اهتمامات المستخدم\n\n🚀 اختر فكرة وابدأ في تنفيذها اليوم!`
+            };
+            return responses[tool] || responses.write;
+        }
+
+        async function generate() {
+            if (state.isGenerating) return;
+
+            const input = inputText.value.trim();
+            if (!input) {
+                showToast('يرجى كتابة النص أولاً ✍️', 'error');
+                return;
+            }
+
+            if (!state.isLoggedIn) {
+                showToast('يرجى تسجيل الدخول أولاً 🔐', 'error');
+                toggleAuth('login');
+                return;
+            }
+
+            if (state.credits < 5) {
+                showToast('رصيدك غير كافٍ! اشحن حسابك 💰', 'error');
+                return;
+            }
+
+            // خصم النقاط
+            state.credits -= 5;
+            creditDisplay.textContent = state.credits;
+            state.isGenerating = true;
+            generateBtn.disabled = true;
+            generateBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري...';
+
+            loading.classList.add('show');
+            outputArea.classList.remove('show');
+
+            // محاكاة زمن المعالجة
+            await new Promise(resolve => setTimeout(resolve, 1800 + Math.random() * 1200));
+
+            const response = getResponse(state.selectedTool, input);
+            outputContent.textContent = response;
+            outputArea.classList.add('show');
+            loading.classList.remove('show');
+
+            state.isGenerating = false;
+            generateBtn.disabled = false;
+            generateBtn.innerHTML = '<i class="fas fa-wand-magic-sparkles"></i> توليد';
+
+            showToast('✅ تم التوليد بنجاح!');
+        }
+
+        // ==============================
+        //  COPY
+        // ==============================
+        copyBtn.addEventListener('click', () => {
+            const text = outputContent.textContent;
+            if (!text) return;
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('📋 تم نسخ النص!');
+            }).catch(() => {
+                // Fallback
+                const range = document.createRange();
+                range.selectNode(outputContent);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                document.execCommand('copy');
+                showToast('📋 تم نسخ النص!');
+            });
+        });
+
+        // ==============================
+        //  CLEAR
+        // ==============================
+        clearBtn.addEventListener('click', () => {
+            inputText.value = '';
+            outputArea.classList.remove('show');
+            outputContent.textContent = '';
+        });
+
+        // ==============================
+        //  EVENTS
+        // ==============================
+        authBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (state.isLoggedIn) {
+                // تسجيل الخروج
+                state.isLoggedIn = false;
+                state.user = null;
+                state.credits = 0;
+                updateUI();
+                showToast('👋 تم تسجيل الخروج');
+                return;
+            }
+            toggleAuth('signup');
+        });
+
+        heroCta.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (state.isLoggedIn) {
+                document.getElementById('workspace').scrollIntoView({ behavior: 'smooth' });
+            } else {
+                toggleAuth('signup');
+            }
+        });
+
+        closeModal.addEventListener('click', closeAuthModal);
+        authModal.addEventListener('click', (e) => {
+            if (e.target === authModal) closeAuthModal();
+        });
+
+        authSwitchLink.addEventListener('click', () => {
+            toggleAuth(isLoginMode ? 'signup' : 'login');
+        });
+
+        authSubmit.addEventListener('click', handleAuth);
+        authPassword.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') handleAuth();
+        });
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        generateBtn.addEventListener('click', generate);
+
+        // Ctrl+Enter لتوليد
+        inputText.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && e.ctrlKey) {
+                e.preventDefault();
+                generate();
+            }
+        });
+
+        // ==============================
+        //  TOOL CARDS CLICK
+        // ==============================
+        $$('.tool-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const tool = card.dataset.tool;
+                const btn = $$('#toolSelector button');
+                btn.forEach(b => {
+                    b.classList.toggle('active', b.dataset.tool === tool);
+                });
+                state.selectedTool = tool;
+                document.getElementById('workspace').scrollIntoView({ behavior: 'smooth' });
+                // تحديث placeholder
+                const placeholders = {
+                    write: 'اكتب موضوع المقال... مثال: "الذكاء الاصطناعي في التعليم"',
+                    summarize: 'الصق النص الطويل الذي تريد تلخيصه...',
+                    translate: 'اكتب النص للترجمة... مثال: "مرحباً، كيف حالك؟"',
+                    analyze: 'اكتب النص لتحليل المشاعر... مثال: "المنتج رائع جداً!"',
+                    code: 'صف المشكلة البرمجية... مثال: "اكتب دالة لجمع رقمين في بايثون"',
+                    ideas: 'اكتب المجال الذي تريد أفكاراً فيه... مثال: "أفكار لمشاريع رقمية"',
+                };
+                inputText.placeholder = placeholders[tool] || 'اكتب نصك هنا...';
+                inputText.focus();
+            });
+        });
+
+        // ==============================
+        //  INIT
+        // ==============================
+        updateUI();
+        inputText.placeholder = 'اكتب موضوع المقال... مثال: "الذكاء الاصطناعي في التعليم"';
+
+        console.log('🚀 ArabicAI منصة الذكاء الاصطناعي العربية');
+        console.log('💡 اضغط Ctrl+Enter للتوليد السريع');
+    </script>
+
+</body>
+</html>
