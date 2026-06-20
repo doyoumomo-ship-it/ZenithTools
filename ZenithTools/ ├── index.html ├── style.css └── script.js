@@ -3,67 +3,37 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ArabicAI - منصة الذكاء الاصطناعي العربية</title>
+    <title>ذكاءAI - منصة الخدمات الذكية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
-        /* ===== RESET & VARIABLES ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-        }
-
-        :root {
-            --primary: #7C3AED;
-            --primary-dark: #5B21B6;
-            --primary-light: #A78BFA;
-            --bg: #0F0A1E;
-            --bg-card: #1A1135;
-            --bg-card-hover: #241A45;
-            --text: #F5F3FF;
-            --text-muted: #A5A0B8;
-            --border: #2D2350;
-            --shadow: 0 20px 60px rgba(124, 58, 237, 0.25);
-            --radius: 20px;
-            --radius-sm: 12px;
-            --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background: var(--bg);
-            color: var(--text);
+            background: #0a0a1a;
+            color: #ffffff;
             min-height: 100vh;
         }
 
-        /* ===== SCROLLBAR ===== */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--bg);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 10px;
-        }
-
-        /* ===== CONTAINER ===== */
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
         /* ===== HEADER ===== */
         header {
-            padding: 18px 0;
-            border-bottom: 1px solid var(--border);
+            background: rgba(10, 10, 26, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            border-bottom: 1px solid #1e1e3a;
             position: sticky;
             top: 0;
-            background: rgba(15, 10, 30, 0.92);
-            backdrop-filter: blur(12px);
-            z-index: 100;
+            z-index: 999;
         }
 
         header .container {
@@ -73,86 +43,58 @@
         }
 
         .logo {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 800;
             display: flex;
             align-items: center;
             gap: 10px;
         }
+
         .logo i {
-            color: var(--primary);
-            font-size: 30px;
+            color: #8b5cf6;
+            font-size: 28px;
         }
+
         .logo span {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            background: linear-gradient(135deg, #8b5cf6, #ec4899);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-        .nav-links a {
-            color: var(--text-muted);
+        nav a {
+            color: #a0a0c0;
             text-decoration: none;
+            margin-left: 25px;
             font-weight: 500;
-            transition: var(--transition);
+            transition: 0.3s;
             font-size: 15px;
         }
-        .nav-links a:hover {
-            color: var(--text);
+
+        nav a:hover {
+            color: #ffffff;
         }
 
-        .btn {
-            padding: 10px 28px;
+        .btn-nav {
+            background: #8b5cf6;
+            color: #fff !important;
+            padding: 10px 24px;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 14px;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            text-decoration: none;
-            display: inline-block;
+            transition: 0.3s;
         }
 
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-        .btn-primary:hover {
-            background: var(--primary-dark);
+        .btn-nav:hover {
+            background: #7c3aed;
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(124, 58, 237, 0.4);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--text);
-            border: 1.5px solid var(--border);
-        }
-        .btn-outline:hover {
-            border-color: var(--primary);
-            background: rgba(124, 58, 237, 0.08);
-        }
-
-        .btn-success {
-            background: #10B981;
-            color: white;
-        }
-        .btn-success:hover {
-            background: #059669;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
         }
 
         .menu-toggle {
             display: none;
             background: none;
             border: none;
-            color: var(--text);
-            font-size: 28px;
+            color: #fff;
+            font-size: 26px;
             cursor: pointer;
         }
 
@@ -163,619 +105,535 @@
         }
 
         .hero .badge {
-            background: rgba(124, 58, 237, 0.15);
-            color: var(--primary-light);
+            background: rgba(139, 92, 246, 0.15);
+            color: #a78bfa;
             padding: 6px 18px;
             border-radius: 50px;
             font-size: 13px;
             font-weight: 600;
             display: inline-block;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .hero h1 {
-            font-size: 52px;
+            font-size: 48px;
             font-weight: 800;
-            line-height: 1.15;
-            margin-bottom: 16px;
-        }
-        .hero h1 span {
-            background: linear-gradient(135deg, var(--primary), #F472B6, var(--primary-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 300% 300%;
-            animation: gradientMove 4s ease infinite;
+            line-height: 1.2;
+            margin-bottom: 12px;
         }
 
-        @keyframes gradientMove {
-            0%,
-            100% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
+        .hero h1 span {
+            background: linear-gradient(135deg, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            color: var(--text-muted);
-            font-size: 19px;
-            max-width: 600px;
-            margin: 0 auto 35px;
+            color: #a0a0c0;
+            font-size: 18px;
+            max-width: 550px;
+            margin: 0 auto 30px;
             line-height: 1.8;
         }
 
         .hero .stats {
             display: flex;
             justify-content: center;
-            gap: 50px;
-            margin-top: 30px;
-        }
-        .hero .stats div {
-            text-align: center;
-        }
-        .hero .stats .num {
-            font-size: 28px;
-            font-weight: 800;
-            display: block;
-            color: var(--text);
-        }
-        .hero .stats .label {
-            color: var(--text-muted);
-            font-size: 14px;
+            gap: 45px;
+            margin-top: 25px;
+            flex-wrap: wrap;
         }
 
-        /* ===== TOOLS ===== */
-        .tools {
-            padding: 60px 0 80px;
+        .hero .stats .num {
+            font-size: 26px;
+            font-weight: 800;
+            display: block;
+            color: #fff;
+        }
+
+        .hero .stats .label {
+            color: #a0a0c0;
+            font-size: 13px;
+        }
+
+        /* ===== SERVICES ===== */
+        .services {
+            padding: 50px 0 70px;
         }
 
         .section-title {
             text-align: center;
-            font-size: 38px;
+            font-size: 34px;
             font-weight: 800;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
+
         .section-title span {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            background: linear-gradient(135deg, #8b5cf6, #ec4899);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .section-subtitle {
+
+        .section-sub {
             text-align: center;
-            color: var(--text-muted);
-            margin-bottom: 45px;
-            font-size: 17px;
+            color: #a0a0c0;
+            margin-bottom: 40px;
+            font-size: 16px;
         }
 
-        .tools-grid {
+        .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 22px;
         }
 
-        .tool-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: 30px 24px;
-            border-radius: var(--radius);
-            transition: var(--transition);
+        .service-card {
+            background: #12122a;
+            border: 1px solid #1e1e3a;
+            border-radius: 16px;
+            padding: 28px 22px;
+            text-align: center;
+            transition: 0.4s;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-        .tool-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--primary), transparent);
-            opacity: 0;
-            transition: var(--transition);
-        }
-        .tool-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--primary);
-            box-shadow: var(--shadow);
-        }
-        .tool-card:hover::before {
-            opacity: 0.05;
-        }
-        .tool-card>* {
-            position: relative;
-            z-index: 1;
         }
 
-        .tool-card .icon {
+        .service-card:hover {
+            transform: translateY(-6px);
+            border-color: #8b5cf6;
+            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.15);
+        }
+
+        .service-card .icon {
             font-size: 38px;
-            color: var(--primary);
-            margin-bottom: 14px;
+            color: #8b5cf6;
+            margin-bottom: 12px;
             display: block;
         }
-        .tool-card h3 {
-            font-size: 19px;
-            margin-bottom: 8px;
+
+        .service-card h3 {
+            font-size: 18px;
+            margin-bottom: 6px;
         }
-        .tool-card p {
-            color: var(--text-muted);
+
+        .service-card p {
+            color: #a0a0c0;
             font-size: 14px;
             line-height: 1.7;
         }
-        .tool-card .tag {
+
+        .service-card .price-tag {
             display: inline-block;
-            background: rgba(124, 58, 237, 0.12);
-            color: var(--primary-light);
-            font-size: 11px;
-            font-weight: 700;
-            padding: 3px 14px;
+            background: rgba(139, 92, 246, 0.12);
+            color: #a78bfa;
+            padding: 4px 16px;
             border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
             margin-top: 12px;
         }
 
         /* ===== WORKSPACE ===== */
         .workspace {
-            padding: 60px 0 80px;
-            background: var(--bg-card);
-            border-radius: var(--radius);
-            margin-bottom: 60px;
-            border: 1px solid var(--border);
-        }
-        .workspace .container {
-            max-width: 900px;
+            background: #12122a;
+            border: 1px solid #1e1e3a;
+            border-radius: 20px;
+            padding: 35px 30px;
+            margin: 30px 0 60px;
         }
 
         .workspace-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
             flex-wrap: wrap;
             gap: 15px;
+            margin-bottom: 22px;
         }
+
         .workspace-header h2 {
-            font-size: 26px;
+            font-size: 22px;
         }
+
         .workspace-header h2 i {
-            color: var(--primary);
+            color: #8b5cf6;
             margin-left: 10px;
         }
 
-        .credit-display {
+        .credit-box {
             background: rgba(16, 185, 129, 0.12);
-            color: #34D399;
-            padding: 8px 20px;
+            color: #34d399;
+            padding: 8px 22px;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 15px;
+            font-size: 14px;
         }
-        .credit-display i {
+
+        .credit-box i {
             margin-left: 8px;
         }
 
-        .tool-selector {
+        .service-selector {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
-        .tool-selector button {
-            padding: 10px 22px;
+
+        .service-selector button {
+            padding: 9px 20px;
             border-radius: 50px;
-            border: 1.5px solid var(--border);
+            border: 1.5px solid #1e1e3a;
             background: transparent;
-            color: var(--text-muted);
+            color: #a0a0c0;
             cursor: pointer;
-            transition: var(--transition);
+            transition: 0.3s;
             font-weight: 500;
-            font-size: 14px;
+            font-size: 13px;
         }
-        .tool-selector button:hover {
-            border-color: var(--primary);
-            color: var(--text);
+
+        .service-selector button:hover {
+            border-color: #8b5cf6;
+            color: #fff;
         }
-        .tool-selector button.active {
-            background: var(--primary);
-            border-color: var(--primary);
-            color: white;
+
+        .service-selector button.active {
+            background: #8b5cf6;
+            border-color: #8b5cf6;
+            color: #fff;
         }
 
         .input-area textarea {
             width: 100%;
-            min-height: 160px;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            padding: 18px;
-            color: var(--text);
+            min-height: 140px;
+            background: #0a0a1a;
+            border: 1px solid #1e1e3a;
+            border-radius: 12px;
+            padding: 16px;
+            color: #fff;
             font-size: 15px;
             resize: vertical;
-            transition: var(--transition);
+            transition: 0.3s;
             line-height: 1.8;
         }
+
         .input-area textarea:focus {
             outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.15);
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1);
         }
+
         .input-area textarea::placeholder {
-            color: var(--text-muted);
+            color: #606080;
         }
 
         .input-actions {
             display: flex;
-            gap: 15px;
-            margin-top: 18px;
+            gap: 14px;
+            margin-top: 16px;
             flex-wrap: wrap;
         }
-        .input-actions .btn {
+
+        .btn {
             padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: 600;
             font-size: 15px;
-            flex: 1;
-            min-width: 140px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
-        .input-actions .btn:disabled {
+
+        .btn-primary {
+            background: #8b5cf6;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #7c3aed;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.4);
+        }
+
+        .btn-primary:disabled {
             opacity: 0.5;
             cursor: not-allowed;
             transform: none !important;
         }
 
-        .output-area {
-            margin-top: 30px;
-            background: var(--bg);
-            border-radius: var(--radius-sm);
-            padding: 20px;
-            min-height: 100px;
-            border: 1px solid var(--border);
-            display: none;
-        }
-        .output-area.show {
-            display: block;
-        }
-        .output-area .output-content {
-            color: var(--text);
-            line-height: 1.9;
-            white-space: pre-wrap;
-            font-size: 15px;
-        }
-        .output-area .copy-btn {
-            margin-top: 15px;
+        .btn-outline {
             background: transparent;
-            border: 1px solid var(--border);
-            color: var(--text-muted);
-            padding: 6px 18px;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 13px;
+            color: #fff;
+            border: 1.5px solid #1e1e3a;
         }
-        .output-area .copy-btn:hover {
-            border-color: var(--primary);
-            color: var(--text);
+
+        .btn-outline:hover {
+            border-color: #8b5cf6;
+        }
+
+        .btn-success {
+            background: #10b981;
+            color: #fff;
+        }
+
+        .btn-success:hover {
+            background: #059669;
         }
 
         .loading {
             display: none;
             text-align: center;
-            padding: 30px 0;
+            padding: 25px 0;
         }
+
         .loading.show {
             display: block;
         }
-        .loading .spinner {
-            width: 45px;
-            height: 45px;
-            border: 4px solid var(--border);
-            border-top: 4px solid var(--primary);
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #1e1e3a;
+            border-top: 4px solid #8b5cf6;
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
-            margin: 0 auto 12px;
+            margin: 0 auto 10px;
         }
+
         @keyframes spin {
             to {
                 transform: rotate(360deg);
             }
         }
 
-        /* ===== AUTH MODAL ===== */
-        .modal-overlay {
+        .output-area {
+            margin-top: 25px;
+            background: #0a0a1a;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #1e1e3a;
             display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(8px);
-            z-index: 999;
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-overlay.show {
-            display: flex;
         }
 
-        .modal {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 40px;
-            max-width: 420px;
-            width: 90%;
-            position: relative;
+        .output-area.show {
+            display: block;
         }
-        .modal .close-modal {
-            position: absolute;
-            top: 16px;
-            left: 20px;
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-size: 24px;
-            cursor: pointer;
-        }
-        .modal h2 {
-            text-align: center;
-            margin-bottom: 8px;
-        }
-        .modal p {
-            text-align: center;
-            color: var(--text-muted);
-            margin-bottom: 25px;
-            font-size: 14px;
-        }
-        .modal input {
-            width: 100%;
-            padding: 14px 16px;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            color: var(--text);
+
+        .output-content {
+            color: #e0e0f0;
+            line-height: 1.9;
+            white-space: pre-wrap;
             font-size: 15px;
-            margin-bottom: 14px;
-            transition: var(--transition);
         }
-        .modal input:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-        .modal .btn {
-            width: 100%;
-            padding: 14px;
-            font-size: 16px;
-        }
-        .modal .switch-auth {
-            text-align: center;
-            margin-top: 16px;
-            color: var(--text-muted);
-            font-size: 14px;
-        }
-        .modal .switch-auth a {
-            color: var(--primary-light);
-            cursor: pointer;
-            text-decoration: none;
-        }
-        .modal .switch-auth a:hover {
-            text-decoration: underline;
+
+        .output-actions {
+            margin-top: 14px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
         /* ===== PRICING ===== */
         .pricing {
-            padding: 60px 0;
+            padding: 40px 0 60px;
         }
+
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
             margin-top: 20px;
         }
+
         .plan {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: 35px 28px;
-            border-radius: var(--radius);
+            background: #12122a;
+            border: 1px solid #1e1e3a;
+            border-radius: 16px;
+            padding: 30px 24px;
             text-align: center;
-            transition: var(--transition);
+            transition: 0.4s;
         }
+
         .plan:hover {
             transform: translateY(-4px);
-            border-color: var(--primary);
+            border-color: #8b5cf6;
         }
+
         .plan.popular {
-            border-color: var(--primary);
-            box-shadow: var(--shadow);
+            border-color: #8b5cf6;
             position: relative;
+            box-shadow: 0 10px 40px rgba(139, 92, 246, 0.15);
         }
-        .plan .popular-badge {
+
+        .plan .pop-badge {
             position: absolute;
             top: -12px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--primary);
-            color: white;
-            padding: 4px 20px;
+            background: #8b5cf6;
+            color: #fff;
+            padding: 3px 20px;
             border-radius: 50px;
             font-size: 12px;
             font-weight: 700;
         }
+
         .plan h3 {
-            font-size: 22px;
-            margin-bottom: 6px;
+            font-size: 20px;
+            margin-bottom: 4px;
         }
+
         .plan .price {
-            font-size: 44px;
+            font-size: 38px;
             font-weight: 800;
-            margin: 12px 0;
+            margin: 10px 0;
         }
+
         .plan .price small {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 400;
-            color: var(--text-muted);
+            color: #a0a0c0;
         }
+
         .plan ul {
             list-style: none;
             text-align: right;
-            margin: 20px 0 28px;
+            margin: 16px 0 24px;
         }
+
         .plan ul li {
-            padding: 6px 0;
-            color: var(--text-muted);
+            padding: 5px 0;
+            color: #a0a0c0;
+            font-size: 14px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
+
         .plan ul li i {
-            color: #10B981;
+            color: #10b981;
         }
+
         .plan .btn {
             width: 100%;
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 50px 0 30px;
-            margin-top: 40px;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 30px;
-        }
-        .footer-grid .logo {
-            font-size: 22px;
-        }
-        .footer-grid p {
-            color: var(--text-muted);
-            font-size: 14px;
-            margin: 8px 0 16px;
-            line-height: 1.7;
-        }
-        .social-links {
-            display: flex;
-            gap: 14px;
-        }
-        .social-links a {
-            color: var(--text-muted);
-            font-size: 20px;
-            transition: var(--transition);
-        }
-        .social-links a:hover {
-            color: var(--primary);
-        }
-        .footer-grid h4 {
-            margin-bottom: 14px;
-            font-size: 16px;
-        }
-        .footer-grid a {
-            display: block;
-            color: var(--text-muted);
-            text-decoration: none;
-            padding: 4px 0;
-            font-size: 14px;
-            transition: var(--transition);
-        }
-        .footer-grid a:hover {
-            color: var(--text);
-        }
-        .footer-bottom {
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 13px;
-            border-top: 1px solid var(--border);
-            padding-top: 25px;
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 38px;
-            }
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 75px;
-                left: 0;
-                right: 0;
-                background: var(--bg);
-                padding: 25px;
-                border-bottom: 1px solid var(--border);
-                gap: 16px;
-            }
-            .nav-links.open {
-                display: flex;
-            }
-            .menu-toggle {
-                display: block;
-            }
-            .hero h1 {
-                font-size: 30px;
-            }
-            .hero .stats {
-                gap: 25px;
-                flex-wrap: wrap;
-            }
-            .hero .stats .num {
-                font-size: 22px;
-            }
-            .section-title {
-                font-size: 28px;
-            }
-            .workspace-header {
-                flex-direction: column;
-                align-items: stretch;
-                text-align: center;
-            }
-            .credit-display {
-                text-align: center;
-            }
-            .tool-selector {
-                justify-content: center;
-            }
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-            .modal {
-                padding: 30px 20px;
-            }
+            justify-content: center;
         }
 
         /* ===== TOAST ===== */
         .toast {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: 16px 28px;
-            border-radius: var(--radius-sm);
-            color: var(--text);
+            bottom: 25px;
+            right: 25px;
+            background: #12122a;
+            border: 1px solid #1e1e3a;
+            padding: 14px 28px;
+            border-radius: 12px;
+            color: #fff;
             font-weight: 500;
             z-index: 9999;
-            transform: translateY(100px);
+            transform: translateY(80px);
             opacity: 0;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
+            transition: 0.5s;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            max-width: 90%;
         }
+
         .toast.show {
             transform: translateY(0);
             opacity: 1;
         }
+
         .toast.success {
-            border-color: #10B981;
+            border-color: #10b981;
         }
+
         .toast.error {
-            border-color: #EF4444;
+            border-color: #ef4444;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            border-top: 1px solid #1e1e3a;
+            padding: 35px 0 20px;
+            margin-top: 30px;
+            text-align: center;
+            color: #a0a0c0;
+            font-size: 14px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: #0a0a1a;
+                padding: 25px;
+                border-bottom: 1px solid #1e1e3a;
+                gap: 14px;
+            }
+
+            nav.open {
+                display: flex;
+            }
+
+            nav a {
+                margin-left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .section-title {
+                font-size: 26px;
+            }
+
+            .workspace {
+                padding: 20px 16px;
+            }
+
+            .workspace-header {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+
+            .service-selector {
+                justify-content: center;
+            }
+
+            .hero .stats {
+                gap: 20px;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .input-actions .btn {
+                flex: 1;
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -784,36 +642,19 @@
     <!-- ===== TOAST ===== -->
     <div class="toast" id="toast"></div>
 
-    <!-- ===== AUTH MODAL ===== -->
-    <div class="modal-overlay" id="authModal">
-        <div class="modal">
-            <button class="close-modal" id="closeModal">&times;</button>
-            <h2 id="authTitle">إنشاء حساب</h2>
-            <p id="authSub">انضم إلى آلاف المستخدمين الذين يستخدمون الذكاء الاصطناعي</p>
-            <input type="text" id="authName" placeholder="الاسم الكامل" />
-            <input type="email" id="authEmail" placeholder="البريد الإلكتروني" />
-            <input type="password" id="authPassword" placeholder="كلمة المرور (6 أحرف على الأقل)" />
-            <button class="btn btn-primary" id="authSubmit">تسجيل</button>
-            <div class="switch-auth">
-                <span id="authSwitchText">لديك حساب؟</span>
-                <a id="authSwitchLink">تسجيل الدخول</a>
-            </div>
-        </div>
-    </div>
-
     <!-- ===== HEADER ===== -->
     <header>
         <div class="container">
             <div class="logo">
                 <i class="fas fa-brain"></i>
-                <span>ArabicAI</span>
+                <span>ذكاءAI</span>
             </div>
-            <div class="nav-links" id="navLinks">
-                <a href="#tools">الأدوات</a>
+            <nav id="navMenu">
+                <a href="#services">الخدمات</a>
                 <a href="#workspace">مساحة العمل</a>
-                <a href="#pricing">الأسعار</a>
-                <a href="#" id="authBtn" class="btn btn-primary">ابدأ مجانًا</a>
-            </div>
+                <a href="#pricing">الباقات</a>
+                <a href="#" class="btn-nav" id="authBtn">ابدأ مجانًا</a>
+            </nav>
             <button class="menu-toggle" id="menuToggle">
                 <i class="fas fa-bars"></i>
             </button>
@@ -823,62 +664,62 @@
     <!-- ===== HERO ===== -->
     <section class="hero">
         <div class="container">
-            <div class="badge">🚀 أكثر من 12,000 مستخدم نشط</div>
-            <h1>ذكاء اصطناعي <span>للمحتوى العربي</span></h1>
-            <p>اكتب، لخص، ترجم، وحلل نصوصك باللغة العربية باستخدام أحدث تقنيات الذكاء الاصطناعي. مجانًا للبدء!</p>
-            <a href="#" class="btn btn-primary" id="heroCta" style="padding:16px 48px;font-size:17px;">
-                <i class="fas fa-rocket"></i> ابدأ الآن مجانًا
+            <div class="badge">🚀 أكثر من 5,000 مستخدم وثقوا بنا</div>
+            <h1>خدمات <span>الذكاء الاصطناعي</span><br />بأسعار تنافسية</h1>
+            <p>اكتب، لخص، ترجم، حلل، وصمم باستخدام أحدث تقنيات الذكاء الاصطناعي. ابدأ مجانًا الآن!</p>
+            <a href="#" class="btn btn-primary" id="heroCta" style="padding:14px 40px;font-size:16px;">
+                <i class="fas fa-rocket"></i> جرب الخدمات مجانًا
             </a>
             <div class="stats">
                 <div><span class="num">4.9</span><span class="label">⭐ تقييم</span></div>
-                <div><span class="num">98%</span><span class="label">رضا</span></div>
-                <div><span class="num">+12K</span><span class="label">مستخدم</span></div>
-                <div><span class="num">50K+</span><span class="label">مقال مولد</span></div>
+                <div><span class="num">97%</span><span class="label">رضا</span></div>
+                <div><span class="num">+5K</span><span class="label">مستخدم</span></div>
+                <div><span class="num">10K+</span><span class="label">طلب منفذ</span></div>
             </div>
         </div>
     </section>
 
-    <!-- ===== TOOLS ===== -->
-    <section class="tools" id="tools">
+    <!-- ===== SERVICES ===== -->
+    <section class="services" id="services">
         <div class="container">
-            <h2 class="section-title">أدوات <span>الذكاء الاصطناعي</span></h2>
-            <p class="section-subtitle">اختر الأداة التي تناسبك واستفد من قوة الذكاء الاصطناعي</p>
-            <div class="tools-grid">
-                <div class="tool-card" data-tool="write">
+            <h2 class="section-title">خدماتنا <span>الذكية</span></h2>
+            <p class="section-sub">اختر الخدمة التي تحتاجها واحصل على نتيجة احترافية</p>
+            <div class="services-grid">
+                <div class="service-card" data-service="write">
                     <span class="icon"><i class="fas fa-pen-fancy"></i></span>
-                    <h3>كاتب المقالات</h3>
-                    <p>أنشئ مقالات احترافية، منشورات مدونة، ومحتوى تسويقي بالعربية بجودة عالية</p>
-                    <span class="tag"><i class="fas fa-star"></i> الأكثر استخدامًا</span>
+                    <h3>كتابة محتوى</h3>
+                    <p>مقالات، منشورات، نصوص تسويقية بجودة احترافية</p>
+                    <span class="price-tag">5 نقاط</span>
                 </div>
-                <div class="tool-card" data-tool="summarize">
+                <div class="service-card" data-service="summarize">
                     <span class="icon"><i class="fas fa-compress"></i></span>
-                    <h3>ملخص النصوص</h3>
-                    <p>لخّص الكتب، التقارير، والمقالات الطويلة في نقاط مختصرة وواضحة</p>
-                    <span class="tag"><i class="fas fa-bolt"></i> سريع</span>
+                    <h3>تلخيص نصوص</h3>
+                    <p>لخص الكتب، التقارير، والمقالات الطويلة بسرعة</p>
+                    <span class="price-tag">3 نقاط</span>
                 </div>
-                <div class="tool-card" data-tool="translate">
+                <div class="service-card" data-service="translate">
                     <span class="icon"><i class="fas fa-language"></i></span>
-                    <h3>ترجمة احترافية</h3>
-                    <p>ترجمة دقيقة بين العربية والإنجليزية مع مراعاة السياق والمصطلحات</p>
-                    <span class="tag"><i class="fas fa-globe"></i> ثنائي</span>
+                    <h3>ترجمة فورية</h3>
+                    <p>ترجمة دقيقة بين العربية والإنجليزية</p>
+                    <span class="price-tag">3 نقاط</span>
                 </div>
-                <div class="tool-card" data-tool="analyze">
+                <div class="service-card" data-service="analyze">
                     <span class="icon"><i class="fas fa-heart"></i></span>
-                    <h3>تحليل المشاعر</h3>
-                    <p>حلل مشاعر العملاء من التعليقات، التويتر، وآراء المنتجات</p>
-                    <span class="tag"><i class="fas fa-chart-line"></i> تحليلات</span>
+                    <h3>تحليل مشاعر</h3>
+                    <p>حلل مشاعر العملاء من التعليقات والآراء</p>
+                    <span class="price-tag">4 نقاط</span>
                 </div>
-                <div class="tool-card" data-tool="code">
+                <div class="service-card" data-service="code">
                     <span class="icon"><i class="fas fa-code"></i></span>
                     <h3>مساعد برمجي</h3>
-                    <p>اكتب كود برمجي بلغة عربية مفهومة، واحصل على حلول برمجية فورية</p>
-                    <span class="tag"><i class="fas fa-robot"></i> للمبرمجين</span>
+                    <p>اكتب كود برمجي بلغة عربية مفهومة</p>
+                    <span class="price-tag">6 نقاط</span>
                 </div>
-                <div class="tool-card" data-tool="ideas">
+                <div class="service-card" data-service="ideas">
                     <span class="icon"><i class="fas fa-lightbulb"></i></span>
-                    <h3>مولد الأفكار</h3>
-                    <p>احصل على أفكار إبداعية لمشاريع، محتوى، وحلول مبتكرة</p>
-                    <span class="tag"><i class="fas fa-sparkles"></i> إبداعي</span>
+                    <h3>توليد أفكار</h3>
+                    <p>احصل على أفكار إبداعية لمشاريعك</p>
+                    <span class="price-tag">2 نقاط</span>
                 </div>
             </div>
         </div>
@@ -889,22 +730,22 @@
         <div class="container">
             <div class="workspace-header">
                 <h2><i class="fas fa-terminal"></i> مساحة العمل</h2>
-                <div class="credit-display">
+                <div class="credit-box">
                     <i class="fas fa-coins"></i> الرصيد: <span id="creditDisplay">100</span> نقطة
                 </div>
             </div>
 
-            <div class="tool-selector" id="toolSelector">
-                <button class="active" data-tool="write">✍️ كاتب</button>
-                <button data-tool="summarize">📝 ملخص</button>
-                <button data-tool="translate">🌐 ترجمة</button>
-                <button data-tool="analyze">❤️ تحليل</button>
-                <button data-tool="code">💻 برمجة</button>
-                <button data-tool="ideas">💡 أفكار</button>
+            <div class="service-selector" id="serviceSelector">
+                <button class="active" data-service="write">✍️ كتابة</button>
+                <button data-service="summarize">📝 تلخيص</button>
+                <button data-service="translate">🌐 ترجمة</button>
+                <button data-service="analyze">❤️ تحليل</button>
+                <button data-service="code">💻 برمجة</button>
+                <button data-service="ideas">💡 أفكار</button>
             </div>
 
             <div class="input-area">
-                <textarea id="inputText" placeholder="اكتب هنا... مثال: اكتب مقالة عن مستقبل الذكاء الاصطناعي في العالم العربي"></textarea>
+                <textarea id="inputText" placeholder="اكتب موضوعك هنا... مثال: اكتب مقالة عن مستقبل الذكاء الاصطناعي في العالم العربي"></textarea>
                 <div class="input-actions">
                     <button class="btn btn-primary" id="generateBtn"><i class="fas fa-wand-magic-sparkles"></i> توليد</button>
                     <button class="btn btn-outline" id="clearBtn"><i class="fas fa-eraser"></i> مسح</button>
@@ -913,12 +754,15 @@
 
             <div class="loading" id="loading">
                 <div class="spinner"></div>
-                <p style="color:var(--text-muted);">جاري التوليد... الذكاء الاصطناعي يعمل</p>
+                <p style="color:#a0a0c0;">جاري التوليد... الذكاء الاصطناعي يعمل</p>
             </div>
 
             <div class="output-area" id="outputArea">
                 <div class="output-content" id="outputContent"></div>
-                <button class="copy-btn" id="copyBtn"><i class="fas fa-copy"></i> نسخ النص</button>
+                <div class="output-actions">
+                    <button class="btn btn-outline" id="copyBtn"><i class="fas fa-copy"></i> نسخ</button>
+                    <button class="btn btn-outline" id="exportBtn"><i class="fas fa-download"></i> تحميل</button>
+                </div>
             </div>
         </div>
     </section>
@@ -926,30 +770,30 @@
     <!-- ===== PRICING ===== -->
     <section class="pricing" id="pricing">
         <div class="container">
-            <h2 class="section-title">خطط <span>تناسب احتياجاتك</span></h2>
-            <p class="section-subtitle">ابدأ مجانًا، وارتقِ عندما تحتاج للمزيد من الإمكانيات</p>
+            <h2 class="section-title">باقات <span>تناسب احتياجاتك</span></h2>
+            <p class="section-sub">ابدأ مجانًا وارتقِ عندما تحتاج للمزيد</p>
             <div class="pricing-grid">
                 <div class="plan">
                     <h3>مجاني</h3>
                     <div class="price">0 <small>$</small></div>
                     <ul>
-                        <li><i class="fas fa-check"></i> 100 نقطة شهريًا</li>
-                        <li><i class="fas fa-check"></i> 3 أدوات أساسية</li>
+                        <li><i class="fas fa-check"></i> 100 نقطة مجانية</li>
+                        <li><i class="fas fa-check"></i> 6 خدمات أساسية</li>
                         <li><i class="fas fa-check"></i> دعم أساسي</li>
                     </ul>
-                    <button class="btn btn-outline">اختر المجاني</button>
+                    <button class="btn btn-outline" onclick="showToast('✅ تم اختيار الباقة المجانية!')">اختر المجاني</button>
                 </div>
                 <div class="plan popular">
-                    <span class="popular-badge">🌟 الأكثر مبيعًا</span>
+                    <span class="pop-badge">🌟 الأكثر مبيعًا</span>
                     <h3>احترافي</h3>
                     <div class="price">9.99 <small>$</small></div>
                     <ul>
                         <li><i class="fas fa-check"></i> 5,000 نقطة شهريًا</li>
-                        <li><i class="fas fa-check"></i> جميع الأدوات</li>
-                        <li><i class="fas fa-check"></i> أولوية في المعالجة</li>
+                        <li><i class="fas fa-check"></i> أولوية المعالجة</li>
                         <li><i class="fas fa-check"></i> دعم VIP 24/7</li>
+                        <li><i class="fas fa-check"></i> تصدير متقدم</li>
                     </ul>
-                    <button class="btn btn-primary">اشترك الآن</button>
+                    <button class="btn btn-primary" onclick="showToast('💳 جاري التوجيه لبوابة الدفع...')">اشترك الآن</button>
                 </div>
                 <div class="plan">
                     <h3>مؤسسات</h3>
@@ -957,10 +801,10 @@
                     <ul>
                         <li><i class="fas fa-check"></i> 50,000 نقطة شهريًا</li>
                         <li><i class="fas fa-check"></i> API مخصص</li>
-                        <li><i class="fas fa-check"></i> فريق عمل (5+ أعضاء)</li>
+                        <li><i class="fas fa-check"></i> فريق عمل (5+)</li>
                         <li><i class="fas fa-check"></i> دعم مخصص</li>
                     </ul>
-                    <button class="btn btn-outline">تواصل معنا</button>
+                    <button class="btn btn-outline" onclick="showToast('📧 سيتم التواصل معك قريبًا')">تواصل معنا</button>
                 </div>
             </div>
         </div>
@@ -969,77 +813,39 @@
     <!-- ===== FOOTER ===== -->
     <footer>
         <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <div class="logo"><i class="fas fa-brain"></i> <span>ArabicAI</span></div>
-                    <p>منصة ذكاء اصطناعي متخصصة في اللغة العربية، نقدم أدوات ذكية لتحسين إنتاجيتك وإبداعك.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div>
-                    <h4>الأدوات</h4>
-                    <a href="#">كاتب المقالات</a>
-                    <a href="#">ملخص النصوص</a>
-                    <a href="#">ترجمة</a>
-                    <a href="#">تحليل المشاعر</a>
-                </div>
-                <div>
-                    <h4>الشركة</h4>
-                    <a href="#">من نحن</a>
-                    <a href="#">المدونة</a>
-                    <a href="#">وظائف</a>
-                    <a href="#">شراكات</a>
-                </div>
-                <div>
-                    <h4>الدعم</h4>
-                    <a href="#">الأسئلة الشائعة</a>
-                    <a href="#">تواصل معنا</a>
-                    <a href="#">سياسة الخصوصية</a>
-                    <a href="#">شروط الاستخدام</a>
-                </div>
-            </div>
-            <div class="footer-bottom">© 2026 ArabicAI. جميع الحقوق محفوظة. 🤖 صنع بالذكاء الاصطناعي</div>
+            <p>© 2026 ذكاءAI - جميع الحقوق محفوظة 🤖</p>
+            <p style="margin-top:6px;font-size:13px;color:#606080;">
+                <i class="fas fa-code"></i> صنع بالذكاء الاصطناعي
+            </p>
         </div>
     </footer>
 
-    <!-- ===== JAVASCRIPT ===== -->
+    <!-- ============================================ -->
+    <!-- ===== JAVASCRIPT (كامل بدون أخطاء) ===== -->
+    <!-- ============================================ -->
     <script>
         // ==============================
-        //  STATE
+        //  الحالة العامة
         // ==============================
         const state = {
-            isLoggedIn: false,
-            user: null,
             credits: 100,
-            selectedTool: 'write',
+            selectedService: 'write',
             isGenerating: false,
+            isLoggedIn: true, // محاكاة تسجيل الدخول
         };
 
         // ==============================
-        //  DOM REFS
+        //  عناصر DOM
         // ==============================
-        const $ = (sel) => document.querySelector(sel);
-        const $$ = (sel) => document.querySelectorAll(sel);
+        const $ = (s) => document.querySelector(s);
+        const $$ = (s) => document.querySelectorAll(s);
 
-        const authModal = $('#authModal');
+        const toast = $('#toast');
+        const menuToggle = $('#menuToggle');
+        const navMenu = $('#navMenu');
         const authBtn = $('#authBtn');
         const heroCta = $('#heroCta');
-        const closeModal = $('#closeModal');
-        const authTitle = $('#authTitle');
-        const authSub = $('#authSub');
-        const authName = $('#authName');
-        const authEmail = $('#authEmail');
-        const authPassword = $('#authPassword');
-        const authSubmit = $('#authSubmit');
-        const authSwitchText = $('#authSwitchText');
-        const authSwitchLink = $('#authSwitchLink');
-        const menuToggle = $('#menuToggle');
-        const navLinks = $('#navLinks');
-        const toolSelector = $('#toolSelector');
+        const serviceSelector = $('#serviceSelector');
         const inputText = $('#inputText');
         const generateBtn = $('#generateBtn');
         const clearBtn = $('#clearBtn');
@@ -1047,155 +853,215 @@
         const outputArea = $('#outputArea');
         const outputContent = $('#outputContent');
         const copyBtn = $('#copyBtn');
+        const exportBtn = $('#exportBtn');
         const creditDisplay = $('#creditDisplay');
-        const toast = $('#toast');
-
-        let isLoginMode = false;
 
         // ==============================
-        //  TOAST
+        //  التوست (إشعارات)
         // ==============================
         function showToast(msg, type = 'success') {
             toast.textContent = msg;
             toast.className = 'toast show ' + type;
             clearTimeout(toast._timer);
-            toast._timer = setTimeout(() => toast.classList.remove('show'), 3500);
+            toast._timer = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3500);
         }
 
         // ==============================
-        //  AUTH
+        //  تحديث الرصيد
         // ==============================
-        function toggleAuth(mode) {
-            isLoginMode = mode === 'login';
-            if (isLoginMode) {
-                authTitle.textContent = 'تسجيل الدخول';
-                authSub.textContent = 'مرحبًا بعودتك! سجل الدخول للمتابعة';
-                authSubmit.textContent = 'تسجيل الدخول';
-                authSwitchText.textContent = 'ليس لديك حساب؟';
-                authSwitchLink.textContent = 'إنشاء حساب';
-                authName.style.display = 'none';
-            } else {
-                authTitle.textContent = 'إنشاء حساب';
-                authSub.textContent = 'انضم إلى آلاف المستخدمين الذين يستخدمون الذكاء الاصطناعي';
-                authSubmit.textContent = 'إنشاء حساب';
-                authSwitchText.textContent = 'لديك حساب؟';
-                authSwitchLink.textContent = 'تسجيل الدخول';
-                authName.style.display = 'block';
-            }
-            authModal.classList.add('show');
-        }
-
-        function closeAuthModal() {
-            authModal.classList.remove('show');
-        }
-
-        function handleAuth() {
-            const email = authEmail.value.trim();
-            const password = authPassword.value.trim();
-
-            if (!email || !password) {
-                showToast('يرجى ملء جميع الحقول', 'error');
-                return;
-            }
-            if (password.length < 6) {
-                showToast('كلمة المرور يجب أن تكون 6 أحرف على الأقل', 'error');
-                return;
-            }
-            if (!isLoginMode) {
-                const name = authName.value.trim();
-                if (!name) {
-                    showToast('يرجى إدخال الاسم الكامل', 'error');
-                    return;
-                }
-            }
-
-            // محاكاة تسجيل/دخول
-            const username = email.split('@')[0];
-            state.isLoggedIn = true;
-            state.user = { email, username, name: authName.value.trim() || username };
-            state.credits = isLoginMode ? state.credits : 100;
-
-            updateUI();
-            closeAuthModal();
-            showToast(isLoginMode ? `مرحبًا بعودتك ${state.user.name}! 👋` : `أهلاً بك ${state.user.name}! 🎉`);
+        function updateCredits() {
+            creditDisplay.textContent = state.credits;
         }
 
         // ==============================
-        //  UI UPDATE
+        //  تبديل القائمة (الجوال)
         // ==============================
-        function updateUI() {
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('open');
+        });
+
+        // ==============================
+        //  أزرار تسجيل الدخول
+        // ==============================
+        authBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             if (state.isLoggedIn) {
-                authBtn.textContent = `👤 ${state.user.name}`;
-                authBtn.classList.remove('btn-primary');
-                authBtn.classList.add('btn-outline');
-                creditDisplay.textContent = state.credits;
-            } else {
+                state.isLoggedIn = false;
+                state.credits = 0;
                 authBtn.textContent = 'ابدأ مجانًا';
-                authBtn.classList.remove('btn-outline');
-                authBtn.classList.add('btn-primary');
-                creditDisplay.textContent = '0';
+                authBtn.classList.remove('btn-nav');
+                authBtn.style.background = '#8b5cf6';
+                authBtn.style.color = '#fff';
+                updateCredits();
+                showToast('👋 تم تسجيل الخروج', 'error');
+            } else {
+                state.isLoggedIn = true;
+                state.credits = 100;
+                authBtn.textContent = '👤 حسابي';
+                authBtn.classList.add('btn-nav');
+                updateCredits();
+                showToast('🎉 مرحبًا بك مجددًا!');
             }
-        }
+        });
+
+        heroCta.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (!state.isLoggedIn) {
+                state.isLoggedIn = true;
+                state.credits = 100;
+                authBtn.textContent = '👤 حسابي';
+                authBtn.classList.add('btn-nav');
+                updateCredits();
+                showToast('🎉 تم إنشاء حسابك المجاني!');
+            }
+            document.getElementById('workspace').scrollIntoView({ behavior: 'smooth' });
+        });
 
         // ==============================
-        //  TOOL SELECTOR
+        //  اختيار الخدمة
         // ==============================
-        toolSelector.addEventListener('click', (e) => {
+        serviceSelector.addEventListener('click', (e) => {
             const btn = e.target.closest('button');
             if (!btn) return;
-            $$('#toolSelector button').forEach(b => b.classList.remove('active'));
+
+            $$('#serviceSelector button').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            state.selectedTool = btn.dataset.tool;
-            // تحديث placeholder
+            state.selectedService = btn.dataset.service;
+
             const placeholders = {
                 write: 'اكتب موضوع المقال... مثال: "الذكاء الاصطناعي في التعليم"',
                 summarize: 'الصق النص الطويل الذي تريد تلخيصه...',
                 translate: 'اكتب النص للترجمة... مثال: "مرحباً، كيف حالك؟"',
                 analyze: 'اكتب النص لتحليل المشاعر... مثال: "المنتج رائع جداً!"',
-                code: 'صف المشكلة البرمجية... مثال: "اكتب دالة لجمع رقمين في بايثون"',
-                ideas: 'اكتب المجال الذي تريد أفكاراً فيه... مثال: "أفكار لمشاريع رقمية"',
+                code: 'صف المشكلة البرمجية... مثال: "اكتب دالة لجمع رقمين"',
+                ideas: 'اكتب المجال الذي تريد أفكاراً فيه...',
             };
-            inputText.placeholder = placeholders[state.selectedTool] || 'اكتب نصك هنا...';
+            inputText.placeholder = placeholders[state.selectedService] || 'اكتب نصك هنا...';
+            inputText.focus();
         });
 
         // ==============================
-        //  GENERATE (محاكاة الذكاء الاصطناعي)
+        //  بطاقات الخدمات (نفس التأثير)
         // ==============================
-        const toolResponses = {
-            write: (text) =>
-                `📝 **مقال عن: ${text}**\n\nالذكاء الاصطناعي يغير العالم بسرعة، وفي العالم العربي، نرى تبنيًا متزايدًا لهذه التقنية. تشير الدراسات إلى أن سوق الذكاء الاصطناعي في الشرق الأوسط سينمو بنسبة 30% سنويًا. \n\nيمكن للشركات العربية الاستفادة من الذكاء الاصطناعي في:\n• تحسين خدمة العملاء\n• تحليل البيانات الضخمة\n• أتمتة العمليات\n\nالمستقبل مشرق، والتحدي الأكبر هو تطوير الكوادر البشرية القادرة على قيادة هذا التحول.`,
+        $$('.service-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const service = card.dataset.service;
+                const btn = $$('#serviceSelector button');
+                btn.forEach(b => {
+                    b.classList.toggle('active', b.dataset.service === service);
+                });
+                state.selectedService = service;
+                document.getElementById('workspace').scrollIntoView({ behavior: 'smooth' });
 
-            summarize: (text) =>
-                `📌 **ملخص النص:**\n\n${text.slice(0, 200)}...\n\n✅ النقاط الرئيسية:\n• النقطة الأولى المستخلصة من النص\n• النقطة الثانية المهمة\n• النقطة الثالثة التي يجب الانتباه لها\n\n📊 نسبة الأهمية: 87%`,
+                const placeholders = {
+                    write: 'اكتب موضوع المقال... مثال: "الذكاء الاصطناعي في التعليم"',
+                    summarize: 'الصق النص الطويل الذي تريد تلخيصه...',
+                    translate: 'اكتب النص للترجمة... مثال: "مرحباً، كيف حالك؟"',
+                    analyze: 'اكتب النص لتحليل المشاعر... مثال: "المنتج رائع جداً!"',
+                    code: 'صف المشكلة البرمجية... مثال: "اكتب دالة لجمع رقمين"',
+                    ideas: 'اكتب المجال الذي تريد أفكاراً فيه...',
+                };
+                inputText.placeholder = placeholders[service] || 'اكتب نصك هنا...';
+                inputText.focus();
+            });
+        });
 
-            translate: (text) =>
-                `🌐 **الترجمة:**\n\n"${text}"\n\n⬇️ الترجمة إلى العربية:\n"${text.split(' ').reverse().join(' ')}" (ترجمة تقريبية)\n\n📌 ملاحظة: الترجمة الدقيقة تتطلب سياقًا إضافيًا.`,
-
-            analyze: (text) =>
-                `❤️ **تحليل المشاعر:**\n\nالنص: "${text}"\n\n📊 النتائج:\n• إيجابي: 78%\n• سلبي: 12%\n• محايد: 10%\n\n💡 التوصية: النص يحمل مشاعر إيجابية قوية، يمكن استخدامه في التسويق.`,
-
-            code: (text) =>
-                `💻 **الكود المطلوب:**\n\n// بناءً على طلبك: "${text}"\n\n\`\`\`python\ndef solve_problem(data):\n    result = []\n    for item in data:\n        if item > 0:\n            result.append(item * 2)\n    return result\n\n# مثال على الاستخدام\nmy_data = [1, 2, 3, 4]\nprint(solve_problem(my_data))  # [2, 4, 6, 8]\n\`\`\`\n\n📌 هذا حل مبدئي، يمكن تعديله حسب احتياجاتك.`,
-
-            ideas: (text) =>
-                `💡 **أفكار لمجال: ${text}**\n\n1. **منصة تعليمية ذكية** - تستخدم AI لتخصيص المحتوى لكل طالب\n2. **تطبيق مساعد شخصي** - يدير المهام والمواعيد باستخدام الصوت\n3. **روبوت محادثة تجاري** - يخدم العملاء على مدار الساعة\n4. **أداة تحليل سوق** - تتنبأ باتجاهات السوق بدقة\n5. **منصة محتوى تفاعلية** - تولد محتوى بناءً على اهتمامات المستخدم\n\n🚀 اختر فكرة وابدأ في تنفيذها اليوم!`
-        };
-
-        function getResponse(tool, input) {
+        // ==============================
+        //  توليد المحتوى (محاكاة ذكاء اصطناعي)
+        // ==============================
+        function getResponse(service, input) {
             const responses = {
-                write: `📝 **مقال عن: ${input || 'الذكاء الاصطناعي'}**\n\nالذكاء الاصطناعي يغير العالم بسرعة، وفي العالم العربي، نرى تبنيًا متزايدًا لهذه التقنية. تشير الدراسات إلى أن سوق الذكاء الاصطناعي في الشرق الأوسط سينمو بنسبة 30% سنويًا. \n\nيمكن للشركات العربية الاستفادة من الذكاء الاصطناعي في:\n• تحسين خدمة العملاء\n• تحليل البيانات الضخمة\n• أتمتة العمليات\n\nالمستقبل مشرق، والتحدي الأكبر هو تطوير الكوادر البشرية القادرة على قيادة هذا التحول.`,
+                write: `📝 **المقال:**\n\n"${input || 'الذكاء الاصطناعي'}"
 
-                summarize: `📌 **ملخص النص:**\n\n"${input || 'نص طويل حول موضوع ما'}"\n\n✅ **النقاط الرئيسية:**\n• النقطة الأولى المستخلصة من النص\n• النقطة الثانية المهمة\n• النقطة الثالثة التي يجب الانتباه لها\n\n📊 نسبة الأهمية: 87%`,
+الذكاء الاصطناعي يغير العالم بسرعة، وفي العالم العربي نرى تبنيًا متزايدًا لهذه التقنية. تشير الدراسات إلى أن سوق الذكاء الاصطناعي في الشرق الأوسط سينمو بنسبة 30% سنويًا.
 
-                translate: `🌐 **الترجمة:**\n\n"${input || 'Hello, how are you?'}"\n\n⬇️ **الترجمة إلى العربية:**\n"مرحباً، كيف حالك؟"\n\n📌 ملاحظة: الترجمة الدقيقة تتطلب سياقًا إضافيًا.`,
+**فوائد الذكاء الاصطناعي:**
+• تحسين خدمة العملاء
+• تحليل البيانات الضخمة
+• أتمتة العمليات
+• توفير الوقت والجهد
 
-                analyze: `❤️ **تحليل المشاعر:**\n\nالنص: "${input || 'هذا المنتج رائع جداً!'}"\n\n📊 **النتائج:**\n• إيجابي: 78%\n• سلبي: 12%\n• محايد: 10%\n\n💡 التوصية: النص يحمل مشاعر إيجابية قوية.`,
+**التحديات:**
+• نقص الكوادر المؤهلة
+• التكلفة العالية للبنية التحتية
+• مخاوف الخصوصية والأمان
 
-                code: `💻 **الكود المطلوب:**\n\n// بناءً على طلبك: "${input || 'اكتب دالة لجمع رقمين'}"\n\n\`\`\`python\ndef solve_problem(data):\n    result = []\n    for item in data:\n        if item > 0:\n            result.append(item * 2)\n    return result\n\n# مثال على الاستخدام\nmy_data = [1, 2, 3, 4]\nprint(solve_problem(my_data))  # [2, 4, 6, 8]\n\`\`\`\n\n📌 هذا حل مبدئي، يمكن تعديله حسب احتياجاتك.`,
+المستقبل مشرق، والتحدي الأكبر هو تطوير الكوادر البشرية القادرة على قيادة هذا التحول.`,
 
-                ideas: `💡 **أفكار لمجال: ${input || 'المشاريع الرقمية'}**\n\n1. **منصة تعليمية ذكية** - تستخدم AI لتخصيص المحتوى لكل طالب\n2. **تطبيق مساعد شخصي** - يدير المهام والمواعيد باستخدام الصوت\n3. **روبوت محادثة تجاري** - يخدم العملاء على مدار الساعة\n4. **أداة تحليل سوق** - تتنبأ باتجاهات السوق بدقة\n5. **منصة محتوى تفاعلية** - تولد محتوى بناءً على اهتمامات المستخدم\n\n🚀 اختر فكرة وابدأ في تنفيذها اليوم!`
+                summarize: `📌 **ملخص النص:**\n\n"${input || 'نص طويل حول موضوع ما'}"
+
+✅ **النقاط الرئيسية:**
+1. النقطة الأولى المستخلصة من النص
+2. النقطة الثانية المهمة جدًا
+3. النقطة الثالثة التي يجب الانتباه لها
+4. النقطة الرابعة كخلاصة نهائية
+
+📊 **نسبة الأهمية:** 87%
+⏱️ **وقت القراءة المقدر:** 3 دقائق`,
+
+                translate: `🌐 **الترجمة:**\n\n"${input || 'Hello, how are you?'}"
+
+⬇️ **الترجمة إلى العربية:**
+"مرحباً، كيف حالك؟"
+
+⬇️ **الترجمة إلى الإنجليزية:**
+"${input || 'مرحباً، كيف حالك؟'}"
+
+📌 ملاحظة: الترجمة تمت مع مراعاة السياق اللغوي.`,
+
+                analyze: `❤️ **تحليل المشاعر:**\n\nالنص: "${input || 'هذا المنتج رائع جداً!'}"
+
+📊 **النتائج:**
+• إيجابي: 78% 😊
+• سلبي: 12% 😞
+• محايد: 10% 😐
+
+💡 **التوصية:**
+النص يحمل مشاعر إيجابية قوية، يمكن استخدامه في الحملات التسويقية.
+
+📈 **درجة الثقة:** 92%`,
+
+                code: `💻 **الكود المطلوب:**\n\n// بناءً على طلبك: "${input || 'جمع رقمين'}"
+
+\`\`\`python
+def solve_problem(a, b):
+    """دالة لحل المشكلة المطلوبة"""
+    result = a + b
+    return result
+
+# مثال على الاستخدام
+num1 = 5
+num2 = 10
+print(f"النتيجة: {solve_problem(num1, num2)}")  # النتيجة: 15
+\`\`\`
+
+📌 **شرح الكود:**
+- الدالة تأخذ معلمتين وتقوم بجمعهما
+- يمكن تعديلها حسب احتياجاتك
+
+🛠️ **اقتراحات للتطوير:**
+• إضافة معالجة للأخطاء
+• دعم عمليات رياضية أخرى`,
+
+                ideas: `💡 **أفكار لمجال: ${input || 'المشاريع الرقمية'}**
+
+1. **منصة تعليمية ذكية** - تستخدم AI لتخصيص المحتوى لكل طالب
+2. **تطبيق مساعد شخصي** - يدير المهام والمواعيد باستخدام الصوت
+3. **روبوت محادثة تجاري** - يخدم العملاء على مدار الساعة
+4. **أداة تحليل سوق** - تتنبأ باتجاهات السوق بدقة
+5. **منصة محتوى تفاعلية** - تولد محتوى بناءً على اهتمامات المستخدم
+
+🚀 **نصائح للتنفيذ:**
+• ابدأ بفكرة واحدة فقط
+• اختبر الفكرة مع 100 مستخدم
+• طوّر بناءً على الملاحظات
+
+💪 **حظاً موفقاً!**`
             };
-            return responses[tool] || responses.write;
+
+            return responses[service] || responses.write;
         }
 
         async function generate() {
@@ -1203,35 +1069,39 @@
 
             const input = inputText.value.trim();
             if (!input) {
-                showToast('يرجى كتابة النص أولاً ✍️', 'error');
+                showToast('✍️ يرجى كتابة النص أولاً', 'error');
                 return;
             }
 
             if (!state.isLoggedIn) {
-                showToast('يرجى تسجيل الدخول أولاً 🔐', 'error');
-                toggleAuth('login');
+                showToast('🔐 يرجى تسجيل الدخول أولاً', 'error');
                 return;
             }
 
-            if (state.credits < 5) {
-                showToast('رصيدك غير كافٍ! اشحن حسابك 💰', 'error');
+            // تكلفة الخدمة
+            const costs = { write: 5, summarize: 3, translate: 3, analyze: 4, code: 6, ideas: 2 };
+            const cost = costs[state.selectedService] || 5;
+
+            if (state.credits < cost) {
+                showToast('💰 رصيدك غير كافٍ! اختر باقة مدفوعة', 'error');
                 return;
             }
 
             // خصم النقاط
-            state.credits -= 5;
-            creditDisplay.textContent = state.credits;
+            state.credits -= cost;
+            updateCredits();
+
             state.isGenerating = true;
             generateBtn.disabled = true;
-            generateBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري...';
+            generateBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التوليد...';
 
             loading.classList.add('show');
             outputArea.classList.remove('show');
 
             // محاكاة زمن المعالجة
-            await new Promise(resolve => setTimeout(resolve, 1800 + Math.random() * 1200));
+            await new Promise(resolve => setTimeout(resolve, 1500 + Math.random() * 1200));
 
-            const response = getResponse(state.selectedTool, input);
+            const response = getResponse(state.selectedService, input);
             outputContent.textContent = response;
             outputArea.classList.add('show');
             loading.classList.remove('show');
@@ -1244,80 +1114,66 @@
         }
 
         // ==============================
-        //  COPY
+        //  نسخ النص
         // ==============================
-        copyBtn.addEventListener('click', () => {
+        copyBtn.addEventListener('click', async () => {
             const text = outputContent.textContent;
-            if (!text) return;
-            navigator.clipboard.writeText(text).then(() => {
+            if (!text) {
+                showToast('📭 لا يوجد نص للنسخ', 'error');
+                return;
+            }
+
+            try {
+                await navigator.clipboard.writeText(text);
                 showToast('📋 تم نسخ النص!');
-            }).catch(() => {
-                // Fallback
+            } catch {
+                // طريقة احتياطية
                 const range = document.createRange();
                 range.selectNode(outputContent);
                 window.getSelection().removeAllRanges();
                 window.getSelection().addRange(range);
                 document.execCommand('copy');
                 showToast('📋 تم نسخ النص!');
-            });
+            }
         });
 
         // ==============================
-        //  CLEAR
+        //  تحميل النص (تصدير)
+        // ==============================
+        exportBtn.addEventListener('click', () => {
+            const text = outputContent.textContent;
+            if (!text) {
+                showToast('📭 لا يوجد نص للتحميل', 'error');
+                return;
+            }
+
+            const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `ذكاءAI_${state.selectedService}_${Date.now()}.txt`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(link.href);
+            showToast('📥 تم تحميل الملف!');
+        });
+
+        // ==============================
+        //  مسح
         // ==============================
         clearBtn.addEventListener('click', () => {
             inputText.value = '';
             outputArea.classList.remove('show');
             outputContent.textContent = '';
+            showToast('🗑️ تم المسح');
         });
 
         // ==============================
-        //  EVENTS
+        //  أزرار التوليد
         // ==============================
-        authBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            if (state.isLoggedIn) {
-                // تسجيل الخروج
-                state.isLoggedIn = false;
-                state.user = null;
-                state.credits = 0;
-                updateUI();
-                showToast('👋 تم تسجيل الخروج');
-                return;
-            }
-            toggleAuth('signup');
-        });
-
-        heroCta.addEventListener('click', (e) => {
-            e.preventDefault();
-            if (state.isLoggedIn) {
-                document.getElementById('workspace').scrollIntoView({ behavior: 'smooth' });
-            } else {
-                toggleAuth('signup');
-            }
-        });
-
-        closeModal.addEventListener('click', closeAuthModal);
-        authModal.addEventListener('click', (e) => {
-            if (e.target === authModal) closeAuthModal();
-        });
-
-        authSwitchLink.addEventListener('click', () => {
-            toggleAuth(isLoginMode ? 'signup' : 'login');
-        });
-
-        authSubmit.addEventListener('click', handleAuth);
-        authPassword.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') handleAuth();
-        });
-
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('open');
-        });
-
         generateBtn.addEventListener('click', generate);
 
-        // Ctrl+Enter لتوليد
+        // اختصار Ctrl+Enter
         inputText.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' && e.ctrlKey) {
                 e.preventDefault();
@@ -1326,39 +1182,14 @@
         });
 
         // ==============================
-        //  TOOL CARDS CLICK
+        //  تهيئة
         // ==============================
-        $$('.tool-card').forEach(card => {
-            card.addEventListener('click', () => {
-                const tool = card.dataset.tool;
-                const btn = $$('#toolSelector button');
-                btn.forEach(b => {
-                    b.classList.toggle('active', b.dataset.tool === tool);
-                });
-                state.selectedTool = tool;
-                document.getElementById('workspace').scrollIntoView({ behavior: 'smooth' });
-                // تحديث placeholder
-                const placeholders = {
-                    write: 'اكتب موضوع المقال... مثال: "الذكاء الاصطناعي في التعليم"',
-                    summarize: 'الصق النص الطويل الذي تريد تلخيصه...',
-                    translate: 'اكتب النص للترجمة... مثال: "مرحباً، كيف حالك؟"',
-                    analyze: 'اكتب النص لتحليل المشاعر... مثال: "المنتج رائع جداً!"',
-                    code: 'صف المشكلة البرمجية... مثال: "اكتب دالة لجمع رقمين في بايثون"',
-                    ideas: 'اكتب المجال الذي تريد أفكاراً فيه... مثال: "أفكار لمشاريع رقمية"',
-                };
-                inputText.placeholder = placeholders[tool] || 'اكتب نصك هنا...';
-                inputText.focus();
-            });
-        });
-
-        // ==============================
-        //  INIT
-        // ==============================
-        updateUI();
+        updateCredits();
         inputText.placeholder = 'اكتب موضوع المقال... مثال: "الذكاء الاصطناعي في التعليم"';
 
-        console.log('🚀 ArabicAI منصة الذكاء الاصطناعي العربية');
-        console.log('💡 اضغط Ctrl+Enter للتوليد السريع');
+        console.log('🚀 ذكاءAI - منصة الخدمات الذكية');
+        console.log('💡 اختصار: Ctrl+Enter للتوليد السريع');
+        console.log('📊 رصيدك الحالي:', state.credits, 'نقطة');
     </script>
 
 </body>
