@@ -6,10 +6,21 @@
     <title>ZenithTools</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* أساسيات */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', sans-serif; background: #f8faff; color: #1a1a2e; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f8faff;
+            color: #1a1a2e;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
         /* الهيدر */
         header {
@@ -26,7 +37,9 @@
             color: #6C63FF;
             cursor: pointer;
         }
-        .logo i { margin-left: 10px; }
+        .logo i {
+            margin-left: 10px;
+        }
         nav a {
             color: #1a1a2e;
             text-decoration: none;
@@ -34,8 +47,11 @@
             font-weight: 500;
             font-size: 14px;
             cursor: pointer;
+            display: inline-block;
         }
-        nav a:hover { color: #6C63FF; }
+        nav a:hover {
+            color: #6C63FF;
+        }
 
         .btn {
             background: #6C63FF;
@@ -50,16 +66,44 @@
             font-size: 14px;
             transition: 0.3s;
         }
-        .btn:hover { background: #554ddf; transform: translateY(-2px); }
-        .btn-outline { background: transparent; color: #6C63FF !important; border: 2px solid #6C63FF; }
-        .btn-outline:hover { background: #6C63FF; color: #fff !important; }
-        .btn-danger { background: #e74c6f; }
-        .btn-danger:hover { background: #c0392b; }
+        .btn:hover {
+            background: #554ddf;
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            background: transparent;
+            color: #6C63FF !important;
+            border: 2px solid #6C63FF;
+        }
+        .btn-outline:hover {
+            background: #6C63FF;
+            color: #fff !important;
+        }
+        .btn-danger {
+            background: #e74c6f;
+        }
+        .btn-danger:hover {
+            background: #c0392b;
+        }
 
         /* الصفحات */
-        .page { display: none; animation: fade 0.3s; }
-        .page.active { display: block; }
-        @keyframes fade { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+            animation: fade 0.3s;
+        }
+        @keyframes fade {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
         /* الصفحة الرئيسية */
         .hero {
@@ -70,11 +114,33 @@
             flex-wrap: wrap;
             gap: 30px;
         }
-        .hero-text { flex: 1; min-width: 280px; }
-        .hero-text h1 { font-size: 40px; font-weight: 900; line-height: 1.2; margin-bottom: 15px; }
-        .hero-text h1 span { color: #6C63FF; }
-        .hero-text p { font-size: 17px; color: #555; margin-bottom: 20px; max-width: 450px; line-height: 1.7; }
-        .hero-image { flex: 1; min-width: 180px; text-align: center; font-size: 100px; color: #6C63FF; }
+        .hero-text {
+            flex: 1;
+            min-width: 280px;
+        }
+        .hero-text h1 {
+            font-size: 40px;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+        .hero-text h1 span {
+            color: #6C63FF;
+        }
+        .hero-text p {
+            font-size: 17px;
+            color: #555;
+            margin-bottom: 20px;
+            max-width: 450px;
+            line-height: 1.7;
+        }
+        .hero-image {
+            flex: 1;
+            min-width: 180px;
+            text-align: center;
+            font-size: 100px;
+            color: #6C63FF;
+        }
 
         .stats {
             display: flex;
@@ -84,12 +150,21 @@
             background: #fff;
             padding: 14px 24px;
             border-radius: 50px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
             max-width: 380px;
         }
-        .stats div { text-align: center; }
-        .stats div h3 { font-size: 24px; color: #6C63FF; }
-        .stats div span { color: #888; font-size: 13px; display: block; }
+        .stats div {
+            text-align: center;
+        }
+        .stats div h3 {
+            font-size: 24px;
+            color: #6C63FF;
+        }
+        .stats div span {
+            color: #888;
+            font-size: 13px;
+            display: block;
+        }
 
         .cards {
             display: grid;
@@ -105,10 +180,23 @@
             border: 1px solid #f0f2f8;
             transition: 0.3s;
         }
-        .card:hover { transform: translateY(-5px); border-color: #6C63FF; }
-        .card i { font-size: 40px; color: #6C63FF; margin-bottom: 12px; }
-        .card h3 { font-size: 18px; margin-bottom: 6px; }
-        .card p { color: #666; font-size: 14px; }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #6C63FF;
+        }
+        .card i {
+            font-size: 40px;
+            color: #6C63FF;
+            margin-bottom: 12px;
+        }
+        .card h3 {
+            font-size: 18px;
+            margin-bottom: 6px;
+        }
+        .card p {
+            color: #666;
+            font-size: 14px;
+        }
 
         .cta-box {
             background: linear-gradient(135deg, #6C63FF, #3f3d9e);
@@ -118,10 +206,25 @@
             color: #fff;
             margin: 30px 0 50px;
         }
-        .cta-box h2 { font-size: 32px; margin-bottom: 10px; }
-        .cta-box p { font-size: 17px; opacity: 0.9; margin-bottom: 25px; }
-        .cta-box .btn { background: #fff; color: #6C63FF !important; padding: 14px 40px; font-size: 16px; }
-        .cta-box .btn:hover { background: #f0f0ff; transform: scale(1.03); }
+        .cta-box h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .cta-box p {
+            font-size: 17px;
+            opacity: 0.9;
+            margin-bottom: 25px;
+        }
+        .cta-box .btn {
+            background: #fff;
+            color: #6C63FF !important;
+            padding: 14px 40px;
+            font-size: 16px;
+        }
+        .cta-box .btn:hover {
+            background: #f0f0ff;
+            transform: scale(1.03);
+        }
 
         /* نماذج الدخول */
         .auth-box {
@@ -130,25 +233,61 @@
             background: #fff;
             padding: 40px 30px;
             border-radius: 20px;
-            box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.06);
             border: 1px solid #f0f2f8;
         }
-        .auth-box h2 { text-align: center; font-size: 28px; margin-bottom: 5px; }
-        .auth-box .sub { text-align: center; color: #888; margin-bottom: 25px; font-size: 14px; }
-        .form-group { margin-bottom: 18px; }
-        .form-group label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 4px; }
-        .form-group input, .form-group select {
+        .auth-box h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        .auth-box .sub {
+            text-align: center;
+            color: #888;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        .form-group input,
+        .form-group select {
             width: 100%;
             padding: 12px 15px;
             border: 2px solid #e8ecf4;
             border-radius: 10px;
             font-size: 14px;
             background: #fafbff;
+            font-family: inherit;
         }
-        .form-group input:focus, .form-group select:focus { border-color: #6C63FF; outline: none; }
-        .auth-box .btn { width: 100%; padding: 14px; font-size: 16px; margin-top: 5px; }
-        .auth-footer { text-align: center; margin-top: 20px; color: #777; }
-        .auth-footer a { color: #6C63FF; text-decoration: none; font-weight: 600; cursor: pointer; }
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #6C63FF;
+            outline: none;
+        }
+        .auth-box .btn {
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+        .auth-footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #777;
+        }
+        .auth-footer a {
+            color: #6C63FF;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
 
         .alert {
             padding: 10px 15px;
@@ -157,9 +296,19 @@
             display: none;
             font-weight: 500;
         }
-        .alert.show { display: block; }
-        .alert-success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
-        .alert-error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .alert.show {
+            display: block;
+        }
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
 
         /* لوحة التحكم */
         .dash-header {
@@ -170,7 +319,11 @@
             flex-wrap: wrap;
             gap: 15px;
         }
-        .user-info { display: flex; align-items: center; gap: 15px; }
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
         .avatar {
             width: 45px;
             height: 45px;
@@ -183,8 +336,14 @@
             font-weight: 700;
             font-size: 20px;
         }
-        .user-name { font-weight: 700; font-size: 17px; }
-        .user-plan { font-size: 13px; color: #888; }
+        .user-name {
+            font-weight: 700;
+            font-size: 17px;
+        }
+        .user-plan {
+            font-size: 13px;
+            color: #888;
+        }
         .badge {
             display: inline-block;
             padding: 2px 12px;
@@ -192,8 +351,14 @@
             font-size: 12px;
             font-weight: 600;
         }
-        .badge-free { background: #e8ecf4; color: #555; }
-        .badge-premium { background: #6C63FF; color: #fff; }
+        .badge-free {
+            background: #e8ecf4;
+            color: #555;
+        }
+        .badge-premium {
+            background: #6C63FF;
+            color: #fff;
+        }
 
         .dash-grid {
             display: grid;
@@ -207,10 +372,26 @@
             border-radius: 16px;
             border: 1px solid #f0f2f8;
         }
-        .dash-card h4 { font-size: 13px; color: #888; text-transform: uppercase; }
-        .dash-card .num { font-size: 30px; font-weight: 800; margin: 5px 0; }
-        .dash-card .lbl { color: #888; font-size: 13px; }
-        .dash-card i { float: left; font-size: 26px; color: #6C63FF; opacity: 0.2; }
+        .dash-card h4 {
+            font-size: 13px;
+            color: #888;
+            text-transform: uppercase;
+        }
+        .dash-card .num {
+            font-size: 30px;
+            font-weight: 800;
+            margin: 5px 0;
+        }
+        .dash-card .lbl {
+            color: #888;
+            font-size: 13px;
+        }
+        .dash-card i {
+            float: left;
+            font-size: 26px;
+            color: #6C63FF;
+            opacity: 0.2;
+        }
 
         .features-box {
             background: #fff;
@@ -219,8 +400,14 @@
             border: 1px solid #f0f2f8;
             margin-bottom: 35px;
         }
-        .features-box ul { list-style: none; line-height: 2.2; color: #555; }
-        .features-box ul li i { margin-left: 10px; }
+        .features-box ul {
+            list-style: none;
+            line-height: 2.2;
+            color: #555;
+        }
+        .features-box ul li i {
+            margin-left: 10px;
+        }
 
         footer {
             text-align: center;
@@ -230,372 +417,494 @@
             font-size: 14px;
             margin-top: 20px;
         }
-        footer i { color: #e74c6f; }
+        footer i {
+            color: #e74c6f;
+        }
 
         @media (max-width: 700px) {
-            header { flex-direction: column; gap: 12px; }
-            nav a { margin: 0 8px; font-size: 13px; }
-            .hero-text h1 { font-size: 30px; }
-            .hero-image { font-size: 70px; }
-            .stats { padding: 10px 16px; gap: 15px; max-width: 100%; }
-            .auth-box { padding: 25px 18px; margin: 20px 10px; }
-            .cta-box h2 { font-size: 26px; }
+            header {
+                flex-direction: column;
+                gap: 12px;
+            }
+            nav a {
+                margin: 0 8px;
+                font-size: 13px;
+            }
+            .hero-text h1 {
+                font-size: 30px;
+            }
+            .hero-image {
+                font-size: 70px;
+            }
+            .stats {
+                padding: 10px 16px;
+                gap: 15px;
+                max-width: 100%;
+            }
+            .auth-box {
+                padding: 25px 18px;
+                margin: 20px 10px;
+            }
+            .cta-box h2 {
+                font-size: 26px;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <!-- ===== الهيدر ===== -->
-    <header>
-        <div class="logo" onclick="showPage('home')"><i class="fas fa-rocket"></i>ZenithTools</div>
-        <nav id="mainNav">
-            <a onclick="showPage('home')">الرئيسية</a>
-            <a onclick="showPage('home')">الميزات</a>
-            <a id="loginBtn" class="btn btn-outline" onclick="showPage('login')">تسجيل الدخول</a>
-            <a id="signupBtn" class="btn" onclick="showPage('signup')">ابدأ</a>
-            <a id="dashBtn" class="btn" onclick="showPage('dashboard')" style="display:none;">لوحة التحكم</a>
-            <a id="logoutBtn" class="btn btn-danger" onclick="logout()" style="display:none;">خروج</a>
-        </nav>
-    </header>
+        <!-- الهيدر -->
+        <header>
+            <div class="logo" onclick="showPage('home')"><i class="fas fa-rocket"></i>ZenithTools</div>
+            <nav id="mainNav">
+                <a onclick="showPage('home')">الرئيسية</a>
+                <a onclick="showPage('home')">الميزات</a>
+                <a onclick="showPage('home')">الأسعار</a>
+                <a id="loginBtn" class="btn btn-outline" onclick="showPage('login')">تسجيل الدخول</a>
+                <a id="signupBtn" class="btn" onclick="showPage('signup')">ابدأ</a>
+                <a id="dashBtn" class="btn" onclick="showPage('dashboard')" style="display:none;">لوحة التحكم</a>
+                <a id="logoutBtn" class="btn btn-danger" onclick="logout()" style="display:none;">خروج</a>
+            </nav>
+        </header>
 
-    <!-- ===== الصفحة الرئيسية ===== -->
-    <div id="page-home" class="page active">
-        <section class="hero">
-            <div class="hero-text">
-                <h1>أدوات رقمية <span>تُحدث الفارق</span></h1>
-                <p>مجموعة متكاملة من الأدوات الاحترافية لزيادة الإنتاجية وتحقيق أرباح حقيقية.</p>
-                <a class="btn" style="padding:13px 38px; font-size:16px;" onclick="showPage('signup')">
-                    <i class="fas fa-play" style="margin-left:10px;"></i> ابدأ مجاناً
-                </a>
-                <div class="stats">
-                    <div><h3>12K+</h3><span>مستخدم</span></div>
-                    <div><h3>98%</h3><span>رضا</span></div>
-                    <div><h3>4.9</h3><span>تقييم</span></div>
-                </div>
-            </div>
-            <div class="hero-image"><i class="fas fa-chart-line"></i></div>
-        </section>
-
-        <div class="cards">
-            <div class="card">
-                <i class="fas fa-bolt"></i>
-                <h3>سرعة فائقة</h3>
-                <p>أدواتنا تعمل بسرعة لتوفير وقتك.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-shield-alt"></i>
-                <h3>أمان متقدم</h3>
-                <p>بياناتك محمية بأحدث التقنيات.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-hand-holding-usd"></i>
-                <h3>أرباح مضمونة</h3>
-                <p>خطة عمل تضمن لك عائد ممتاز.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-headset"></i>
-                <h3>دعم 24/7</h3>
-                <p>فريق دعم بشري جاهز لمساعدتك.</p>
-            </div>
-        </div>
-
-        <section class="cta-box">
-            <h2>🚀 جاهز للانطلاق؟</h2>
-            <p>انضم إلى آلاف المستخدمين الذين حققوا أرباحاً</p>
-            <a class="btn" onclick="showPage('signup')"><i class="fas fa-gem" style="margin-left:10px;"></i> اشترك الآن</a>
-        </section>
-    </div>
-
-    <!-- ===== صفحة تسجيل الدخول ===== -->
-    <div id="page-login" class="page">
-        <div class="auth-box">
-            <h2>🔐 مرحباً</h2>
-            <p class="sub">سجل الدخول للوصول إلى أدواتك</p>
-            <div id="loginAlert" class="alert"></div>
-            <form onsubmit="login(event)">
-                <div class="form-group">
-                    <label>البريد الإلكتروني</label>
-                    <input type="email" id="loginEmail" placeholder="example@email.com" required />
-                </div>
-                <div class="form-group">
-                    <label>كلمة المرور</label>
-                    <input type="password" id="loginPassword" placeholder="••••••••" required minlength="6" />
-                </div>
-                <button type="submit" class="btn">تسجيل الدخول</button>
-            </form>
-            <div class="auth-footer">
-                ليس لديك حساب؟ <a onclick="showPage('signup')">إنشاء حساب</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===== صفحة إنشاء حساب ===== -->
-    <div id="page-signup" class="page">
-        <div class="auth-box">
-            <h2>🚀 ابدأ الآن</h2>
-            <p class="sub">أنشئ حساباً مجانياً</p>
-            <div id="signupAlert" class="alert"></div>
-            <form onsubmit="signup(event)">
-                <div class="form-group">
-                    <label>الاسم الكامل</label>
-                    <input type="text" id="signupName" placeholder="أحمد محمد" required />
-                </div>
-                <div class="form-group">
-                    <label>البريد الإلكتروني</label>
-                    <input type="email" id="signupEmail" placeholder="example@email.com" required />
-                </div>
-                <div class="form-group">
-                    <label>كلمة المرور</label>
-                    <input type="password" id="signupPassword" placeholder="••••••••" required minlength="6" />
-                </div>
-                <div class="form-group">
-                    <label>الخطة</label>
-                    <select id="signupPlan">
-                        <option value="free">مجانية - 0$</option>
-                        <option value="premium">مميزة - 29$</option>
-                        <option value="pro">احترافية - 99$</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn">إنشاء حساب</button>
-            </form>
-            <div class="auth-footer">
-                لديك حساب؟ <a onclick="showPage('login')">تسجيل الدخول</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===== لوحة التحكم ===== -->
-    <div id="page-dashboard" class="page">
-        <div class="dash-header">
-            <div class="user-info">
-                <div class="avatar" id="avatar">A</div>
-                <div>
-                    <div class="user-name" id="dashName">أحمد</div>
-                    <div class="user-plan">
-                        <span class="badge badge-free" id="dashPlan">مجاني</span>
-                        <span style="color:#888; margin-right:8px;" id="dashEmail">a@b.com</span>
+        <!-- الصفحة الرئيسية -->
+        <div id="page-home" class="page active">
+            <section class="hero">
+                <div class="hero-text">
+                    <h1>أدوات رقمية <span>تُحدث الفارق</span></h1>
+                    <p>مجموعة متكاملة من الأدوات الاحترافية لزيادة الإنتاجية وتحقيق أرباح حقيقية.</p>
+                    <a class="btn" style="padding:13px 38px; font-size:16px;" onclick="showPage('signup')">
+                        <i class="fas fa-play" style="margin-left:10px;"></i> ابدأ مجاناً
+                    </a>
+                    <div class="stats">
+                        <div><h3>12K+</h3><span>مستخدم</span></div>
+                        <div><h3>98%</h3><span>رضا</span></div>
+                        <div><h3>4.9</h3><span>تقييم</span></div>
                     </div>
                 </div>
+                <div class="hero-image"><i class="fas fa-chart-line"></i></div>
+            </section>
+
+            <div class="cards">
+                <div class="card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>سرعة فائقة</h3>
+                    <p>أدواتنا تعمل بسرعة لتوفير وقتك.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>أمان متقدم</h3>
+                    <p>بياناتك محمية بأحدث التقنيات.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <h3>أرباح مضمونة</h3>
+                    <p>خطة عمل تضمن لك عائد ممتاز.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-headset"></i>
+                    <h3>دعم 24/7</h3>
+                    <p>فريق دعم بشري جاهز لمساعدتك.</p>
+                </div>
             </div>
-            <a class="btn" id="upgradeBtn" onclick="upgrade()"><i class="fas fa-crown" style="margin-left:8px;"></i> ترقية</a>
+
+            <section class="cta-box">
+                <h2>🚀 جاهز للانطلاق؟</h2>
+                <p>انضم إلى آلاف المستخدمين الذين حققوا أرباحاً</p>
+                <a class="btn" onclick="showPage('signup')"><i class="fas fa-gem" style="margin-left:10px;"></i> اشترك الآن</a>
+            </section>
         </div>
 
-        <div class="dash-grid">
-            <div class="dash-card">
-                <i class="fas fa-chart-line"></i>
-                <h4>الأرباح</h4>
-                <div class="num" id="earnings">$0</div>
-            </div>
-            <div class="dash-card">
-                <i class="fas fa-tasks"></i>
-                <h4>المشاريع</h4>
-                <div class="num" id="projects">0</div>
-            </div>
-            <div class="dash-card">
-                <i class="fas fa-star"></i>
-                <h4>التقييم</h4>
-                <div class="num" id="rating">4.9</div>
-            </div>
-            <div class="dash-card">
-                <i class="fas fa-clock"></i>
-                <h4>عضو منذ</h4>
-                <div class="num" id="since" style="font-size:18px;">اليوم</div>
+        <!-- صفحة تسجيل الدخول -->
+        <div id="page-login" class="page">
+            <div class="auth-box">
+                <h2>🔐 مرحباً</h2>
+                <p class="sub">سجل الدخول للوصول إلى أدواتك</p>
+                <div id="loginAlert" class="alert"></div>
+                <form onsubmit="login(event)">
+                    <div class="form-group">
+                        <label>البريد الإلكتروني</label>
+                        <input type="email" id="loginEmail" placeholder="example@email.com" required />
+                    </div>
+                    <div class="form-group">
+                        <label>كلمة المرور</label>
+                        <input type="password" id="loginPassword" placeholder="••••••••" required minlength="6" />
+                    </div>
+                    <button type="submit" class="btn">تسجيل الدخول</button>
+                </form>
+                <div class="auth-footer">
+                    ليس لديك حساب؟ <a onclick="showPage('signup')">إنشاء حساب</a>
+                </div>
             </div>
         </div>
 
-        <div class="features-box">
-            <h4 style="margin-bottom:10px;"><i class="fas fa-list-check" style="color:#6C63FF; margin-left:10px;"></i>ميزات خطتك</h4>
-            <ul id="featuresList"></ul>
+        <!-- صفحة إنشاء حساب -->
+        <div id="page-signup" class="page">
+            <div class="auth-box">
+                <h2>🚀 ابدأ الآن</h2>
+                <p class="sub">أنشئ حساباً مجانياً</p>
+                <div id="signupAlert" class="alert"></div>
+                <form onsubmit="signup(event)">
+                    <div class="form-group">
+                        <label>الاسم الكامل</label>
+                        <input type="text" id="signupName" placeholder="أحمد محمد" required />
+                    </div>
+                    <div class="form-group">
+                        <label>البريد الإلكتروني</label>
+                        <input type="email" id="signupEmail" placeholder="example@email.com" required />
+                    </div>
+                    <div class="form-group">
+                        <label>كلمة المرور</label>
+                        <input type="password" id="signupPassword" placeholder="••••••••" required minlength="6" />
+                    </div>
+                    <div class="form-group">
+                        <label>الخطة</label>
+                        <select id="signupPlan">
+                            <option value="free">مجانية - 0$</option>
+                            <option value="premium">مميزة - 29$</option>
+                            <option value="pro">احترافية - 99$</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">إنشاء حساب</button>
+                </form>
+                <div class="auth-footer">
+                    لديك حساب؟ <a onclick="showPage('login')">تسجيل الدخول</a>
+                </div>
+            </div>
         </div>
+
+        <!-- لوحة التحكم -->
+        <div id="page-dashboard" class="page">
+            <div class="dash-header">
+                <div class="user-info">
+                    <div class="avatar" id="avatar">A</div>
+                    <div>
+                        <div class="user-name" id="dashName">أحمد</div>
+                        <div class="user-plan">
+                            <span class="badge badge-free" id="dashPlan">مجاني</span>
+                            <span style="color:#888; margin-right:8px;" id="dashEmail">a@b.com</span>
+                        </div>
+                    </div>
+                </div>
+                <a class="btn" id="upgradeBtn" onclick="upgrade()"><i class="fas fa-crown" style="margin-left:8px;"></i> ترقية</a>
+            </div>
+
+            <div class="dash-grid">
+                <div class="dash-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>الأرباح</h4>
+                    <div class="num" id="earnings">$0</div>
+                </div>
+                <div class="dash-card">
+                    <i class="fas fa-tasks"></i>
+                    <h4>المشاريع</h4>
+                    <div class="num" id="projects">0</div>
+                </div>
+                <div class="dash-card">
+                    <i class="fas fa-star"></i>
+                    <h4>التقييم</h4>
+                    <div class="num" id="rating">4.9</div>
+                </div>
+                <div class="dash-card">
+                    <i class="fas fa-clock"></i>
+                    <h4>عضو منذ</h4>
+                    <div class="num" id="since" style="font-size:18px;">اليوم</div>
+                </div>
+            </div>
+
+            <div class="features-box">
+                <h4 style="margin-bottom:10px;"><i class="fas fa-list-check" style="color:#6C63FF; margin-left:10px;"></i>ميزات خطتك</h4>
+                <ul id="featuresList"></ul>
+            </div>
+        </div>
+
+        <!-- التذييل -->
+        <footer>
+            <p>© 2026 ZenithTools. <i class="fas fa-heart"></i> فريق النجاح</p>
+        </footer>
+
     </div>
 
-    <!-- ===== التذييل ===== -->
-    <footer>
-        <p>© 2026 ZenithTools. <i class="fas fa-heart"></i> فريق النجاح</p>
-    </footer>
-
-</div>
-
-<!-- ===== جافا سكريبت ===== -->
-<script>
-    // ============================================
-    // دوال مساعدة
-    // ============================================
-    function getUsers() { return JSON.parse(localStorage.getItem('users')) || []; }
-    function saveUsers(u) { localStorage.setItem('users', JSON.stringify(u)); }
-    function getUser() { return JSON.parse(localStorage.getItem('currentUser')); }
-    function setUser(u) { localStorage.setItem('currentUser', JSON.stringify(u)); }
-    function clearUser() { localStorage.removeItem('currentUser'); }
-
-    // ============================================
-    // التنقل بين الصفحات
-    // ============================================
-    function showPage(id) {
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        const el = document.getElementById('page-' + id);
-        if (el) el.classList.add('active');
-        updateNav();
-        if (id === 'dashboard') loadDashboard();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // ============================================
-    // تحديث الهيدر
-    // ============================================
-    function updateNav() {
-        const u = getUser();
-        document.getElementById('loginBtn').style.display = u ? 'none' : 'inline-block';
-        document.getElementById('signupBtn').style.display = u ? 'none' : 'inline-block';
-        document.getElementById('dashBtn').style.display = u ? 'inline-block' : 'none';
-        document.getElementById('logoutBtn').style.display = u ? 'inline-block' : 'none';
-    }
-
-    // ============================================
-    // تسجيل الدخول
-    // ============================================
-    function login(e) {
-        e.preventDefault();
-        const email = document.getElementById('loginEmail').value;
-        const pass = document.getElementById('loginPassword').value;
-        const alert = document.getElementById('loginAlert');
-
-        const user = getUsers().find(u => u.email === email && u.password === pass);
-
-        if (user) {
-            setUser(user);
-            alert.className = 'alert alert-success show';
-            alert.textContent = '✅ تم الدخول بنجاح!';
-            setTimeout(() => showPage('dashboard'), 600);
-        } else {
-            alert.className = 'alert alert-error show';
-            alert.textContent = '❌ البريد أو كلمة المرور غير صحيحة';
-        }
-    }
-
-    // ============================================
-    // إنشاء حساب
-    // ============================================
-    function signup(e) {
-        e.preventDefault();
-        const name = document.getElementById('signupName').value;
-        const email = document.getElementById('signupEmail').value;
-        const pass = document.getElementById('signupPassword').value;
-        const plan = document.getElementById('signupPlan').value;
-        const alert = document.getElementById('signupAlert');
-
-        if (!email.includes('@')) {
-            alert.className = 'alert alert-error show';
-            alert.textContent = '❌ بريد إلكتروني غير صحيح';
-            return;
-        }
-
-        const users = getUsers();
-        if (users.find(u => u.email === email)) {
-            alert.className = 'alert alert-error show';
-            alert.textContent = '❌ هذا البريد مسجل مسبقاً';
-            return;
-        }
-
-        const newUser = {
-            id: Date.now(),
-            name,
-            email,
-            password: pass,
-            plan,
-            joinDate: new Date().toLocaleDateString('ar-EG')
-        };
-
-        users.push(newUser);
-        saveUsers(users);
-        setUser(newUser);
-
-        alert.className = 'alert alert-success show';
-        alert.textContent = '✅ تم إنشاء الحساب!';
-        setTimeout(() => showPage('dashboard'), 600);
-    }
-
-    // ============================================
-    // تسجيل الخروج
-    // ============================================
-    function logout() {
-        if (confirm('تسجيل الخروج؟')) {
-            clearUser();
-            updateNav();
-            showPage('home');
-        }
-    }
-
-    // ============================================
-    // تحميل لوحة التحكم
-    // ============================================
-    function loadDashboard() {
-        const u = getUser();
-        if (!u) { showPage('login'); return; }
-
-        document.getElementById('dashName').textContent = u.name;
-        document.getElementById('dashEmail').textContent = u.email;
-        document.getElementById('avatar').textContent = u.name.charAt(0).toUpperCase();
-
-        const plans = {
-            free: { label: 'مجاني', badge: 'badge-free', features: ['5 أدوات أساسية', 'دعم بالبريد', 'حد 3 مشاريع'] },
-            premium: { label: 'مميز', badge: 'badge-premium', features: ['جميع الأدوات', '10 أدوات متقدمة', 'دعم أولوية',
-                    'تحليلات' ] },
-            pro: { label: 'احترافي', badge: 'badge-premium', features: ['50+ أداة', 'تحليلات AI', 'دعم 24/7',
-                    'مشاريع غير محدودة', 'استشارات' ] }
-        };
-
-        const p = plans[u.plan] || plans.free;
-        document.getElementById('dashPlan').textContent = p.label;
-        document.getElementById('dashPlan').className = 'badge ' + p.badge;
-
-        const all = ['5 أدوات أساسية', 'دعم بالبريد', 'أدوات متقدمة', 'تحليلات', 'مشاريع غير محدودة', 'دعم 24/7', 'استشارات'];
-        document.getElementById('featuresList').innerHTML = all.map(f => {
-            const ok = p.features.includes(f);
-            return `<li><i class="fas ${ok ? 'fa-check-circle' : 'fa-times-circle'}" style="color:${ok ? '#6C63FF' : '#e74c6f'}; margin-left:10px;"></i> ${f} ${ok ? '✅' : '🔒'}</li>`;
-        }).join('');
-
-        document.getElementById('since').textContent = u.joinDate || 'اليوم';
-        document.getElementById('earnings').textContent = u.plan === 'free' ? '$0' : u.plan === 'premium' ? '$1,250' :
-        '$5,400';
-        document.getElementById('projects').textContent = u.plan === 'free' ? '2' : u.plan === 'premium' ? '18' : '47';
-
-        document.getElementById('upgradeBtn').style.display = u.plan === 'pro' ? 'none' : 'inline-block';
-    }
-
-    // ============================================
-    // ترقية الاشتراك
-    // ============================================
-    function upgrade() {
-        const u = getUser();
-        if (!u) return;
-        const plans = ['free', 'premium', 'pro'];
-        const idx = plans.indexOf(u.plan);
-        if (idx < 2) {
-            const next = plans[idx + 1];
-            const names = { premium: 'المميزة', pro: 'الاحترافية' };
-            if (confirm(`الترقية إلى الخطة ${names[next]}؟`)) {
-                u.plan = next;
-                setUser(u);
-                const users = getUsers();
-                const i = users.findIndex(x => x.id === u.id);
-                if (i > -1) { users[i].plan = next;
-                    saveUsers(users); }
-                loadDashboard();
-                alert('✅ تم الترقية إلى الخطة ' + names[next]);
+    <script>
+        // ============================================
+        // دوال مساعدة
+        // ============================================
+        function getUsers() {
+            try {
+                return JSON.parse(localStorage.getItem('users')) || [];
+            } catch (e) {
+                return [];
             }
-        } else {
-            alert('🌟 أنت في أعلى خطة');
         }
-    }
 
-    // ============================================
-    // تشغيل عند التحميل
-    // ============================================
-    updateNav();
-    if (getUser()) showPage('dashboard');
-</script>
+        function saveUsers(u) {
+            localStorage.setItem('users', JSON.stringify(u));
+        }
+
+        function getUser() {
+            try {
+                return JSON.parse(localStorage.getItem('currentUser'));
+            } catch (e) {
+                return null;
+            }
+        }
+
+        function setUser(u) {
+            localStorage.setItem('currentUser', JSON.stringify(u));
+        }
+
+        function clearUser() {
+            localStorage.removeItem('currentUser');
+        }
+
+        // ============================================
+        // التنقل بين الصفحات
+        // ============================================
+        function showPage(id) {
+            // إخفاء الكل
+            document.querySelectorAll('.page').forEach(function(p) {
+                p.classList.remove('active');
+            });
+
+            // إظهار المطلوب
+            var el = document.getElementById('page-' + id);
+            if (el) {
+                el.classList.add('active');
+            }
+
+            // تحديث الهيدر
+            updateNav();
+
+            // تحميل لوحة التحكم إذا كانت مطلوبة
+            if (id === 'dashboard') {
+                loadDashboard();
+            }
+
+            // تمرير للأعلى
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ============================================
+        // تحديث الهيدر
+        // ============================================
+        function updateNav() {
+            var u = getUser();
+            var loginBtn = document.getElementById('loginBtn');
+            var signupBtn = document.getElementById('signupBtn');
+            var dashBtn = document.getElementById('dashBtn');
+            var logoutBtn = document.getElementById('logoutBtn');
+
+            if (u) {
+                loginBtn.style.display = 'none';
+                signupBtn.style.display = 'none';
+                dashBtn.style.display = 'inline-block';
+                logoutBtn.style.display = 'inline-block';
+            } else {
+                loginBtn.style.display = 'inline-block';
+                signupBtn.style.display = 'inline-block';
+                dashBtn.style.display = 'none';
+                logoutBtn.style.display = 'none';
+            }
+        }
+
+        // ============================================
+        // تسجيل الدخول
+        // ============================================
+        function login(e) {
+            e.preventDefault();
+            var email = document.getElementById('loginEmail').value;
+            var pass = document.getElementById('loginPassword').value;
+            var alert = document.getElementById('loginAlert');
+
+            var users = getUsers();
+            var user = null;
+            for (var i = 0; i < users.length; i++) {
+                if (users[i].email === email && users[i].password === pass) {
+                    user = users[i];
+                    break;
+                }
+            }
+
+            if (user) {
+                setUser(user);
+                alert.className = 'alert alert-success show';
+                alert.textContent = '✅ تم الدخول بنجاح!';
+                setTimeout(function() {
+                    showPage('dashboard');
+                }, 600);
+            } else {
+                alert.className = 'alert alert-error show';
+                alert.textContent = '❌ البريد أو كلمة المرور غير صحيحة';
+            }
+        }
+
+        // ============================================
+        // إنشاء حساب
+        // ============================================
+        function signup(e) {
+            e.preventDefault();
+            var name = document.getElementById('signupName').value;
+            var email = document.getElementById('signupEmail').value;
+            var pass = document.getElementById('signupPassword').value;
+            var plan = document.getElementById('signupPlan').value;
+            var alert = document.getElementById('signupAlert');
+
+            if (email.indexOf('@') === -1 || email.indexOf('.') === -1) {
+                alert.className = 'alert alert-error show';
+                alert.textContent = '❌ بريد إلكتروني غير صحيح';
+                return;
+            }
+
+            var users = getUsers();
+            for (var i = 0; i < users.length; i++) {
+                if (users[i].email === email) {
+                    alert.className = 'alert alert-error show';
+                    alert.textContent = '❌ هذا البريد مسجل مسبقاً';
+                    return;
+                }
+            }
+
+            var newUser = {
+                id: Date.now(),
+                name: name,
+                email: email,
+                password: pass,
+                plan: plan,
+                joinDate: new Date().toLocaleDateString('ar-EG')
+            };
+
+            users.push(newUser);
+            saveUsers(users);
+            setUser(newUser);
+
+            alert.className = 'alert alert-success show';
+            alert.textContent = '✅ تم إنشاء الحساب!';
+            setTimeout(function() {
+                showPage('dashboard');
+            }, 600);
+        }
+
+        // ============================================
+        // تسجيل الخروج
+        // ============================================
+        function logout() {
+            if (confirm('تسجيل الخروج؟')) {
+                clearUser();
+                updateNav();
+                showPage('home');
+            }
+        }
+
+        // ============================================
+        // تحميل لوحة التحكم
+        // ============================================
+        function loadDashboard() {
+            var u = getUser();
+            if (!u) {
+                showPage('login');
+                return;
+            }
+
+            document.getElementById('dashName').textContent = u.name;
+            document.getElementById('dashEmail').textContent = u.email;
+            document.getElementById('avatar').textContent = u.name.charAt(0).toUpperCase();
+
+            var plans = {
+                free: { label: 'مجاني', badge: 'badge-free', features: ['5 أدوات أساسية', 'دعم بالبريد', 'حد 3 مشاريع'] },
+                premium: { label: 'مميز', badge: 'badge-premium', features: ['جميع الأدوات', '10 أدوات متقدمة',
+                        'دعم أولوية', 'تحليلات'
+                    ] },
+                pro: { label: 'احترافي', badge: 'badge-premium', features: ['50+ أداة', 'تحليلات AI', 'دعم 24/7',
+                        'مشاريع غير محدودة', 'استشارات'
+                    ] }
+            };
+
+            var p = plans[u.plan] || plans.free;
+            document.getElementById('dashPlan').textContent = p.label;
+            document.getElementById('dashPlan').className = 'badge ' + p.badge;
+
+            var all = ['5 أدوات أساسية', 'دعم بالبريد', 'أدوات متقدمة', 'تحليلات', 'مشاريع غير محدودة', 'دعم 24/7', 'استشارات'];
+            var html = '';
+            for (var i = 0; i < all.length; i++) {
+                var f = all[i];
+                var ok = false;
+                for (var j = 0; j < p.features.length; j++) {
+                    if (p.features[j] === f) { ok = true; break; }
+                }
+                var icon = ok ? 'fa-check-circle' : 'fa-times-circle';
+                var color = ok ? '#6C63FF' : '#e74c6f';
+                html += '<li><i class="fas ' + icon + '" style="color:' + color + '; margin-left:10px;"></i> ' + f + ' ' + (ok ?
+                    '✅' : '🔒') + '</li>';
+            }
+            document.getElementById('featuresList').innerHTML = html;
+
+            document.getElementById('since').textContent = u.joinDate || 'اليوم';
+
+            if (u.plan === 'free') {
+                document.getElementById('earnings').textContent = '$0';
+                document.getElementById('projects').textContent = '2';
+            } else if (u.plan === 'premium') {
+                document.getElementById('earnings').textContent = '$1,250';
+                document.getElementById('projects').textContent = '18';
+            } else {
+                document.getElementById('earnings').textContent = '$5,400';
+                document.getElementById('projects').textContent = '47';
+            }
+
+            if (u.plan === 'pro') {
+                document.getElementById('upgradeBtn').style.display = 'none';
+            } else {
+                document.getElementById('upgradeBtn').style.display = 'inline-block';
+            }
+        }
+
+        // ============================================
+        // ترقية الاشتراك
+        // ============================================
+        function upgrade() {
+            var u = getUser();
+            if (!u) return;
+
+            var plans = ['free', 'premium', 'pro'];
+            var idx = -1;
+            for (var i = 0; i < plans.length; i++) {
+                if (plans[i] === u.plan) { idx = i; break; }
+            }
+
+            if (idx < 2) {
+                var next = plans[idx + 1];
+                var names = { premium: 'المميزة', pro: 'الاحترافية' };
+                if (confirm('الترقية إلى الخطة ' + names[next] + '؟')) {
+                    u.plan = next;
+                    setUser(u);
+
+                    var users = getUsers();
+                    for (var j = 0; j < users.length; j++) {
+                        if (users[j].id === u.id) {
+                            users[j].plan = next;
+                            break;
+                        }
+                    }
+                    saveUsers(users);
+                    loadDashboard();
+                    alert('✅ تم الترقية إلى الخطة ' + names[next]);
+                }
+            } else {
+                alert('🌟 أنت في أعلى خطة');
+            }
+        }
+
+        // ============================================
+        // تشغيل عند تحميل الصفحة
+        // ============================================
+        updateNav();
+        var currentUser = getUser();
+        if (currentUser) {
+            showPage('dashboard');
+        }
+    </script>
 
 </body>
 </html>
