@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>ZenithTools</title>
+    <title>ZenithTools - منصة الأدوات الرقمية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -13,16 +13,15 @@
         }
         body {
             font-family: 'Segoe UI', sans-serif;
-            background: #f8faff;
+            background: #f0f2f8;
             color: #1a1a2e;
         }
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* الهيدر */
         header {
             display: flex;
             justify-content: space-between;
@@ -30,6 +29,10 @@
             padding: 20px 0;
             flex-wrap: wrap;
             border-bottom: 2px solid #eef2f9;
+            background: #fff;
+            padding: 15px 25px;
+            border-radius: 16px;
+            margin-top: 10px;
         }
         .logo {
             font-size: 28px;
@@ -47,7 +50,6 @@
             font-weight: 500;
             font-size: 14px;
             cursor: pointer;
-            display: inline-block;
         }
         nav a:hover {
             color: #6C63FF;
@@ -59,12 +61,12 @@
             padding: 10px 25px;
             border-radius: 50px;
             font-weight: 600;
-            text-decoration: none;
             border: none;
             cursor: pointer;
             display: inline-block;
             font-size: 14px;
             transition: 0.3s;
+            text-decoration: none;
         }
         .btn:hover {
             background: #554ddf;
@@ -85,8 +87,20 @@
         .btn-danger:hover {
             background: #c0392b;
         }
+        .btn-success {
+            background: #27ae60;
+        }
+        .btn-success:hover {
+            background: #229954;
+        }
+        .btn-warning {
+            background: #f39c12;
+            color: #fff !important;
+        }
+        .btn-warning:hover {
+            background: #e67e22;
+        }
 
-        /* الصفحات */
         .page {
             display: none;
         }
@@ -264,7 +278,6 @@
             border-radius: 10px;
             font-size: 14px;
             background: #fafbff;
-            font-family: inherit;
         }
         .form-group input:focus,
         .form-group select:focus {
@@ -310,7 +323,7 @@
             border: 1px solid #f5c6cb;
         }
 
-        /* لوحة التحكم */
+        /* ===== لوحة التحكم ===== */
         .dash-header {
             display: flex;
             justify-content: space-between;
@@ -360,6 +373,68 @@
             color: #fff;
         }
 
+        /* ===== أدوات حقيقية ===== */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
+        }
+        .tool-card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 18px;
+            border: 1px solid #f0f2f8;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            transition: 0.3s;
+        }
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(108, 99, 255, 0.1);
+            border-color: #6C63FF;
+        }
+        .tool-card .tool-icon {
+            font-size: 40px;
+            color: #6C63FF;
+            margin-bottom: 12px;
+        }
+        .tool-card h3 {
+            font-size: 18px;
+            margin-bottom: 6px;
+        }
+        .tool-card p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .tool-card .tool-input {
+            width: 100%;
+            padding: 10px 14px;
+            border: 2px solid #e8ecf4;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        .tool-card .tool-input:focus {
+            border-color: #6C63FF;
+            outline: none;
+        }
+        .tool-card .tool-result {
+            background: #f8faff;
+            padding: 12px;
+            border-radius: 10px;
+            margin-top: 10px;
+            font-weight: 600;
+            color: #1a1a2e;
+            border: 1px solid #eef2f9;
+            min-height: 40px;
+        }
+        .tool-card .btn {
+            font-size: 13px;
+            padding: 8px 20px;
+        }
+
         .dash-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -381,10 +456,6 @@
             font-size: 30px;
             font-weight: 800;
             margin: 5px 0;
-        }
-        .dash-card .lbl {
-            color: #888;
-            font-size: 13px;
         }
         .dash-card i {
             float: left;
@@ -448,6 +519,9 @@
             .cta-box h2 {
                 font-size: 26px;
             }
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -461,7 +535,6 @@
             <nav id="mainNav">
                 <a onclick="showPage('home')">الرئيسية</a>
                 <a onclick="showPage('home')">الميزات</a>
-                <a onclick="showPage('home')">الأسعار</a>
                 <a id="loginBtn" class="btn btn-outline" onclick="showPage('login')">تسجيل الدخول</a>
                 <a id="signupBtn" class="btn" onclick="showPage('signup')">ابدأ</a>
                 <a id="dashBtn" class="btn" onclick="showPage('dashboard')" style="display:none;">لوحة التحكم</a>
@@ -575,8 +648,11 @@
             </div>
         </div>
 
-        <!-- لوحة التحكم -->
+        <!-- ========================================================= -->
+        <!-- ===== لوحة التحكم مع أدوات حقيقية ===== -->
+        <!-- ========================================================= -->
         <div id="page-dashboard" class="page">
+
             <div class="dash-header">
                 <div class="user-info">
                     <div class="avatar" id="avatar">A</div>
@@ -588,9 +664,12 @@
                         </div>
                     </div>
                 </div>
-                <a class="btn" id="upgradeBtn" onclick="upgrade()"><i class="fas fa-crown" style="margin-left:8px;"></i> ترقية</a>
+                <div>
+                    <a class="btn btn-success" id="upgradeBtn" onclick="upgrade()"><i class="fas fa-crown" style="margin-left:8px;"></i> ترقية</a>
+                </div>
             </div>
 
+            <!-- بطاقات إحصائيات -->
             <div class="dash-grid">
                 <div class="dash-card">
                     <i class="fas fa-chart-line"></i>
@@ -614,10 +693,98 @@
                 </div>
             </div>
 
+            <!-- ===== الأدوات الحقيقية ===== -->
+            <h3 style="margin:25px 0 15px;"><i class="fas fa-tools" style="color:#6C63FF; margin-left:10px;"></i>أدواتك الذكية</h3>
+            <div class="tools-grid">
+
+                <!-- أداة 1: تحليل النصوص -->
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-file-alt"></i></div>
+                    <h3>📝 تحليل النصوص</h3>
+                    <p>احسب عدد الكلمات والحروف في النص الخاص بك</p>
+                    <textarea class="tool-input" id="textAnalyzer" rows="3" placeholder="اكتب نصك هنا..."></textarea>
+                    <button class="btn btn-success" onclick="analyzeText()">تحليل</button>
+                    <div class="tool-result" id="textResult">النتيجة ستظهر هنا</div>
+                </div>
+
+                <!-- أداة 2: تحويل العملات -->
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-dollar-sign"></i></div>
+                    <h3>💱 تحويل العملات</h3>
+                    <p>حول بين الدولار والريال واليورو</p>
+                    <input class="tool-input" id="currencyInput" type="number" placeholder="المبلغ" value="100" />
+                    <select class="tool-input" id="currencyFrom">
+                        <option value="USD">دولار USD</option>
+                        <option value="SAR">ريال SAR</option>
+                        <option value="EUR">يورو EUR</option>
+                    </select>
+                    <select class="tool-input" id="currencyTo">
+                        <option value="SAR">ريال SAR</option>
+                        <option value="USD">دولار USD</option>
+                        <option value="EUR">يورو EUR</option>
+                    </select>
+                    <button class="btn btn-success" onclick="convertCurrency()">تحويل</button>
+                    <div class="tool-result" id="currencyResult">النتيجة ستظهر هنا</div>
+                </div>
+
+                <!-- أداة 3: مؤقت العمل -->
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-clock"></i></div>
+                    <h3>⏱️ مؤقت العمل</h3>
+                    <p>تتبع وقت عملك بكفاءة</p>
+                    <div style="font-size:32px; font-weight:800; color:#6C63FF; text-align:center; margin:10px 0;" id="timerDisplay">00:00</div>
+                    <div style="display:flex; gap:10px;">
+                        <button class="btn btn-success" onclick="startTimer()">▶ بدء</button>
+                        <button class="btn btn-warning" onclick="pauseTimer()">⏸ إيقاف</button>
+                        <button class="btn btn-danger" onclick="resetTimer()">⏹ إعادة</button>
+                    </div>
+                    <div class="tool-result" id="timerResult">المؤقت جاهز</div>
+                </div>
+
+                <!-- أداة 4: مولد كلمات المرور -->
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-key"></i></div>
+                    <h3>🔑 مولد كلمات المرور</h3>
+                    <p>أنشئ كلمة مرور قوية وآمنة</p>
+                    <div style="display:flex; gap:10px; margin-bottom:10px;">
+                        <input class="tool-input" id="passwordLength" type="number" value="12" min="6" max="30" style="width:80px;" />
+                        <label style="display:flex; align-items:center; gap:5px; font-size:14px;">
+                            <input type="checkbox" id="includeSymbols" checked /> رموز
+                        </label>
+                    </div>
+                    <button class="btn btn-success" onclick="generatePassword()">توليد</button>
+                    <div class="tool-result" id="passwordResult" style="direction:ltr; text-align:center;">اضغط لتوليد كلمة مرور</div>
+                </div>
+
+                <!-- أداة 5: حاسبة النسبة المئوية -->
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-percent"></i></div>
+                    <h3>📊 حاسبة النسبة المئوية</h3>
+                    <p>احسب النسبة المئوية بسهولة</p>
+                    <input class="tool-input" id="percentValue" type="number" placeholder="الرقم" value="50" />
+                    <input class="tool-input" id="percentTotal" type="number" placeholder="المجموع الكلي" value="200" />
+                    <button class="btn btn-success" onclick="calculatePercent()">احسب</button>
+                    <div class="tool-result" id="percentResult">النتيجة ستظهر هنا</div>
+                </div>
+
+                <!-- أداة 6: محول التاريخ -->
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <h3>📅 محول التاريخ</h3>
+                    <p>اعرف التاريخ الهجري والميلادي</p>
+                    <input class="tool-input" id="dateInput" type="date" />
+                    <button class="btn btn-success" onclick="convertDate()">تحويل</button>
+                    <div class="tool-result" id="dateResult">اختر تاريخاً للتحويل</div>
+                </div>
+
+            </div>
+
+            <!-- ميزات الخطة -->
             <div class="features-box">
                 <h4 style="margin-bottom:10px;"><i class="fas fa-list-check" style="color:#6C63FF; margin-left:10px;"></i>ميزات خطتك</h4>
                 <ul id="featuresList"></ul>
             </div>
+
         </div>
 
         <!-- التذييل -->
@@ -627,9 +794,12 @@
 
     </div>
 
+    <!-- ========================================================= -->
+    <!-- ===== جافا سكريبت ===== -->
+    <!-- ========================================================= -->
     <script>
         // ============================================
-        // دوال مساعدة
+        // إدارة المستخدمين
         // ============================================
         function getUsers() {
             try {
@@ -660,53 +830,25 @@
         }
 
         // ============================================
-        // التنقل بين الصفحات
+        // التنقل
         // ============================================
         function showPage(id) {
-            // إخفاء الكل
             document.querySelectorAll('.page').forEach(function(p) {
                 p.classList.remove('active');
             });
-
-            // إظهار المطلوب
             var el = document.getElementById('page-' + id);
-            if (el) {
-                el.classList.add('active');
-            }
-
-            // تحديث الهيدر
+            if (el) el.classList.add('active');
             updateNav();
-
-            // تحميل لوحة التحكم إذا كانت مطلوبة
-            if (id === 'dashboard') {
-                loadDashboard();
-            }
-
-            // تمرير للأعلى
+            if (id === 'dashboard') loadDashboard();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // ============================================
-        // تحديث الهيدر
-        // ============================================
         function updateNav() {
             var u = getUser();
-            var loginBtn = document.getElementById('loginBtn');
-            var signupBtn = document.getElementById('signupBtn');
-            var dashBtn = document.getElementById('dashBtn');
-            var logoutBtn = document.getElementById('logoutBtn');
-
-            if (u) {
-                loginBtn.style.display = 'none';
-                signupBtn.style.display = 'none';
-                dashBtn.style.display = 'inline-block';
-                logoutBtn.style.display = 'inline-block';
-            } else {
-                loginBtn.style.display = 'inline-block';
-                signupBtn.style.display = 'inline-block';
-                dashBtn.style.display = 'none';
-                logoutBtn.style.display = 'none';
-            }
+            document.getElementById('loginBtn').style.display = u ? 'none' : 'inline-block';
+            document.getElementById('signupBtn').style.display = u ? 'none' : 'inline-block';
+            document.getElementById('dashBtn').style.display = u ? 'inline-block' : 'none';
+            document.getElementById('logoutBtn').style.display = u ? 'inline-block' : 'none';
         }
 
         // ============================================
@@ -731,9 +873,7 @@
                 setUser(user);
                 alert.className = 'alert alert-success show';
                 alert.textContent = '✅ تم الدخول بنجاح!';
-                setTimeout(function() {
-                    showPage('dashboard');
-                }, 600);
+                setTimeout(function() { showPage('dashboard'); }, 600);
             } else {
                 alert.className = 'alert alert-error show';
                 alert.textContent = '❌ البريد أو كلمة المرور غير صحيحة';
@@ -781,9 +921,7 @@
 
             alert.className = 'alert alert-success show';
             alert.textContent = '✅ تم إنشاء الحساب!';
-            setTimeout(function() {
-                showPage('dashboard');
-            }, 600);
+            setTimeout(function() { showPage('dashboard'); }, 600);
         }
 
         // ============================================
@@ -798,94 +936,25 @@
         }
 
         // ============================================
-        // تحميل لوحة التحكم
-        // ============================================
-        function loadDashboard() {
-            var u = getUser();
-            if (!u) {
-                showPage('login');
-                return;
-            }
-
-            document.getElementById('dashName').textContent = u.name;
-            document.getElementById('dashEmail').textContent = u.email;
-            document.getElementById('avatar').textContent = u.name.charAt(0).toUpperCase();
-
-            var plans = {
-                free: { label: 'مجاني', badge: 'badge-free', features: ['5 أدوات أساسية', 'دعم بالبريد', 'حد 3 مشاريع'] },
-                premium: { label: 'مميز', badge: 'badge-premium', features: ['جميع الأدوات', '10 أدوات متقدمة',
-                        'دعم أولوية', 'تحليلات'
-                    ] },
-                pro: { label: 'احترافي', badge: 'badge-premium', features: ['50+ أداة', 'تحليلات AI', 'دعم 24/7',
-                        'مشاريع غير محدودة', 'استشارات'
-                    ] }
-            };
-
-            var p = plans[u.plan] || plans.free;
-            document.getElementById('dashPlan').textContent = p.label;
-            document.getElementById('dashPlan').className = 'badge ' + p.badge;
-
-            var all = ['5 أدوات أساسية', 'دعم بالبريد', 'أدوات متقدمة', 'تحليلات', 'مشاريع غير محدودة', 'دعم 24/7', 'استشارات'];
-            var html = '';
-            for (var i = 0; i < all.length; i++) {
-                var f = all[i];
-                var ok = false;
-                for (var j = 0; j < p.features.length; j++) {
-                    if (p.features[j] === f) { ok = true; break; }
-                }
-                var icon = ok ? 'fa-check-circle' : 'fa-times-circle';
-                var color = ok ? '#6C63FF' : '#e74c6f';
-                html += '<li><i class="fas ' + icon + '" style="color:' + color + '; margin-left:10px;"></i> ' + f + ' ' + (ok ?
-                    '✅' : '🔒') + '</li>';
-            }
-            document.getElementById('featuresList').innerHTML = html;
-
-            document.getElementById('since').textContent = u.joinDate || 'اليوم';
-
-            if (u.plan === 'free') {
-                document.getElementById('earnings').textContent = '$0';
-                document.getElementById('projects').textContent = '2';
-            } else if (u.plan === 'premium') {
-                document.getElementById('earnings').textContent = '$1,250';
-                document.getElementById('projects').textContent = '18';
-            } else {
-                document.getElementById('earnings').textContent = '$5,400';
-                document.getElementById('projects').textContent = '47';
-            }
-
-            if (u.plan === 'pro') {
-                document.getElementById('upgradeBtn').style.display = 'none';
-            } else {
-                document.getElementById('upgradeBtn').style.display = 'inline-block';
-            }
-        }
-
-        // ============================================
-        // ترقية الاشتراك
+        // الترقية
         // ============================================
         function upgrade() {
             var u = getUser();
             if (!u) return;
-
             var plans = ['free', 'premium', 'pro'];
             var idx = -1;
             for (var i = 0; i < plans.length; i++) {
                 if (plans[i] === u.plan) { idx = i; break; }
             }
-
             if (idx < 2) {
                 var next = plans[idx + 1];
                 var names = { premium: 'المميزة', pro: 'الاحترافية' };
                 if (confirm('الترقية إلى الخطة ' + names[next] + '؟')) {
                     u.plan = next;
                     setUser(u);
-
                     var users = getUsers();
                     for (var j = 0; j < users.length; j++) {
-                        if (users[j].id === u.id) {
-                            users[j].plan = next;
-                            break;
-                        }
+                        if (users[j].id === u.id) { users[j].plan = next; break; }
                     }
                     saveUsers(users);
                     loadDashboard();
@@ -897,14 +966,11 @@
         }
 
         // ============================================
-        // تشغيل عند تحميل الصفحة
+        // تحميل لوحة التحكم
         // ============================================
-        updateNav();
-        var currentUser = getUser();
-        if (currentUser) {
-            showPage('dashboard');
-        }
-    </script>
+        function loadDashboard() {
+            var u = getUser();
+            if (!u) { showPage('login'); return; }
 
-</body>
-</html>
+            document.getElementById('dashName').textContent = u.name;
+            document.getElementById('dashEmail').textContent
